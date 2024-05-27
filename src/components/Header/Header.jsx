@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { SHeaderContainer, SHeaderUl, SHeaderUlBtn } from './Header.styled'
+import { SHeader, SHeaderBtn, SHeaderBtnRegistration, SHeaderContainer, SHeaderUl, SHeaderUlBtn } from './Header.styled'
 
 export const Header = () => {
   return (
-    <SHeaderContainer>
+   <SHeader>
+     <SHeaderContainer>
         <Link>psychologists.services</Link>
         <SHeaderUl>
             <li>
@@ -14,10 +15,11 @@ export const Header = () => {
         </SHeaderUl>
         <SHeaderUlBtn>
             <li>
-                <button>Log In</button>
+                <SHeaderBtn>Log In</SHeaderBtn>
             </li>
-            <li><button>Registration</button></li>
+            <li><SHeaderBtnRegistration>Registration</SHeaderBtnRegistration></li>
         </SHeaderUlBtn>
     </SHeaderContainer>
+   </SHeader>
   )
 }
