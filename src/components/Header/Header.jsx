@@ -1,17 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { SHeader, SHeaderBtn, SHeaderBtnRegistration, SHeaderContainer, SHeaderUl, SHeaderUlBtn } from './Header.styled'
+import { SHeader, SHeaderBoxLink, SHeaderBtn, SHeaderBtnRegistration, SHeaderContainer, SHeaderLink, SHeaderLinkNav, SHeaderLinkSpan, SHeaderUl, SHeaderUlBtn } from './Header.styled'
 
 export const Header = () => {
   return (
    <SHeader>
      <SHeaderContainer>
-        <Link>psychologists.services</Link>
+        <SHeaderBoxLink><SHeaderLink>psychologists.<SHeaderLinkSpan>services</SHeaderLinkSpan></SHeaderLink></SHeaderBoxLink>
         <SHeaderUl>
             <li>
-                <Link>Home</Link>
+                <SHeaderLinkNav>Home</SHeaderLinkNav>
             </li>
-            <li><Link>Psychologists</Link></li>
+            <li><SHeaderLinkNav>Psychologists</SHeaderLinkNav></li>
         </SHeaderUl>
         <SHeaderUlBtn>
             <li>
