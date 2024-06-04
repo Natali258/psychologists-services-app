@@ -1,0 +1,1 @@
+export {default as WomanHero} from './WomanHero'

@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Image } from "../../components";
+
 
 export const HomePage = () => {
   return <div>
@@ -11,8 +13,10 @@ export const HomePage = () => {
 
       </NavLink>
     </div>
-    <div>
-      <img src="/src/images/foto/imagewomen.jpg" alt="woman" />
-    </div>
+    <Image.WomanHero/>
+    {/* <picture>
+      <source srcSet="../../images/hero/women-desktop_@2x.jpg 2x"/>
+      <img src="../../images/hero/women-desktop_@1x.jpg" alt="woman" />
+    </picture> */}
   </div>;
 };
