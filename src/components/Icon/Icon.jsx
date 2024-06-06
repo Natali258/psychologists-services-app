@@ -1,42 +1,5 @@
 import { Svg } from "./Svg";
 
-/*
-
-To use this component you need to pass the following optional props:
-- name
-- className
-- size
-
-Example:
-<Icon name="arrow-up" className={s.icon} size="20" />
-
-------------------------------------------------------------------------------------------
-List of icons names ("name" - description (css styles) ):
-------------------------------------------------------------------------------------------
-0) Logo is the default value (if you do not pass props "name")!
-1) 'arrow-up' - Total income icon (add style: fill="color")
-2) 'arrow-down' - Total expense icon (add style: fill="color")
-3) 'chevron-up' - Arrow-up in header UserBarBtn (add styles: stroke="color", fill="none")
-4) 'chevron-down' - Arrow-down in header UserBarBtn (add styles: stroke="color", fill="none")
-5) 'burger-menu' - Burger-menu (add style in css: stroke="color")
-6) 'user-logo' - Icon instead user avatar, default user-logo (add style: fill="color")
-7) 'user' - Icon user for header profile settings (add styles: stroke="color", fill="none")
-8) 'log-out' - Icon for button log-out (add styles: stroke="color", fill="none")
-9) 'calendar' - Date input icon (add styles: stroke="color", fill="none")
-10) 'clock' - Time input icon (add style in css: stroke="color", fill="none")
-11) 'search' - Search input icon (add styles: stroke="color", fill="none")
-12) 'check' - Selected category icon (add styles: stroke="color", fill="none")
-13) 'edit' -Edit button icon (add styles: stroke="color", fill="none")
-14) 'x-mark' - Close modal button icon (add style: stroke="color")
-15) 'trash-bin' - Icon for delete transaction (add styles: stroke="color", fill="none")
-16) 'eye' - Visible password icon (add styles: stroke="color", fill="none")
-17) 'eye-off' - Hidden password icon (add styles: stroke="color", fill="none")
-18) 'error' - Icon for unvalid form field (add style: fill="color")
-19) 'success' - Icon for valid form field (add style in css: fill="color")
-20) 'close-btn' - Icon for close burger-menu (add style: fill="color")
-
-*/
-
 export const Icon = ({ name, className, size }) => {
   switch (name) {
     // 1) Total income icon (add style: fill="color")
