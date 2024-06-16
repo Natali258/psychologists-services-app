@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
 export const SContainer = styled.div`
-
 position: relative;
+width: 565px;
+`
+
+export const SImageContainer = styled.div`
+margin-left: 101px;
 `
 
 export const SUserContainer = styled.div`
@@ -15,7 +19,7 @@ align-items: center;
 justify-content:center;
 position: absolute;
 top: 67px;
-left: 449px;
+right: -43px;
 transform: rotate(15deg);
 `
 export const SQuestionContainer = styled.div`
@@ -28,7 +32,7 @@ align-items: center;
 justify-content:center;
 position: absolute;
 top: 214px;
-left: -34px;
+left: 67px;
 transform: rotate(-15deg);
 `
 
@@ -43,7 +47,7 @@ justify-content:center;
 gap: 16px;
 position: absolute;
 top: 362px;
-left: -101px;
+/* left: -101px; */
 `
 
 export const SCheakContainer = styled.div`

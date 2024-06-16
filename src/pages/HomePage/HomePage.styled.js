@@ -1,6 +1,19 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+
+export const SHomeContainer = styled.div`
+display: block;
+padding: 49px 0 129px 0;
+`
+
+export const SContentContainer = styled.div`
+display: flex;
+flex-direction: row;
+gap: 24px;
+
+`
+
 export const SButton = styled(NavLink)`
 /* display: flex;
 flex-direction: row;
@@ -29,3 +42,4 @@ display: inline-block;
 margin-left: 17px;
 width: 18px;
 `
+

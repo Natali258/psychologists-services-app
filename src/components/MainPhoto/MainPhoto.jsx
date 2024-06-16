@@ -1,12 +1,12 @@
 import React from 'react'
 import { Image } from "../../components";
 import { Icon } from "../../components/Icon/Icon";
-import { SAnaliticContainer, SCheakContainer, SContainer, SNumber, SQuestionContainer, SText, STextContainer, SUserContainer } from './MainPhoto.styled';
+import { SAnaliticContainer, SCheakContainer, SContainer, SImageContainer, SNumber, SQuestionContainer, SText, STextContainer, SUserContainer } from './MainPhoto.styled';
 
 export const MainPhoto = () => {
   return (
     <SContainer>
-    <Image.WomanHero/>
+    <SImageContainer><Image.WomanHero/></SImageContainer>
     <SUserContainer>
       <Icon name='people-icon' size='20' fill='white'/>
     </SUserContainer>
