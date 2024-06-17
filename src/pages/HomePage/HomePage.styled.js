@@ -51,8 +51,12 @@ border-radius: 30px;
 padding: 18px 50px;
 width: 235px;
 height: 60px;
-background: #54be96; 
+background-color: #54be96; 
 text-decoration: none;
+transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+&:hover {
+    background-color: rgba(54, 163, 121, 1);
+}
 `
 
 export const SButtonText = styled.p`

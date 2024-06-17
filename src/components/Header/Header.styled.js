@@ -13,6 +13,7 @@ display:flex;
 flex-direction: row;
 `
 
+
 export const SHeaderBoxLink = styled.div`
 display: flex;
 align-items: center;
@@ -35,6 +36,7 @@ color: #191a15;
 
 export const SHeaderUl = styled.ul`
 display: flex;
+position: relative;
 margin-left: 130px;
 justify-content: center;
 align-items: center;
@@ -49,6 +51,26 @@ line-height: 125%;
 letter-spacing: -0.01em;
 color: #191a15;
 text-decoration: none;
+`
+
+export const SCircleContainer = styled.li`
+/* display:block;
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background-color: rgba(84, 190, 150, 1); */
+
+&:before {
+  content: "";
+  position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: rgba(84, 190, 150, 1);
+  top: 40px;
+  left: 0;
+  transition: all 1s;
+}
 `
 
 export const SHeaderUlBtn = styled.ul`

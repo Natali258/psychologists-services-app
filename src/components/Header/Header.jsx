@@ -1,5 +1,5 @@
 import React from 'react'
-import { SHeader, SHeaderBoxLink, SHeaderBtn, SHeaderBtnRegistration, SHeaderContainer, SHeaderLink, SHeaderLinkNav, SHeaderLinkSpan, SHeaderUl, SHeaderUlBtn } from './Header.styled'
+import { SCircleContainer, SHeader, SHeaderBoxLink, SHeaderBtn, SHeaderBtnRegistration, SHeaderContainer, SHeaderLink, SHeaderLinkNav, SHeaderLinkSpan, SHeaderUl, SHeaderUlBtn } from './Header.styled'
 
 export const Header = () => {
   return (
@@ -11,6 +11,7 @@ export const Header = () => {
                 <SHeaderLinkNav>Home</SHeaderLinkNav>
             </li>
             <li><SHeaderLinkNav>Psychologists</SHeaderLinkNav></li>
+            <SCircleContainer></SCircleContainer>
         </SHeaderUl>
         <SHeaderUlBtn>
             <li>
