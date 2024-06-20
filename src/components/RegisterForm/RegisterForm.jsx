@@ -18,6 +18,7 @@ const style = {
   };
 
 export const RegisterForm = ({open, onClose}) => {
+    
     return (
         <div>
             <Modal
