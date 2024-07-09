@@ -4,6 +4,9 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SBtnLogIn } from './LoginForm.styled';
+import { loginThunk } from '../../redux/Auth/operations';
+import { useDispatch } from 'react-redux';
+import { useForm } from 'react-hook-form';
 
 const style = {
     position: 'absolute',
@@ -18,6 +21,13 @@ const style = {
   };
 
 export const LoginForm = ({open, onClose}) => {
+    const { register, reset, handleSubmit } = useForm();
+    const dispatch = useDispatch();
+    const submit = data => {
+        dispatch(loginThunk(data));
+    reset()
+};
+    
   return (
     <div>
         <Modal
@@ -31,11 +41,12 @@ export const LoginForm = ({open, onClose}) => {
                 <Typography sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </Typography>
-                <Box component="form" noValidate autoComplete="off">
-                    <TextField label="Email"  />
-                    <TextField label="Password" />
+                <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+                    <TextField {...register('email')} label="Email"  />
+                    <TextField {...register('password')} label="Password" />
+                    <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </Box>
-                <SBtnLogIn type='submit'>Log In</SBtnLogIn>
+                
             </Box>
         </Modal>
          

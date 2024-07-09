@@ -1,19 +1,20 @@
 
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 import { conectAPI } from '../../services/FirebaseApp';
 
+const auth = getAuth(conectAPI);
 
 export const registerThunk = createAsyncThunk(
   'register',
   async (credentials, thunkApi) => {
     
     try {
-      const auth = getAuth(conectAPI);
+      
       const nameUser = credentials.name;
       const emailUser = credentials.email;
       const passwordUser = credentials.password;
-      const { data } = await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
+      await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
       await updateProfile(auth.currentUser, {
         displayName: nameUser
       })
@@ -25,19 +26,14 @@ export const registerThunk = createAsyncThunk(
 );
 
 export const loginThunk = createAsyncThunk(
-    'register',
+    'login',
     async (credentials, thunkApi) => {
       
       try {
-        const auth = getAuth(conectAPI);
-        const nameUser = credentials.name;
         const emailUser = credentials.email;
         const passwordUser = credentials.password;
-        const { data } = await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
-        await updateProfile(auth.currentUser, {
-          displayName: nameUser
-        })
-        alert ('Account has been successfull created!')
+        await signInWithEmailAndPassword(auth, emailUser, passwordUser)
+        alert ('Signed in successfully!')
       } catch (error) {
         return thunkApi.rejectWithValue(error.message);
       }
