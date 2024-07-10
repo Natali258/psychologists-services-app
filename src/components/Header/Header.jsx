@@ -15,12 +15,12 @@ const [open, setOpen] = React.useState(false);
   return (
    <SHeader>
      <SHeaderContainer>
-        <SHeaderBoxLink><SHeaderLink>psychologists.<SHeaderLinkSpan>services</SHeaderLinkSpan></SHeaderLink></SHeaderBoxLink>
+        <SHeaderBoxLink><SHeaderLink to="/">psychologists.<SHeaderLinkSpan>services</SHeaderLinkSpan></SHeaderLink></SHeaderBoxLink>
         <SHeaderUl>
             <li>
-                <SHeaderLinkNav>Home</SHeaderLinkNav>
+                <SHeaderLinkNav to="/">Home</SHeaderLinkNav>
             </li>
-            <li><SHeaderLinkNav>Psychologists</SHeaderLinkNav></li>
+            <li><SHeaderLinkNav to="/psychologists">Psychologists</SHeaderLinkNav></li>
             <SCircleContainer></SCircleContainer>
         </SHeaderUl>
         <SHeaderUlBtn>
