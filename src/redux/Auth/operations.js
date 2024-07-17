@@ -28,7 +28,7 @@ export const registerThunk = createAsyncThunk(
 export const loginThunk = createAsyncThunk(
     'login',
     async (credentials, thunkApi) => {
-      
+      console.log(credentials);
       try {
         const emailUser = credentials.email;
         const passwordUser = credentials.password;
