@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPsychologists } from '../../redux/Psychologists/PsychologistsSlice';
 import { psychologistThunk } from '../../redux/Psychologists/operations';
+import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
 
 export const PsychologistsList = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,10 @@ export const PsychologistsList = () => {
   return (
     <div>
         <ul>
-        {psychologists.map(psychologist => 
+        {psychologists.map(item => 
         (
-            <li  key={psychologist.id}>
-              {psychologist.name}
+            <li  key={item.id}>
+              <PsychologistsCard psychologists={item}/>
             </li>)
           )}
         </ul>
