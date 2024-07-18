@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectPsychologists } from '../../redux/Psychologists/PsychologistsSlice';
 import { psychologistThunk } from '../../redux/Psychologists/operations';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
+import { ListContainer, ListUl } from './PsychologistsList.styled';
 
 export const PsychologistsList = () => {
   const dispatch = useDispatch();
@@ -13,17 +14,17 @@ export const PsychologistsList = () => {
   }, [dispatch]);
   
   return (
-    <div>
-        <ul>
+    <ListContainer>
+        <ListUl>
         {psychologists.map(item => 
         (
             <li  key={item.id}>
               <PsychologistsCard psychologists={item}/>
             </li>)
           )}
-        </ul>
+        </ListUl>
         
-    </div>
+    </ListContainer>
   )
 }
 

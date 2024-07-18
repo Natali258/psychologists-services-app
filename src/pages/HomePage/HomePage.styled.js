@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const SHomeContainer = styled.div`
 display: block;
 padding: 49px 0 129px 0;
+
 `
 
 export const SContentContainer = styled.div`
