@@ -1,13 +1,18 @@
 import React from 'react'
+import { FilterBtn, FilterContainer, FilterTitle, FilterUl } from './Filter.styled'
+import { Icon } from '../Icon/Icon'
 
 export const Filter = () => {
   return (
-    <div>
-      <p>Filters</p>
-      <button>A to Z
-
-      </button>
-      <ul>
+    <FilterContainer>
+      <FilterTitle>Filters</FilterTitle>
+      <FilterBtn>A to Z
+        {/* <div>
+          <Icon name='icon-VectorNew2' size='17' fill='rgba(251, 251, 251, 1)'/>
+        </div> */}
+        <Icon name='icon-VectorNew2' size='17' fill='rgba(251, 251, 251, 1)'/>
+      </FilterBtn>
+      <FilterUl>
         <li>A to Z</li>
         <li>Z to A</li>
         <li>Less than 10$</li>
@@ -15,7 +20,7 @@ export const Filter = () => {
         <li>Popular</li>
         <li>Not popular</li>
         <li>Show all</li>
-        </ul>
-    </div>
+        </FilterUl>
+    </FilterContainer>
   )
 }

@@ -128,6 +128,14 @@ export const Icon = ({ name, className, size, fill }) => {
         </Svg>
       );
 
+      // 11) Time input icon (add styles: stroke="color", fill="none")
+    case "icon-VectorNew2":
+      return (
+        <Svg className={className} size={size} fill={fill}>
+            <path d="M11.248 1.685l-10.625 10.625c-0.384 0.385-0.622 0.916-0.622 1.502s0.238 1.118 0.622 1.502v0c0.385 0.384 0.916 0.622 1.502 0.622s1.118-0.238 1.502-0.622l9.123-9.123 9.123 9.123c0.385 0.384 0.916 0.622 1.502 0.622s1.118-0.238 1.502-0.622v0c0.384-0.385 0.622-0.916 0.622-1.502s-0.238-1.118-0.622-1.502l-10.625-10.625c-0.385-0.384-0.916-0.622-1.502-0.622s-1.118 0.238-1.502 0.622v0z"></path>
+        </Svg>
+      );
+
     // 0) Site logo as default value (without props "name")
     default:
       return (
