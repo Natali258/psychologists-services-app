@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FilterContainer = styled.div`
 margin-top: 64px;
-height: 74px;
+height: 78px;
 `
 export const FilterTitle = styled.p`
 font-weight: 500;
