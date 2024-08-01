@@ -12,6 +12,7 @@ color: #8a8a89;
 margin-bottom: 8px;
 `
 export const FilterBtn = styled.button`
+position: relative;
 border-radius: 14px;
 border: none;
 padding: 16px 162px 16px 18px;
@@ -26,6 +27,12 @@ color: #fbfbfb;
 &:hover{
     background: #36a379;
 }
+`
+
+export const FilterIcon = styled.div`
+position: absolute;
+top: 22px;
+right: 14px;
 `
 export const FilterUl = styled.ul`
 visibility: hidden
