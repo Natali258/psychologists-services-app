@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/psychologists-services-app/static/css/main.0c4f67f2.css",
-    "main.js": "/psychologists-services-app/static/js/main.b66e58a3.js",
+    "main.js": "/psychologists-services-app/static/js/main.11a69f06.js",
     "static/js/453.42cb844f.chunk.js": "/psychologists-services-app/static/js/453.42cb844f.chunk.js",
     "static/media/women-desktop_@2x.jpg": "/psychologists-services-app/static/media/women-desktop_@2x.f5418adf4ce32a0fd019.jpg",
     "static/media/women-desktop_@1x.jpg": "/psychologists-services-app/static/media/women-desktop_@1x.63159cfd0ab5ae81d43e.jpg",
     "index.html": "/psychologists-services-app/index.html",
     "main.0c4f67f2.css.map": "/psychologists-services-app/static/css/main.0c4f67f2.css.map",
-    "main.b66e58a3.js.map": "/psychologists-services-app/static/js/main.b66e58a3.js.map",
+    "main.11a69f06.js.map": "/psychologists-services-app/static/js/main.11a69f06.js.map",
     "453.42cb844f.chunk.js.map": "/psychologists-services-app/static/js/453.42cb844f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0c4f67f2.css",
-    "static/js/main.b66e58a3.js"
+    "static/js/main.11a69f06.js"
   ]
 }
