@@ -12,10 +12,10 @@ import {
 import persistReducer from 'redux-persist/es/persistReducer';
 import { authReducer } from './Auth/AuthSlice';
 import { psychologistsReducer } from './Psychologists/PsychologistsSlice';
+import { filterValueReducer } from './Filter/FilterSlice';
 
 const persistConfig = {
   key: 'userItem',
-  // key: 'psychologistIteam',
   storage,
   whitelist: ['token'],
 };
@@ -29,6 +29,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedReducer,
     psychologist: pedReducer,
+    filter: filterValueReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
