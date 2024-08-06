@@ -40,6 +40,7 @@ export const Filter = () => {
     // labelId="demo-simple-select-label"
     // id="demo-simple-select"
     // onChange={handleChange}
+    
   >
       <MenuItem value='atoz'>A to Z</MenuItem>
       <MenuItem value='ztoa'>Z to A</MenuItem>
