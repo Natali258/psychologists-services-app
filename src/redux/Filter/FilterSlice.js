@@ -20,7 +20,6 @@ const filterValue = createSlice({
     },
   },
 });
-console.log(initialState);
 export const filterValueReducer = filterValue.reducer;
 export const { changeFilter, changeDate, resetFilter } = filterValue.actions;
 
