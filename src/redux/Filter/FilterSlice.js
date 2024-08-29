@@ -9,7 +9,7 @@ const filterValue = createSlice({
   initialState,
   reducers: {
     changeFilter: (state, action) => {
-        console.log(state);
+      console.log(action);
       state.filter = action.payload;
     },
     changeDate: (state, action) => {

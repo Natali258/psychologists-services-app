@@ -1,9 +1,14 @@
 import React from 'react'
 import {FilterContainer, FilterTitle} from './Filter.styled'
 import { MenuItem, Select } from '@mui/material'
+import { useSelector } from 'react-redux'
 
 
 export const Filter = () => {
+  const handleClick = e => console.log(e);
+  
+  
+    
  
   return (
     <FilterContainer>
@@ -14,7 +19,7 @@ export const Filter = () => {
         // id="demo-simple-select"
         // onChange={handleChange}
       >
-          <MenuItem value='atoz'>A to Z</MenuItem>
+          <MenuItem onClick={handleClick} value='atoz'>A to Z</MenuItem>
           <MenuItem value='ztoa'>Z to A</MenuItem>
           <MenuItem value='less10'>Less than 10$</MenuItem>
           <MenuItem value='greater10'>Greater than 10$</MenuItem>
