@@ -4,10 +4,40 @@ import { selectPsychologists } from '../../redux/Psychologists/PsychologistsSlic
 import { psychologistThunk } from '../../redux/Psychologists/operations';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
 import { ListContainer, ListUl } from './PsychologistsList.styled';
+import { selectFilter } from '../../redux/Filter/FilterSlice';
 
 export const PsychologistsList = () => {
   const dispatch = useDispatch();
   const psychologists = useSelector(selectPsychologists);
+  const filterTodo = useSelector(selectFilter);
+
+  const  handleSortByName=(a, b) =>{
+    if(a.id){
+      return (a.name > b.name) - (a.name < b.name);
+    }
+  };
+  const  handleSortByNameDesc=(a, b) =>{
+    console.log(a)
+    if(a.id){
+      return (a.name < b.name)- (a.name > b.name);
+    }
+  };
+  const getFilterData = () => {
+    switch(filterTodo) {
+      
+        case 'atoz':
+          console.log(psychologists);
+          return psychologists.slice(0,40).sort(handleSortByName);
+          return psychologists.filter((item) => [1,2,3].includes(item.id));
+          case 'ztoa':
+            return psychologists.slice(0,40).sort(handleSortByNameDesc);
+          default:
+            return psychologists
+   }}
+  
+   const filterItems = getFilterData()
+
+ 
 
   useEffect(() => {
     dispatch(psychologistThunk());
@@ -16,7 +46,7 @@ export const PsychologistsList = () => {
   return (
     <ListContainer>
         <ListUl>
-        {psychologists.map(item => 
+        {filterItems.map(item =>
         (
             <li  key={item.id}>
               <PsychologistsCard psychologists={item}/>

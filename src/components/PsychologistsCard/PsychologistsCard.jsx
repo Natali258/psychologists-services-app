@@ -1,6 +1,7 @@
 import React from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle } from './PsychologistsCard.styled';
 
+
 export const PsychologistsCard = ({psychologists}) => {
     // console.log(psychologists);
     
