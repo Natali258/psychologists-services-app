@@ -17,22 +17,54 @@ export const PsychologistsList = () => {
     }
   };
   const  handleSortByNameDesc=(a, b) =>{
-    console.log(a)
     if(a.id){
       return (a.name < b.name)- (a.name > b.name);
     }
   };
+  const handleByPriceLess = (a)=> {
+    if(a.id)
+      return (a.price_per_hour <= 170)
+  };
+  const handleByPriceGreater = (a)=> {
+    if(a.id)
+      return (a.price_per_hour > 170)
+  }
+  const handleByPopular = (a)=> {
+    if(a.id)
+      return (a.rating > 4.65)
+  }
+  const handleByNotPopular = (a)=> {
+    if(a.id)
+      return (a.rating <= 4.65)
+  }
+  
+
   const getFilterData = () => {
     switch(filterTodo) {
       
         case 'atoz':
-          console.log(psychologists);
           return psychologists.slice(0,40).sort(handleSortByName);
-          return psychologists.filter((item) => [1,2,3].includes(item.id));
-          case 'ztoa':
-            return psychologists.slice(0,40).sort(handleSortByNameDesc);
-          default:
-            return psychologists
+          
+        case 'ztoa':
+          return psychologists.slice(0,40).sort(handleSortByNameDesc);
+
+        case 'less10':
+          return psychologists.filter(handleByPriceLess);
+
+        case 'greater10':
+          return psychologists.filter(handleByPriceGreater);
+        
+        case 'popular':
+          return psychologists.filter(handleByPopular);
+
+        case 'notpopular':
+          return psychologists.filter(handleByNotPopular);
+
+        case 'showAll':
+          return psychologists;
+
+        default:
+          return psychologists
    }}
   
    const filterItems = getFilterData()
