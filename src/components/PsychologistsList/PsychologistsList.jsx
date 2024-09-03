@@ -68,6 +68,8 @@ export const PsychologistsList = () => {
    }}
   
    const filterItems = getFilterData()
+   console.log(filterItems);
+   
 
  
 

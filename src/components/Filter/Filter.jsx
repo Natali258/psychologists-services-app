@@ -7,15 +7,11 @@ import { changeFilter } from '../../redux/Filter/FilterSlice'
 
 
 export const Filter = () => {
-  
   const dispatch = useDispatch()
   const handleChangeFilter = (value) => {
-    console.log(value);
-    
     dispatch(changeFilter(value))
   }
   
-    
  
   return (
     <FilterContainer>

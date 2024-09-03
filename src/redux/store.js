@@ -20,16 +20,24 @@ const persistConfig = {
   whitelist: ['token'],
 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
+
 const peConfig = {
   key: 'psychologistsItem',
   storage,
 };
 const pedReducer = persistReducer(peConfig, psychologistsReducer);
+
+const filterConfig = {
+  key: 'filterItem',
+  storage
+};
+const filterReducer = persistReducer(filterConfig, filterValueReducer)
+
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
     psychologist: pedReducer,
-    filter: filterValueReducer,
+    filter: filterReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
