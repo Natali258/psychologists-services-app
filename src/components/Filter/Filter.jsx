@@ -1,25 +1,27 @@
 import React from 'react'
 import {FilterContainer, FilterTitle} from './Filter.styled'
 import { MenuItem, Select } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { changeFilter } from '../../redux/Filter/FilterSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeFilter, selectFilter } from '../../redux/Filter/FilterSlice'
 
 
 
 export const Filter = () => {
   const dispatch = useDispatch()
+  const filterTodo = useSelector(selectFilter);
   const handleChangeFilter = (value) => {
     dispatch(changeFilter(value))
   }
   
- 
+
+  handleChangeFilter(filterTodo)
   return (
     <FilterContainer>
       <FilterTitle>Filters</FilterTitle>
       <Select
-        defaultValue='atoz'
+        defaultValue={filterTodo}
         // labelId="demo-simple-select-label"
-        // id="demo-simple-select"
+        // id="demo-simple-select" 
         // onChange={handleChange}
       >
           <MenuItem onClick={()=>handleChangeFilter('atoz')} value='atoz' data-key="byABC">A to Z</MenuItem>
