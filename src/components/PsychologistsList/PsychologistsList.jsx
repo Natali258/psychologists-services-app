@@ -67,7 +67,8 @@ export const PsychologistsList = () => {
           return psychologists
    }}
   
-   const filterItems = getFilterData()
+  //  const filterItems = getFilterData()
+     const filterItems = []
   useEffect(() => {
     dispatch(psychologistThunk());
   }, [dispatch]);
