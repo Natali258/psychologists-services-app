@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPsychologists } from '../../redux/Psychologists/PsychologistsSlice';
+import { selectIsLoading, selectPsychologists, selectPsychologistsLastKey } from '../../redux/Psychologists/PsychologistsSlice';
 import { psychologistThunk } from '../../redux/Psychologists/operations';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
 import { ListContainer, ListUl } from './PsychologistsList.styled';
@@ -70,8 +70,12 @@ export const PsychologistsList = () => {
   //  const filterItems = getFilterData()
      const filterItems = []
   useEffect(() => {
-    dispatch(psychologistThunk());
+    dispatch(psychologistThunk({ isNextPage: false }));
   }, [dispatch]);
+
+  const loadMorePsychologist = () => {
+    dispatch(psychologistThunk({ isNextPage: true }));
+  };
   
   return (
     <ListContainer>
@@ -83,7 +87,9 @@ export const PsychologistsList = () => {
             </li>)
           )}
         </ListUl>
-        
+        {!selectIsLoading && selectPsychologistsLastKey && (
+        <button onClick={loadMorePsychologist}>Завантажити ще</button>
+      )}
     </ListContainer>
   )
 }
