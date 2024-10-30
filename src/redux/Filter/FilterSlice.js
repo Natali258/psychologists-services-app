@@ -10,7 +10,6 @@ const filterValue = createSlice({
   reducers: {
     changeFilter: (state, action) => {
       console.log(action);
-      
       state.filter = action.payload;
     },
     changeDate: (state, action) => {

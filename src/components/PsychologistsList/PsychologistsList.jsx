@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoading, selectPsychologists, selectPsychologistsLastKey } from '../../redux/Psychologists/PsychologistsSlice';
-import { psychologistThunk } from '../../redux/Psychologists/operations';
+import { selectPsychologists} from '../../redux/Psychologists/PsychologistsSlice';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
 import { ListContainer, ListUl } from './PsychologistsList.styled';
-import { selectFilter } from '../../redux/Filter/FilterSlice';
+import { changeFilter, selectFilter } from '../../redux/Filter/FilterSlice';
+import { psychologistThunk } from '../../redux/Psychologists/operations';
+
+
 
 export const PsychologistsList = () => {
-  const dispatch = useDispatch();
   const psychologists = useSelector(selectPsychologists);
+  const dispatch = useDispatch()
+    dispatch(psychologistThunk());
   const filterTodo = useSelector(selectFilter);
+  const handleChangeFilter = (value) => {
+    dispatch(changeFilter(value))
+  }
+
+  console.log(psychologists);
 
   const  handleSortByName=(a, b) =>{
     if(a.id){
@@ -38,7 +46,6 @@ export const PsychologistsList = () => {
       return (a.rating <= 4.65)
   }
   
-
   const getFilterData = () => {
     switch(filterTodo) {
       
@@ -67,29 +74,20 @@ export const PsychologistsList = () => {
           return psychologists
    }}
   
-  //  const filterItems = getFilterData()
-     const filterItems = []
-  useEffect(() => {
-    dispatch(psychologistThunk({ isNextPage: false }));
-  }, [dispatch]);
-
-  const loadMorePsychologist = () => {
-    dispatch(psychologistThunk({ isNextPage: true }));
-  };
+   const filterItems = getFilterData()
+  console.log(filterItems);
   
   return (
     <ListContainer>
         <ListUl>
-        {filterItems.map(item =>
+        {psychologists.map(item =>
         (
             <li  key={item.id}>
-              <PsychologistsCard psychologists={item}/>
+              <PsychologistsCard psychologist={item}/>
             </li>)
           )}
         </ListUl>
-        {!selectIsLoading && selectPsychologistsLastKey && (
-        <button onClick={loadMorePsychologist}>Завантажити ще</button>
-      )}
+        <button >Завантажити ще</button>
     </ListContainer>
   )
 }

@@ -3,9 +3,11 @@ import { psychologistThunk } from './operations';
 
 
 
+
 const initialState = {
   items:[],
-  lastKey: null,
+  limit:3,
+  morePsychologists: true,
   loading: false,
   error: null,
 };
@@ -20,7 +22,6 @@ const psychologistsSlice = createSlice({
       })
       .addCase(psychologistThunk.fulfilled, (state, action) => {
         state.items = action.payload;
-        // state.lastKey = action.payload.lastPsychologistKey;
         state.loading = false;
       })
   },
@@ -29,7 +30,10 @@ const psychologistsSlice = createSlice({
 
 
 export const selectPsychologists = state => state.psychologist.items;
-export const selectPsychologistsLastKey = state => state.psychologist.lastKey;
+export const selectPsychologistsLimit = state => state.psychologist.limit;
+export const selectMorePsychologists = state => state.psychologist.morePsychologists;
 export const selectIsLoading = state => state.psychologists.loading;
 export const selectError = state => state.psychologists.error;
 export const psychologistsReducer = psychologistsSlice.reducer;
+
+

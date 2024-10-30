@@ -4,7 +4,7 @@ import { Filter } from "../../components/Filter/Filter";
 
 export const PsychologistsPage = () => {
   return <div>
-    <Filter/>
+    {/* <Filter/> */}
     <PsychologistsList/>
   </div>;
 };
