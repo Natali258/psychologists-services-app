@@ -1,9 +1,9 @@
 
-import { ref, get, query, orderByChild, limitToFirst, limitToLast, startAt, endAt, getDatabase, child } from "firebase/database";
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { database } from '../../services/FirebaseApp';
+// import { ref, get, query, orderByChild, limitToFirst, limitToLast, startAt, endAt, getDatabase, child } from "firebase/database";
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { database } from '../../services/FirebaseApp';
 
-const db = ref(getDatabase());
+// const db = ref(getDatabase());
 
 // export const psychologistThunk = createAsyncThunk(
 //   'psychologists',
@@ -90,25 +90,25 @@ const db = ref(getDatabase());
 
 
 
-export const psychologistThunk = createAsyncThunk(
-  'psychologists',
-  async (_, thunkApi) => {
-      try {
-      const  data  = await get(child(db,'psychologists')).then((snapshot) => {
-        if (snapshot.exists()) {
-          const valueList=snapshot.val();
-          return valueList;
-        } else {
-          console.log("No data available");
-        }
-      });
-      console.log('111111111');
-      return data;
-    } catch (error) {
-      console.log(error)
-      return thunkApi.rejectWithValue(error.message);
-    }
-}
-);
+// export const psychologistThunk = createAsyncThunk(
+//   'psychologists',
+//   async (_, thunkApi) => {
+//       try {
+//       const  data  = await get(child(db,'psychologists')).then((snapshot) => {
+//         if (snapshot.exists()) {
+//           const valueList=snapshot.val();
+//           return valueList;
+//         } else {
+//           console.log("No data available");
+//         }
+//       });
+//       console.log('111111111');
+//       return data;
+//     } catch (error) {
+//       console.log(error)
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+// }
+// );
 
 

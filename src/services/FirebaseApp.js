@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getAuth } from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -14,9 +15,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const conectAPI = initializeApp(firebaseConfig);
-export const database = getDatabase();
+// export const conectAPI = initializeApp(firebaseConfig);
+// export const database = getDatabase();
 
-// Initialize Realtime Database and get a reference to the service
-// export const database = getDatabase(conectAPI);
-// console.log(database);
+const conectAPI = initializeApp(firebaseConfig);
+export const auth = getAuth(conectAPI);
+export const database = getDatabase();
