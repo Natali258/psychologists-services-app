@@ -9,63 +9,70 @@ import {
     limitToLast,
     startAt,
     endAt,
+    orderByKey,
   } from 'firebase/database';
   import { database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';
   
   export const getPsychologists = async (limit, filter) => {
+    
+    console.log(filter);
+    
     try {
       const psychologistsRef = ref(database, '/psychologists');
-      console.log(psychologistsRef);
       
       let sortedQuery;
+      
+      
       switch (filter) {
-        case 'A to Z':
+        case 'atoz':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('name'),
+            orderByKey('name'),
             limitToFirst(limit)
           );
           break;
-        case 'Z to A':
+        case 'ztoa':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('name'),
+            orderByKey('name'),
             limitToLast(limit)
           );
           break;
-        case 'Popular':
+        case 'popular':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('rating'),
+            orderByKey('rating'),
             limitToLast(limit)
           );
           break;
-        case 'Not popular':
+        case 'notpopular':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('rating'),
+            orderByKey('rating'),
             limitToFirst(limit)
           );
           break;
-        case 'Greater than 10$':
+        case 'greater10':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('price_per_hour'),
-            startAt(10),
+            orderByKey('price_per_hour'),
+            startAt('10'),
             limitToFirst(limit)
           );
+          console.log(sortedQuery);
+          
           break;
-        case 'Less than 10$':
+        case 'less10':
           sortedQuery = query(
             psychologistsRef,
-            orderByChild('price_per_hour'),
+            orderByKey('price_per_hour'),
             startAt(0),
-            endAt(10),
+            endAt('10'),
             limitToFirst(limit)
           );
           break;
-        case 'Show all':
+        case 'showAll':
           sortedQuery = query(psychologistsRef, limitToFirst(limit));
           break;
         default:

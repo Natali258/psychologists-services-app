@@ -1,44 +1,44 @@
 
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from '../../services/FirebaseApp';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../services/FirebaseApp';
 
-// // const auth = getAuth(conectAPI);
+// const auth = getAuth(conectAPI);
 
-// export const registerThunk = createAsyncThunk(
-//   'register',
-//   async (credentials, thunkApi) => {
+export const registerThunk = createAsyncThunk(
+  'register',
+  async (credentials, thunkApi) => {
     
-//     try {
+    try {
       
-//       const nameUser = credentials.name;
-//       const emailUser = credentials.email;
-//       const passwordUser = credentials.password;
-//       await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
-//       await updateProfile(auth.currentUser, {
-//         displayName: nameUser
-//       })
-//       alert ('Account has been successfull created!')
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
+      const nameUser = credentials.name;
+      const emailUser = credentials.email;
+      const passwordUser = credentials.password;
+      await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
+      await updateProfile(auth.currentUser, {
+        displayName: nameUser
+      })
+      alert ('Account has been successfull created!')
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-// export const loginThunk = createAsyncThunk(
-//     'login',
-//     async (credentials, thunkApi) => {
-//       console.log(credentials);
-//       try {
-//         const emailUser = credentials.email;
-//         const passwordUser = credentials.password;
-//         await signInWithEmailAndPassword(auth, emailUser, passwordUser)
-//         alert ('Signed in successfully!')
-//       } catch (error) {
-//         return thunkApi.rejectWithValue(error.message);
-//       }
-//     }
-//   );
+export const loginThunk = createAsyncThunk(
+    'login',
+    async (credentials, thunkApi) => {
+      console.log(credentials);
+      try {
+        const emailUser = credentials.email;
+        const passwordUser = credentials.password;
+        await signInWithEmailAndPassword(auth, emailUser, passwordUser)
+        alert ('Signed in successfully!')
+      } catch (error) {
+        return thunkApi.rejectWithValue(error.message);
+      }
+    }
+  );
 
 
 // export const registerThunk = createAsyncThunk(

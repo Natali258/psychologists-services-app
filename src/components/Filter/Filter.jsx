@@ -1,37 +1,46 @@
-// import React from 'react'
-// import {FilterContainer, FilterTitle} from './Filter.styled'
-// import { MenuItem, Select } from '@mui/material'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { changeFilter, selectFilter } from '../../redux/Filter/FilterSlice'
+import React, { useState } from 'react'
+import {FilterContainer, FilterTitle} from './Filter.styled'
+import { MenuItem, Select } from '@mui/material'
 
 
 
-// export const Filter = () => {
-//     // const dispatch = useDispatch()
-//     // const filterTodo = useSelector(selectFilter);
-//     // const handleChangeFilter = (value) => {
-//     //     dispatch(changeFilter(value))
-//     // }
+
+
+
+export const Filter = ({setFilter}) => {
     
-//     // handleChangeFilter(filterTodo)
+    const [filter, setFilterLocal] = useState('atoz')
+    
 
-//   return (
-//     <FilterContainer>
-//       <FilterTitle>Filters</FilterTitle>
-//       <Select
-//         defaultValue={filterTodo}
-//         // labelId="demo-simple-select-label"
-//         // id="demo-simple-select" 
-//         // onChange={handleChange}
-//       >
-//           <MenuItem onClick={()=>handleChangeFilter('atoz')} value='atoz' data-key="byABC">A to Z</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('ztoa')} value='ztoa' data-key="byABC">Z to A</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('less10')} value='less10' data-key="byPrice">Less than 10$</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('greater10')} value='greater10' data-key="byPrice">Greater than 10$</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('popular')} value='popular' data-key="byPopularity">Popular</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('notpopular')} value='notpopular' data-key="byPopularity">Not popular</MenuItem>
-//           <MenuItem onClick={()=>handleChangeFilter('showAll')} value='showAll' data-key="showAll">Show all</MenuItem>
-//       </Select>
-//     </FilterContainer>
-//   )
-// }
+    const handleFilter = (filter) => {
+        setFilter(filter);
+        setFilterLocal(filter);
+        
+      };
+      
+    //   const handleResetFilter = (e) => {
+    //     setFilterLocal('A to Z');
+    //     setFilter('A to Z');
+    //     e.target.blur();
+    //   };
+   
+
+  return (
+    <FilterContainer>
+      <FilterTitle>Filters</FilterTitle>
+      <Select
+        // defaultValue={filter}
+        value={filter}
+        
+      >
+          <MenuItem onClick={()=>handleFilter('atoz')} value='atoz' data-key="byABC">A to Z</MenuItem>
+          <MenuItem onClick={()=>handleFilter('ztoa')} value='ztoa' data-key="byABC">Z to A</MenuItem>
+          <MenuItem onClick={()=>handleFilter('less10')} value='less10' data-key="byPrice">Less than 10$</MenuItem>
+          <MenuItem onClick={()=>handleFilter('greater10')} value='greater10' data-key="byPrice">Greater than 10$</MenuItem>
+          <MenuItem onClick={()=>handleFilter('popular')} value='popular' data-key="byPopularity">Popular</MenuItem>
+          <MenuItem onClick={()=>handleFilter('notpopular')} value='notpopular' data-key="byPopularity">Not popular</MenuItem>
+          <MenuItem onClick={()=>handleFilter('showAll')} value='showAll' data-key="showAll">Show all</MenuItem>
+      </Select>
+    </FilterContainer>
+  )
+}

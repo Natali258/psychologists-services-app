@@ -23,7 +23,6 @@ export const PsychologistsList = ({ setLoading, filter }) => {
         setLoading(true);
         setIsInitialLoading(true);
         const psychologistsData = await getPsychologists(limit, filter);
-        console.log(11111258);
         
         if (filter === 'Z to A' || filter === 'Popular') {
           setPsychologists(psychologistsData.reverse());
