@@ -24,7 +24,7 @@ export const PsychologistsList = ({ setLoading, filter }) => {
         setIsInitialLoading(true);
         const psychologistsData = await getPsychologists(limit, filter);
         
-        if (filter === 'Z to A' || filter === 'Popular') {
+        if (filter === 'ztoa' || filter === 'rating') {
           setPsychologists(psychologistsData.reverse());
         } else {
           setPsychologists(psychologistsData);
@@ -54,11 +54,8 @@ export const PsychologistsList = ({ setLoading, filter }) => {
         <ListContainer>
             <ListUl>
             {psychologists?.map(item =>
-            (
-                <li  key={item.id}>
-                  <PsychologistsCard psychologist={item}/>
-                </li>)
-              )}
+              ( <PsychologistsCard key={item.name} psychologist={item} />)
+            )}
             </ListUl>
             <button onClick={loadMore}>Завантажити ще</button>
         </ListContainer>
@@ -69,7 +66,59 @@ export const PsychologistsList = ({ setLoading, filter }) => {
 
 
 
-
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     setMorePsychologists(true);
+    //     // try {
+    //       setLoading(true);
+    //       setIsInitialLoading(true);
+    //       getPsychologists(limit, filter)
+    //       .then((data) => {
+    //       //   console.log(data)
+    //       //   console.log(Object.values(data))
+    //       //   let psychologistsData = [];
+    //       //   data.each((childSnapshot) => {
+    //       //   console.log(childSnapshot)
+    //       //   psychologistsData.push(childSnapshot);
+    //       // });
+    //       console.log(data)
+    //         const psychologistsData = Object.values(data)
+    //         // console.log('Data:', data);
+    //         console.log(Object.values(data))
+    //         // return Object.values(data);
+  
+  
+    //         // if (filter === 'Z to A' || filter === 'Popular') {
+    //         //   setPsychologists(psychologistsData.reverse());
+    //         // } else {
+    //           setPsychologists(psychologistsData);
+    //         // }
+    //         setLoading(false);
+    //         setIsInitialLoading(false);
+    //         if (psychologistsData.length < limit) {
+    //           setMorePsychologists(false);
+    //           toast.info(`You have reached the end of psychologists list.`);
+    //         }
+  
+    //         // Use the data here
+    //       })
+    //       .catch((error) => {
+    //         setIsInitialLoading(false);
+    //         setMorePsychologists(false);
+    //         toast.info(`There are no matches for your filter.`);
+    //         // console.error('Error fetching data:', error);
+    //       });
+    //       // const psychologistsData = await getPsychologists(limit, filter);
+    //       // console.log(psychologistsData)
+         
+    //     // } catch {
+    //       setIsInitialLoading(false);
+    //       setMorePsychologists(false);
+    //       toast.info(`There are no matches for your filter.`);
+    //     // }
+    //   };
+    //   fetchData();
+    // }, [limit, setLoading, filter]);
 
 
 

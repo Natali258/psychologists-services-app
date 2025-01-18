@@ -8,7 +8,7 @@ import { MenuItem, Select } from '@mui/material'
 
 
 export const Filter = ({setFilter}) => {
-    
+    const [isOpen, setIsOpen] = useState(false);
     const [filter, setFilterLocal] = useState('atoz')
     
 
@@ -18,20 +18,18 @@ export const Filter = ({setFilter}) => {
         
       };
       
-    //   const handleResetFilter = (e) => {
-    //     setFilterLocal('A to Z');
-    //     setFilter('A to Z');
-    //     e.target.blur();
-    //   };
+      const handleResetFilter = (e) => {
+        setFilterLocal('A to Z');
+        setFilter('A to Z');
+        e.target.blur();
+      };
    
 
   return (
     <FilterContainer>
       <FilterTitle>Filters</FilterTitle>
       <Select
-        // defaultValue={filter}
         value={filter}
-        
       >
           <MenuItem onClick={()=>handleFilter('atoz')} value='atoz' data-key="byABC">A to Z</MenuItem>
           <MenuItem onClick={()=>handleFilter('ztoa')} value='ztoa' data-key="byABC">Z to A</MenuItem>

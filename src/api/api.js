@@ -10,6 +10,8 @@ import {
     startAt,
     endAt,
     orderByKey,
+    orderByValue,
+    onValue,
   } from 'firebase/database';
   import { database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';
@@ -28,36 +30,36 @@ import {
         case 'atoz':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('name'),
+            orderByChild('name'),
             limitToFirst(limit)
           );
           break;
         case 'ztoa':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('name'),
+            orderByChild('name'),
             limitToLast(limit)
           );
           break;
         case 'popular':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('rating'),
+            orderByChild('rating'),
             limitToLast(limit)
           );
           break;
         case 'notpopular':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('rating'),
+            orderByChild('rating'),
             limitToFirst(limit)
           );
           break;
         case 'greater10':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('price_per_hour'),
-            startAt('10'),
+            orderByChild('price_per_hour'),
+            startAt(10),
             limitToFirst(limit)
           );
           console.log(sortedQuery);
@@ -66,9 +68,9 @@ import {
         case 'less10':
           sortedQuery = query(
             psychologistsRef,
-            orderByKey('price_per_hour'),
+            orderByChild('price_per_hour'),
             startAt(0),
-            endAt('10'),
+            endAt(10),
             limitToFirst(limit)
           );
           break;
@@ -78,17 +80,20 @@ import {
         default:
           sortedQuery = query(psychologistsRef, limitToFirst(limit));
       }
+
       const snapshot = await get(sortedQuery);
   
       if (snapshot.exists()) {
+        console.log(snapshot)
         const psychologists = [];
         snapshot.forEach((childSnapshot) => {
+          console.log(childSnapshot.val())
             psychologists.push(childSnapshot.val());
         });
         return psychologists;
       } else {
         return null;
-      }
+      }     
     } catch {
       toast.error('Something went wrong.');
     }

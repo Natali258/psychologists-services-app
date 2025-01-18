@@ -16,7 +16,7 @@ export const PsychologistsCard = ({psychologist}) => {
                 <div>Psychologist</div>
                 <ul>
                     <li>Rating: {psychologist.rating}</li>
-                    <li>Price / 1 hour: {psychologist.price_per_hour}</li>
+                    <li>Price / 1 hour: {psychologist.price_per_hour}$</li>
                 </ul>
                 <h2>{psychologist.name}</h2>
                 <ul>

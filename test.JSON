@@ -1,0 +1,52 @@
+{
+    "psychologistsTest": {
+      "1": {
+        "about": "Dr. Sarah Davis is a highly experienced...",
+        "avatar_url": "https://ftp.goit.study/img/avatars/23.jpg",
+        "experience": "12 years",
+        "id": 1,
+        "initial_consultation": "Free 45-minute initial consultation",
+        "license": "Licensed Psychologist (License #67890)",
+        "name": "Dr. Sarah Davis",
+        "price_per_hour": 8,
+        "rating": 4.75,
+        "reviews": [
+          {
+            "comment": "Dr. Davis has been a great help...",
+            "rating": 4.5,
+            "reviewer": "Michael Brown"
+          },
+          {
+            "comment": "I'm very satisfied with Dr. Davis's therapy...",
+            "rating": 5,
+            "reviewer": "Linda Johnson"
+          }
+        ],
+        "specialization": "Depression and Mood Disorders"
+      },
+      "2": {
+        "about": "Dr. Mark Thompson is a highly experienced...",
+        "avatar_url": "https://ftp.goit.study/img/avatars/1.jpg",
+        "experience": "20 years",
+        "id": 2,
+        "initial_consultation": "Free 60-minute initial consultation",
+        "license": "Licensed Psychologist (License #54321)",
+        "name": "Dr. Mark Thompson",
+        "price_per_hour": 8.5,
+        "rating": 4.7,
+        "reviews": [
+          {
+            "comment": "I've had an excellent experience with Dr. Thompson...",
+            "rating": 4.8,
+            "reviewer": "Susan Roberts"
+          },
+          {
+            "comment": "Dr. Thompson's guidance has helped me improve...",
+            "rating": 4.6,
+            "reviewer": "David Lee"
+          }
+        ],
+        "specialization": "Relationship Counseling"
+      }
+    }
+  }
