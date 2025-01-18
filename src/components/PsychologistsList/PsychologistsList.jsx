@@ -24,7 +24,7 @@ export const PsychologistsList = ({ setLoading, filter }) => {
         setIsInitialLoading(true);
         const psychologistsData = await getPsychologists(limit, filter);
         
-        if (filter === 'ztoa' || filter === 'rating') {
+        if (filter === 'ztoa' || filter === 'popular') {
           setPsychologists(psychologistsData.reverse());
         } else {
           setPsychologists(psychologistsData);
