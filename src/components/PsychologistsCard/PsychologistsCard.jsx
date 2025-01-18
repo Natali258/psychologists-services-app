@@ -3,7 +3,6 @@ import { CardContainer, CardUl, ImgContainer, ImgStyle } from './PsychologistsCa
 
 
 export const PsychologistsCard = ({psychologist}) => {
-    // console.log(psychologist);
     
   return (
     <CardContainer>

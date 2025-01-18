@@ -2,13 +2,7 @@ import React, { useState } from 'react'
 import {FilterContainer, FilterTitle} from './Filter.styled'
 import { MenuItem, Select } from '@mui/material'
 
-
-
-
-
-
 export const Filter = ({setFilter}) => {
-    const [isOpen, setIsOpen] = useState(false);
     const [filter, setFilterLocal] = useState('atoz')
     
 

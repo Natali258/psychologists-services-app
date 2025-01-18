@@ -17,15 +17,10 @@ import {
   import { toast } from 'react-toastify';
   
   export const getPsychologists = async (limit, filter) => {
-    
     console.log(filter);
-    
     try {
       const psychologistsRef = ref(database, '/psychologists');
-      
       let sortedQuery;
-      
-      
       switch (filter) {
         case 'atoz':
           sortedQuery = query(
@@ -63,7 +58,6 @@ import {
             limitToFirst(limit)
           );
           console.log(sortedQuery);
-          
           break;
         case 'less10':
           sortedQuery = query(
@@ -84,10 +78,10 @@ import {
       const snapshot = await get(sortedQuery);
   
       if (snapshot.exists()) {
-        console.log(snapshot)
+        // console.log(snapshot)
         const psychologists = [];
         snapshot.forEach((childSnapshot) => {
-          console.log(childSnapshot.val())
+          // console.log(childSnapshot.val())
             psychologists.push(childSnapshot.val());
         });
         return psychologists;
