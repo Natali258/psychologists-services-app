@@ -17,7 +17,7 @@ import {
   import { toast } from 'react-toastify';
   
   export const getPsychologists = async (limit, filter) => {
-    console.log(filter);
+    
     try {
       const psychologistsRef = ref(database, '/psychologists');
       let sortedQuery;
@@ -78,10 +78,8 @@ import {
       const snapshot = await get(sortedQuery);
   
       if (snapshot.exists()) {
-        // console.log(snapshot)
         const psychologists = [];
         snapshot.forEach((childSnapshot) => {
-          // console.log(childSnapshot.val())
             psychologists.push(childSnapshot.val());
         });
         return psychologists;
