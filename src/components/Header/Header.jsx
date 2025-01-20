@@ -31,8 +31,8 @@ const [open, setOpen] = React.useState(false);
         </SHeaderUlBtn>
         {/* <LoginForm open={openLog}
         onClose={handleCloseLog}/> */}
-        {/* <RegisterForm open={open}
-        onClose={handleClose}/> */}
+        <RegisterForm open={open}
+        onClose={handleClose}/>
     </SHeaderContainer>
    </SHeader>
   )
