@@ -23,12 +23,8 @@ const style = {
 
 export const RegisterForm = ({open, onClose}) => {
     const { register, reset, handleSubmit } = useForm();
-    const dispatch = useDispatch();
 
-    const submit = data => {
-        dispatch(registerThunk(data));
-    reset()
-};
+ 
     return (
         <div>
             
@@ -43,7 +39,7 @@ export const RegisterForm = ({open, onClose}) => {
                     <Typography sx={{ mt: 2 }}>
                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
                     </Typography>
-                    <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
+                    <Box onSubmit={handleSubmit()} component="form" noValidate autoComplete="off" >
                         <TextField {...register('name')} label="Name"  />
                         <TextField {...register('email')} label="Email"  />
                         <TextField {...register('password')} label="Password"  />
@@ -58,6 +54,47 @@ export const RegisterForm = ({open, onClose}) => {
     
       )
 }
+
+
+
+
+// export const RegisterForm = ({open, onClose}) => {
+//     const { register, reset, handleSubmit } = useForm();
+//     const dispatch = useDispatch();
+
+//     const submit = data => {
+//         dispatch(registerThunk(data));
+//     reset()
+// };
+//     return (
+//         <div>
+            
+//             <Modal
+//             open={open}
+//             onClose={onClose}
+//             >
+//                <Box sx={style}>
+//                     <Typography variant="h6" component="h2">
+//                     Registration
+//                     </Typography>
+//                     <Typography sx={{ mt: 2 }}>
+//                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
+//                     </Typography>
+//                     <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
+//                         <TextField {...register('name')} label="Name"  />
+//                         <TextField {...register('email')} label="Email"  />
+//                         <TextField {...register('password')} label="Password"  />
+//                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
+//                     </Box>
+                    
+//                 </Box> 
+//             </Modal>
+             
+            
+//         </div>
+    
+//       )
+// }
 
 
 

@@ -13,8 +13,9 @@ import {
     orderByValue,
     onValue,
   } from 'firebase/database';
-  import { database } from '../services/FirebaseApp.js';
+  import { auth, database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   
   export const getPsychologists = async (limit, filter) => {
     
@@ -90,6 +91,21 @@ import {
       toast.error('Something went wrong.');
     }
   };
+
+  export const registerUser = async(credentials) => {
+    try {
+      const nameUser = credentials.name;
+      const emailUser = credentials.email;
+      const passwordUser = credentials.password;
+      await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
+      await updateProfile(auth.currentUser, {
+        displayName: nameUser
+        })
+      alert ('Account has been successfull created!')
+    } catch (error) {
+      toast.error('Something went wrong.');
+    }
+  }
 
 //   Ще не використовувала!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // export const getUserData = async (uid) => {
