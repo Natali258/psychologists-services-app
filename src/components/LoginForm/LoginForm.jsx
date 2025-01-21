@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 import Typography from '@mui/material/Typography';
@@ -21,7 +21,17 @@ const style = {
   };
 
 export const LoginForm = ({open, onClose}) => {
-    const { register, reset, handleSubmit } = useForm();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log(email, password);
+        
+        setEmail('')
+        setPassword('')
+    }
+    // const { register, reset, handleSubmit } = useForm();
     
   return (
     <div>
@@ -36,9 +46,9 @@ export const LoginForm = ({open, onClose}) => {
                 <Typography sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </Typography>
-                <Box onSubmit={handleSubmit()} component="form" noValidate autoComplete="off">
-                    <TextField {...register('email')} label="Email"  />
-                    <TextField {...register('password')} label="Password" />
+                <Box onSubmit={handleSubmit} component="form" noValidate autoComplete="off">
+                    <TextField value={email} label="Email" onChange={(e)=>setEmail(e.target.value)} />
+                    <TextField value={password} label="Password" onChange={(e)=>setPassword(e.target.value)} />
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </Box>
                 
