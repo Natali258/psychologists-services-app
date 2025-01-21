@@ -5,25 +5,25 @@ import { auth } from '../../services/FirebaseApp';
 
 // const auth = getAuth(conectAPI);
 
-export const registerThunk = createAsyncThunk(
-  'register',
-  async (credentials, thunkApi) => {
+// export const registerThunk = createAsyncThunk(
+//   'register',
+//   async (credentials, thunkApi) => {
     
-    try {
+//     try {
       
-      const nameUser = credentials.name;
-      const emailUser = credentials.email;
-      const passwordUser = credentials.password;
-      await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
-      await updateProfile(auth.currentUser, {
-        displayName: nameUser
-      })
-      alert ('Account has been successfull created!')
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+//       const nameUser = credentials.name;
+//       const emailUser = credentials.email;
+//       const passwordUser = credentials.password;
+//       await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
+//       await updateProfile(auth.currentUser, {
+//         displayName: nameUser
+//       })
+//       alert ('Account has been successfull created!')
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const loginThunk = createAsyncThunk(
     'login',
@@ -41,6 +41,13 @@ export const loginThunk = createAsyncThunk(
   );
 
 
+
+
+
+
+
+
+  
 // export const registerThunk = createAsyncThunk(
 //   'register',
 //   async (credentials, thunkApi) => {

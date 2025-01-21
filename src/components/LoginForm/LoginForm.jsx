@@ -22,11 +22,6 @@ const style = {
 
 export const LoginForm = ({open, onClose}) => {
     const { register, reset, handleSubmit } = useForm();
-    const dispatch = useDispatch();
-    const submit = data => {
-        dispatch(loginThunk(data));
-    reset()
-};
     
   return (
     <div>
@@ -41,7 +36,7 @@ export const LoginForm = ({open, onClose}) => {
                 <Typography sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </Typography>
-                <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+                <Box onSubmit={handleSubmit()} component="form" noValidate autoComplete="off">
                     <TextField {...register('email')} label="Email"  />
                     <TextField {...register('password')} label="Password" />
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
@@ -55,3 +50,43 @@ export const LoginForm = ({open, onClose}) => {
 
   )
 }
+
+
+
+
+
+// export const LoginForm = ({open, onClose}) => {
+//     const { register, reset, handleSubmit } = useForm();
+//     const dispatch = useDispatch();
+//     const submit = data => {
+//         dispatch(loginThunk(data));
+//     reset()
+// };
+    
+//   return (
+//     <div>
+//         <Modal
+//         open={open}
+//         onClose={onClose}
+//         >
+//             <Box sx={style}>
+//                 <Typography variant="h6" component="h2">
+//                     Log In
+//                 </Typography>
+//                 <Typography sx={{ mt: 2 }}>
+//                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
+//                 </Typography>
+//                 <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+//                     <TextField {...register('email')} label="Email"  />
+//                     <TextField {...register('password')} label="Password" />
+//                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
+//                 </Box>
+                
+//             </Box>
+//         </Modal>
+         
+        
+//     </div>
+
+//   )
+// }

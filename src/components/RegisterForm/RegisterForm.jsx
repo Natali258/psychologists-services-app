@@ -4,8 +4,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SBtnRegister } from './RegisterForm.styled';
-import { registerThunk } from '../../redux/Auth/operations';
-import { useDispatch } from 'react-redux';
+// import { registerThunk } from '../../redux/Auth/operations';
+// import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
 const style = {
@@ -23,7 +23,9 @@ const style = {
 
 export const RegisterForm = ({open, onClose}) => {
     const { register, reset, handleSubmit } = useForm();
-
+    const submit = data => {
+        
+    }
  
     return (
         <div>

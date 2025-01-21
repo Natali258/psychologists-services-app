@@ -29,8 +29,8 @@ const [open, setOpen] = React.useState(false);
             </li>
             <li><SHeaderBtnRegistration onClick={handleOpen}>Registration</SHeaderBtnRegistration></li>
         </SHeaderUlBtn>
-        {/* <LoginForm open={openLog}
-        onClose={handleCloseLog}/> */}
+        <LoginForm open={openLog}
+        onClose={handleCloseLog}/>
         <RegisterForm open={open}
         onClose={handleClose}/>
     </SHeaderContainer>
