@@ -21,18 +21,23 @@ const style = {
   };
 
 export const LoginForm = ({open, onClose}) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [password, setPassword] = useState('')
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        console.log(email, password);
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     console.log(email, password);
         
-        setEmail('')
-        setPassword('')
-    }
-    // const { register, reset, handleSubmit } = useForm();
+    //     setEmail('')
+    //     setPassword('')
+    // }
+    const { register, reset, handleSubmit } = useForm();
     
+    const submit = data => {
+        console.log(data);
+        
+        reset()
+    }
   return (
     <div>
         <Modal
@@ -46,9 +51,9 @@ export const LoginForm = ({open, onClose}) => {
                 <Typography sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </Typography>
-                <Box onSubmit={handleSubmit} component="form" noValidate autoComplete="off">
-                    <TextField value={email} label="Email" onChange={(e)=>setEmail(e.target.value)} />
-                    <TextField value={password} label="Password" onChange={(e)=>setPassword(e.target.value)} />
+                <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+                    <TextField {...register('email')} label="Email" />
+                    <TextField {...register('password')} label="Password" />
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </Box>
                 

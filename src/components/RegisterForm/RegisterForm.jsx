@@ -22,19 +22,25 @@ const style = {
 
 
 export const RegisterForm = ({open, onClose}) => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    // const [name, setName] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('')
     
-    // const { register, reset, handleSubmit } = useForm();
-    
-    const handleSubmit = e => {
-        e.preventDefault()
-        console.log(name, email, password);
-        setName('')
-        setEmail('')
-        setPassword('')
+    const { register, reset, handleSubmit } = useForm();
+
+    const submit = data => {
+        console.log(data);
+        reset()
+        
     }
+    
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     console.log({name, email, password});
+    //     setName('')
+    //     setEmail('')
+    //     setPassword('')
+    // }
 
 
     return (
@@ -51,10 +57,10 @@ export const RegisterForm = ({open, onClose}) => {
                     <Typography sx={{ mt: 2 }}>
                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
                     </Typography>
-                    <Box onSubmit={handleSubmit} component="form" noValidate autoComplete="off" >
-                        <TextField value={name} label="Name" onChange={(e)=>setName(e.target.value)}  />
-                        <TextField value={email} label="Email" onChange={(e)=>setEmail(e.target.value)} />
-                        <TextField value={password} label="Password" onChange={(e)=>setPassword(e.target.value)} />
+                    <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
+                        <TextField {...register('name')} label="Name"   />
+                        <TextField {...register('email')} label="Email" />
+                        <TextField {...register('password')} label="Password" />
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
                         {/* <TextField {...register('name')} label="Name"  />
                         <TextField {...register('email')} label="Email"  />
