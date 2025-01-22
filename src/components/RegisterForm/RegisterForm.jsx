@@ -59,13 +59,13 @@ export const RegisterForm = ({open, onClose}) => {
                     </Typography>
                     <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
                         <TextField {...register('name', { required: true, maxLength: 5 })} label="Name"/>
-                        {errors.name && errors.name.type === "required" && <span>This is required</span>}
-                        {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }
+                        <p> {errors.name && errors.name.type === "required" && <span>This is required</span>}
+                            {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }</p>
                         <TextField {...register('email', { required: true})} label="Email" />
-                        {errors.email && errors.email.type === "required" && <span>This is required</span>}
+                        <p>{errors.email && errors.email.type === "required" && <span>This is required</span>}</p>
                         <TextField {...register('password', { required: true, maxLength: 5 })} label="Password" />
-                        {errors.password && errors.password.type === "required" && <span>This is required</span>}
-                        {errors.password && errors.password.type === "maxLength" && <span>Max length exceeded</span> }
+                        <p>{errors.password && errors.password.type === "required" && <span>This is required</span>}
+                        {errors.password && errors.password.type === "maxLength" && <span>Max length exceeded</span> }</p>
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
                         {/* <TextField {...register('name')} label="Name"  />
                         <TextField {...register('email')} label="Email"  />
