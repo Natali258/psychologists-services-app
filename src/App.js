@@ -6,7 +6,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PsychologistsPage } from './pages/Psychologists/PsychologistsPage';
 import { FavoritesPage } from './pages/Favorites/FavoritesPage';
 
+
 function App() {
+
+
   return (
     <div>
       <Header/>
@@ -16,7 +19,7 @@ function App() {
         {/* <Route path='/favorites' element={<FavoritesPage/>}/> */}
       </Routes>
     </div>
-  );
+  )
 }
 
 export default App;

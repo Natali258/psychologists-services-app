@@ -25,6 +25,6 @@ export const HomePage = () => {
       <MainPhoto/>
     </div>
     
-  </SContentContainer>;
+  </SContentContainer>
   </SHomeContainer>
 };

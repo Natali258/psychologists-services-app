@@ -26,7 +26,7 @@ export const RegisterForm = ({open, onClose}) => {
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('')
     
-    const { register, reset, handleSubmit } = useForm();
+    const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const submit = data => {
         console.log(data);
@@ -58,9 +58,14 @@ export const RegisterForm = ({open, onClose}) => {
                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
                     </Typography>
                     <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
-                        <TextField {...register('name')} label="Name"   />
-                        <TextField {...register('email')} label="Email" />
-                        <TextField {...register('password')} label="Password" />
+                        <TextField {...register('name', { required: true, maxLength: 5 })} label="Name"/>
+                        {errors.name && errors.name.type === "required" && <span>This is required</span>}
+                        {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }
+                        <TextField {...register('email', { required: true})} label="Email" />
+                        {errors.email && errors.email.type === "required" && <span>This is required</span>}
+                        <TextField {...register('password', { required: true, maxLength: 5 })} label="Password" />
+                        {errors.password && errors.password.type === "required" && <span>This is required</span>}
+                        {errors.password && errors.password.type === "maxLength" && <span>Max length exceeded</span> }
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
                         {/* <TextField {...register('name')} label="Name"  />
                         <TextField {...register('email')} label="Email"  />
