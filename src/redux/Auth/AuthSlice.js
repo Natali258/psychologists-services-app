@@ -34,9 +34,9 @@ const AuthSlice = createSlice({
         state.token = payload.token;
         state.isLoggedIn = true;
       })
-      // .addCase(logoutThunk.fulfilled, (state, { payload }) => {
-      //   return initialState;
-      // })
+      .addCase(logoutThunk.fulfilled, (state, { payload }) => {
+        return initialState;
+      })
   },
 });
 export const authReducer = AuthSlice.reducer;
