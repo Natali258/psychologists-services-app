@@ -28,8 +28,15 @@ export const RegisterForm = ({open, onClose}) => {
     
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
-    const submit = data => {
-        console.log(data);
+    const submit = async (data) => {
+        try {
+            const {name, email, password} = data;
+            
+            
+        } catch (error) {
+            
+        }
+        
         reset()
         
     }
