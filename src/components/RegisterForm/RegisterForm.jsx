@@ -7,6 +7,10 @@ import { SBtnRegister } from './RegisterForm.styled';
 // import { registerThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { registerUser } from '../../api/api';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { auth, database } from '../../services/FirebaseApp';
+import { ref, set } from 'firebase/database';
 
 const style = {
     position: 'absolute',
@@ -31,8 +35,21 @@ export const RegisterForm = ({open, onClose}) => {
     const submit = async (data) => {
         try {
             const {name, email, password} = data;
+            console.log(data);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user;
+            console.log(user);
             
-            
+            await set(ref(database, `users/${user.uid}`), {
+                email: user.email,
+                name: name,
+            });
+            // .catch((error) => {
+            // const errorCode = error.code;
+            //  const errorMessage = error.message;
+            // // ..
+            // });
+            return user;
         } catch (error) {
             
         }
