@@ -26,47 +26,28 @@ const style = {
 
 
 export const RegisterForm = ({open, onClose}) => {
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('')
     
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const submit = async (data) => {
         try {
             const {name, email, password} = data;
-            console.log(data);
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user;
-            console.log(user);
             
             await set(ref(database, `users/${user.uid}`), {
                 email: user.email,
                 name: name,
+                password: password
             });
-            // .catch((error) => {
-            // const errorCode = error.code;
-            //  const errorMessage = error.message;
-            // // ..
-            // });
+        
             return user;
-        } catch (error) {
-            
-        }
+        } catch (error) {}
         
         reset()
         
     }
     
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     console.log({name, email, password});
-    //     setName('')
-    //     setEmail('')
-    //     setPassword('')
-    // }
-
-
     return (
         <div>
             
@@ -87,7 +68,7 @@ export const RegisterForm = ({open, onClose}) => {
                             {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }</p>
                         <TextField {...register('email', { required: true})} label="Email" />
                         <p>{errors.email && errors.email.type === "required" && <span>This is required</span>}</p>
-                        <TextField {...register('password', { required: true, maxLength: 5 })} label="Password" />
+                        <TextField {...register('password', { required: true, maxLength: 10 })} label="Password" />
                         <p>{errors.password && errors.password.type === "required" && <span>This is required</span>}
                         {errors.password && errors.password.type === "maxLength" && <span>Max length exceeded</span> }</p>
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
