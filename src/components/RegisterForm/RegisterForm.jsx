@@ -30,15 +30,20 @@ export const RegisterForm = ({open, onClose}) => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const submit = async (data) => {
+        console.log(data);
+        
         try {
-            const {name, email, password} = data;
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            // const {name, email, password} = data;
+            // const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const userCredential = await registerUser(data)
+            console.log(userCredential);
+            
             const user = userCredential.user;
             
             await set(ref(database, `users/${user.uid}`), {
-                email: user.email,
-                name: name,
-                password: password
+                email: data.email,
+                name: data.name,
+                password: data.password
             });
         
             return user;

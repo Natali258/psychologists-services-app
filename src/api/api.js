@@ -93,15 +93,18 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   };
 
   export const registerUser = async(credentials) => {
+    console.log(credentials);
+    
     try {
       const nameUser = credentials.name;
       const emailUser = credentials.email;
       const passwordUser = credentials.password;
-      await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
+      const userCredential = await createUserWithEmailAndPassword(auth, emailUser, passwordUser)
       await updateProfile(auth.currentUser, {
         displayName: nameUser
         })
-      alert ('Account has been successfull created!')
+      alert ('Account has been successfull created!') 
+      return userCredential;
     } catch (error) {
       toast.error('Something went wrong.');
     }
