@@ -36,7 +36,51 @@ export const STextLogIn = styled.span`
     color: rgba(25, 26, 21, 0.5);
 `
 
+export const SFormLogIn = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 40px;
+`
+
+export const SFieldEmailLogIn = styled.input`
+    border: 1px solid rgba(25, 26, 21, 0.1);
+    border-radius: 12px;
+    padding: 16px 379px 16px 18px;
+    width: 438px;
+    height: 52px;
+
+    /* font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #191a15; */
+`
+
+export const TextField = styled.div`
+    margin-top: 18px;
+    border: 1px solid rgba(25, 26, 21, 0.1);
+    border-radius: 12px;
+    padding: 16px 379px 16px 18px;
+    width: 438px;
+    height: 52px;
+`
+
 export const SBtnLogIn = styled.button`
     padding: 5px 15px 5px 15px;
-    width: 100%
+    width: 100%;
+    margin-top: 9px;
+    border-radius: 30px;
+    border: none;
+    /* padding: 16px 196px; */
+    width: 438px;
+    height: 52px;
+    background: #54be96;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
 `

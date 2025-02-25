@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { BoxLogin, SBtnLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
+import { BoxLogin, SBtnLogIn, SFieldEmailLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 // import { loginThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -51,11 +51,11 @@ export const LoginForm = ({open, onClose}) => {
                 <STextLogIn sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </STextLogIn>
-                <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+                <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
                     <TextField {...register('email')} label="Email" />
                     <TextField {...register('password')} label="Password" />
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
-                </Box>
+                </SFormLogIn>
                 
             </BoxLogin>
         </Modal>
