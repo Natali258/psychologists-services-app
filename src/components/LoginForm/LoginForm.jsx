@@ -1,7 +1,7 @@
 import React from 'react'
-import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField'; 
-import Typography from '@mui/material/Typography';
+// import Box from '@mui/material/Box';
+// // import TextField from '@mui/material/TextField'; 
+// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { BoxLogin, SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 // import { loginThunk } from '../../redux/Auth/operations';
@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import { BorderAll, InputOutlined } from '@mui/icons-material';
+// import { BorderAll, InputOutlined } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
 
 
