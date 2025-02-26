@@ -1,4 +1,8 @@
+
 import styled from 'styled-components'
+
+
+
 
 
 export const BoxLogin = styled.div`
@@ -43,28 +47,38 @@ export const SFormLogIn = styled.div`
     margin-top: 40px;
 `
 
-export const SFieldEmailLogIn = styled.input`
-    border: 1px solid rgba(25, 26, 21, 0.1);
-    border-radius: 12px;
-    padding: 16px 379px 16px 18px;
-    width: 438px;
-    height: 52px;
+// export const SFieldEmailLogIn = styled.input`
+//     border: 1px solid rgba(25, 26, 21, 0.1);
+//     border-radius: 12px;
+//     padding: 16px 379px 16px 18px;
+//     width: 438px;
+//     height: 52px;
 
-    /* font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 125%;
-    color: #191a15; */
-`
+//     /* font-family: var(--font-family);
+//     font-weight: 400;
+//     font-size: 16px;
+//     line-height: 125%;
+//     color: #191a15; */
+// `
 
-export const TextField = styled.div`
-    margin-top: 18px;
-    border: 1px solid rgba(25, 26, 21, 0.1);
-    border-radius: 12px;
-    padding: 16px 379px 16px 18px;
-    width: 438px;
-    height: 52px;
-`
+// export const SFieldEmailLogIn = styled(TextFields)({
+//     "& .MuiOutlinedInput-root": {
+//       "& fieldset": { borderColor: "purple" },
+//       "&:hover fieldset": { borderColor: "orange" },
+//       "&.Mui-focused fieldset": { borderColor: "red" },
+//     },
+//     "& .MuiInputLabel-root": { color: "blue" },
+//     "& .MuiInputLabel-root.Mui-focused": { color: "red" },
+//   });
+
+// export const TextField = styled.div`
+//     margin-top: 18px;
+//     border: 1px solid rgba(25, 26, 21, 0.1);
+//     border-radius: 12px;
+//     padding: 16px 379px 16px 18px;
+//     width: 438px;
+//     height: 52px;
+// `
 
 export const SBtnLogIn = styled.button`
     padding: 5px 15px 5px 15px;

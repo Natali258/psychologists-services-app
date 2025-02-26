@@ -1,24 +1,30 @@
 import React from 'react'
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField'; 
+// import TextField from '@mui/material/TextField'; 
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { BoxLogin, SBtnLogIn, SFieldEmailLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
+import { BoxLogin, SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 // import { loginThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import { Icon } from '../Icon/Icon';
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import { BorderAll, InputOutlined } from '@mui/icons-material';
+import { IconButton, InputAdornment } from '@mui/material';
 
-// const style = {
-//     position: 'absolute',
-//     top: '50%',
-//     left: '50%',
-//     transform: 'translate(-50%, -50%)',
-//     width: 400,
-//     bgcolor: 'background.paper',
-//     border: '2px solid #000',
-//     boxShadow: 24,
-//     p: 4,
-//   };
+
+const SFieldEmailLogIn = styled(TextField)({
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: "rgba(25, 26, 21, 0.1)"},
+      
+      "&:hover fieldset": { borderColor: "#54be96" },
+      "&.Mui-focused fieldset": { borderColor: "#54be96" },
+    },
+    "& .MuiInputLabel-root": { color: "#191a15" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#54be96" },
+    '& .MuiOutlinedInput-input': {"& fieldset": { InputOutlined: '1px solid'}}
+  });
 
 export const LoginForm = ({open, onClose}) => {
     // const [email, setEmail] = useState('')
@@ -52,8 +58,16 @@ export const LoginForm = ({open, onClose}) => {
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </STextLogIn>
                 <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
-                    <TextField {...register('email')} label="Email" />
-                    <TextField {...register('password')} label="Password" />
+                    <SFieldEmailLogIn {...register('email')} label="Email" variant="outlined" />
+                    <SFieldEmailLogIn {...register('password')} label="Password" InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton edge="end" onClick={() => alert("Пошук натиснуто")}>
+                                    <Icon name='eye-off' size='20'/>
+                                </IconButton>
+                            </InputAdornment>
+        ),
+      }}/>
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </SFormLogIn>
                 
