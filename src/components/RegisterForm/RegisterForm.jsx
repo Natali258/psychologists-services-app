@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { SBtnRegister } from './RegisterForm.styled';
+import { SBoxRegister, SBtnRegister, SFormRegister, STextRegister, STitleRegister } from './RegisterForm.styled';
 // import { registerThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -60,30 +60,26 @@ export const RegisterForm = ({open, onClose}) => {
             open={open}
             onClose={onClose}
             >
-               <Box sx={style}>
-                    <Typography variant="h6" component="h2">
+               <SBoxRegister >
+                    <STitleRegister variant="h6" component="h2">
                     Registration
-                    </Typography>
-                    <Typography sx={{ mt: 2 }}>
+                    </STitleRegister>
+                    <STextRegister sx={{ mt: 2 }}>
                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
-                    </Typography>
-                    <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
+                    </STextRegister>
+                    <SFormRegister onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
                         <TextField {...register('name', { required: true, maxLength: 5 })} label="Name"/>
-                        <p> {errors.name && errors.name.type === "required" && <span>This is required</span>}
-                            {errors.name && errors.name.type === "maxLength" && <span>Max length exceeded</span> }</p>
+                         {errors.name && errors.name.type === "required" && <p><span>This is required</span></p>}
+                        {errors.name && errors.name.type === "maxLength" && <p><span>Max length exceeded</span></p> }
                         <TextField {...register('email', { required: true})} label="Email" />
-                        <p>{errors.email && errors.email.type === "required" && <span>This is required</span>}</p>
+                        {errors.email && errors.email.type === "required" && <p><span>This is required</span></p>}
                         <TextField {...register('password', { required: true, maxLength: 10 })} label="Password" />
-                        <p>{errors.password && errors.password.type === "required" && <span>This is required</span>}
-                        {errors.password && errors.password.type === "maxLength" && <span>Max length exceeded</span> }</p>
+                        {errors.password && errors.password.type === "required" && <p><span>This is required</span></p>}
+                        {errors.password && errors.password.type === "maxLength" && <p><span>Max length exceeded</span></p> }
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
-                        {/* <TextField {...register('name')} label="Name"  />
-                        <TextField {...register('email')} label="Email"  />
-                        <TextField {...register('password')} label="Password"  />
-                        <SBtnRegister type='submit' >Sign Up</SBtnRegister> */}
-                    </Box>
+                    </SFormRegister>
                     
-                </Box> 
+                </SBoxRegister> 
             </Modal>
              
             

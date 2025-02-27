@@ -31,7 +31,7 @@ export const STextLogIn = styled.span`
     display: block;
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    font-size: 17.5px;
+    font-size: 16px;
     line-height: 125%;
     color: rgba(25, 26, 21, 0.5);
 `
