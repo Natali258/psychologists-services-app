@@ -36,7 +36,7 @@ export const STextLogIn = styled.span`
     color: rgba(25, 26, 21, 0.5);
 `
 
-export const SFormLogIn = styled.div`
+export const SFormLogIn = styled.form`
     display: flex;
     flex-direction: column;
     gap: 18px;

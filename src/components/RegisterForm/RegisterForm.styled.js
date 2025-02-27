@@ -30,7 +30,7 @@ line-height: 125%;
 color: rgba(25, 26, 21, 0.5);
 `
 
-export const SFormRegister = styled.div`
+export const SFormRegister = styled.form`
 display: flex;
 flex-direction: column;
 gap: 18px;
