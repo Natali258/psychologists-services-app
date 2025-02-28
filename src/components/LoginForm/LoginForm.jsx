@@ -1,9 +1,9 @@
 import React from 'react'
-// import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 // // import TextField from '@mui/material/TextField'; 
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { BoxLogin, SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
+import { SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
 import { styled } from "@mui/material/styles";
@@ -22,6 +22,19 @@ const SFieldEmailLogIn = styled(TextField)({
     "& .MuiInputLabel-root.Mui-focused": { color: "#54be96" },
     '& .MuiOutlinedInput-input': {"& fieldset": { InputOutlined: '1px solid'}}
   });
+
+  const CustomBox = styled(Box)(() => ({
+    display: 'block',
+    padding: '64px',
+    width: '566px',
+    height: '510px',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor:  '#fbfbfb',
+    borderRadius: 30,
+  }));
 
 export const LoginForm = ({open, onClose}) => {
     // const [email, setEmail] = useState('')
@@ -47,7 +60,7 @@ export const LoginForm = ({open, onClose}) => {
         open={open}
         onClose={onClose}
         >
-            <BoxLogin >
+            <CustomBox >
                 <STittleLogIn variant="h6" component="h2">
                     Log In
                 </STittleLogIn>
@@ -70,7 +83,7 @@ export const LoginForm = ({open, onClose}) => {
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </SFormLogIn>
                 
-            </BoxLogin>
+            </CustomBox>
         </Modal>
          
         

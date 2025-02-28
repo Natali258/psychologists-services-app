@@ -1,5 +1,5 @@
 import React from 'react'
-// import Box from '@mui/material/Box';
+import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -24,6 +24,19 @@ const SFieldRegister = styled(TextField)({
     "& .MuiInputLabel-root.Mui-focused": { color: "#54be96" },
     '& .MuiOutlinedInput-input': {"& fieldset": { InputOutlined: '1px solid'}}
   });
+
+  const CustomBox = styled(Box)(() => ({
+    display: 'block',
+    padding: '64px',
+    width: '565px',
+    height: '579px',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor:  '#fbfbfb',
+    borderRadius: 30,
+  }));
 
 
 export const RegisterForm = ({open, onClose}) => {
@@ -61,7 +74,7 @@ export const RegisterForm = ({open, onClose}) => {
             open={open}
             onClose={onClose}
             >
-               <SBoxRegister >
+               <CustomBox >
                     <STitleRegister variant="h6" component="h2">
                     Registration
                     </STitleRegister>
@@ -90,7 +103,7 @@ export const RegisterForm = ({open, onClose}) => {
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
                     </SFormRegister>
                     
-                </SBoxRegister> 
+                </CustomBox> 
             </Modal>
              
             
