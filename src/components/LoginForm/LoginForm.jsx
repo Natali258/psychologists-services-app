@@ -4,13 +4,10 @@ import React from 'react'
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { BoxLogin, SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
-// import { loginThunk } from '../../redux/Auth/operations';
-// import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Icon } from '../Icon/Icon';
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-// import { BorderAll, InputOutlined } from '@mui/icons-material';
 import { IconButton, InputAdornment } from '@mui/material';
 
 
@@ -59,15 +56,17 @@ export const LoginForm = ({open, onClose}) => {
                 </STextLogIn>
                 <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
                     <SFieldEmailLogIn {...register('email')} label="Email" variant="outlined" />
-                    <SFieldEmailLogIn {...register('password')} label="Password" InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton edge="end" onClick={() => alert("Пошук натиснуто")}>
-                                    <Icon name='eye-off' size='20'/>
-                                </IconButton>
-                            </InputAdornment>
-        ),
-      }}/>
+                    <SFieldEmailLogIn {...register('password')} label="Password" 
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position="end">
+                                    <IconButton edge="end" onClick={() => alert("Показати пароль")}>
+                                        <Icon name='eye-off' size='20'/>
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
                 </SFormLogIn>
                 

@@ -22,7 +22,6 @@ margin-bottom: 20px;
 
 export const STextRegister = styled.span`
 display: block;
-/* margin-top: 20px; */
 font-family: "Inter", sans-serif;
 font-weight: 400;
 font-size: 17px;
@@ -44,7 +43,6 @@ width: 100%;
 margin-top: 9px;
 border-radius: 30px;
 border: none;
-    /* padding: 16px 196px; */
 width: 438px;
 height: 52px;
 background: #54be96;

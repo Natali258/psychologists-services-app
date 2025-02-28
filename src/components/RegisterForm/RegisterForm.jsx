@@ -1,28 +1,29 @@
-import React, { useState } from 'react'
-import Box from '@mui/material/Box';
+import React from 'react'
+// import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SBoxRegister, SBtnRegister, SFormRegister, STextRegister, STitleRegister } from './RegisterForm.styled';
 // import { registerThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { registerUser } from '../../api/api';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { auth, database } from '../../services/FirebaseApp';
+import { database } from '../../services/FirebaseApp';
 import { ref, set } from 'firebase/database';
+import { IconButton, InputAdornment, styled } from '@mui/material';
+import { Icon } from '../Icon/Icon';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+const SFieldRegister = styled(TextField)({
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: "rgba(25, 26, 21, 0.1)"},
+      
+      "&:hover fieldset": { borderColor: "#54be96" },
+      "&.Mui-focused fieldset": { borderColor: "#54be96" },
+    },
+    "& .MuiInputLabel-root": { color: "#191a15" },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#54be96" },
+    '& .MuiOutlinedInput-input': {"& fieldset": { InputOutlined: '1px solid'}}
+  });
 
 
 export const RegisterForm = ({open, onClose}) => {
@@ -68,12 +69,22 @@ export const RegisterForm = ({open, onClose}) => {
                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
                     </STextRegister>
                     <SFormRegister onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
-                        <TextField {...register('name', { required: true, maxLength: 5 })} label="Name"/>
+                        <SFieldRegister {...register('name', { required: true, maxLength: 5 })} label="Name"/>
                          {errors.name && errors.name.type === "required" && <p><span>This is required</span></p>}
                         {errors.name && errors.name.type === "maxLength" && <p><span>Max length exceeded</span></p> }
-                        <TextField {...register('email', { required: true})} label="Email" />
+                        <SFieldRegister {...register('email', { required: true})} label="Email" />
                         {errors.email && errors.email.type === "required" && <p><span>This is required</span></p>}
-                        <TextField {...register('password', { required: true, maxLength: 10 })} label="Password" />
+                        <SFieldRegister {...register('password', { required: true, maxLength: 10 })} label="Password" 
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton edge="end" onClick={() => alert("Показати пароль")}>
+                                            <Icon name='eye-off' size='20'/>
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
                         {errors.password && errors.password.type === "required" && <p><span>This is required</span></p>}
                         {errors.password && errors.password.type === "maxLength" && <p><span>Max length exceeded</span></p> }
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>

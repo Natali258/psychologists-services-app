@@ -43,28 +43,12 @@ export const SFormLogIn = styled.form`
     margin-top: 40px;
 `
 
-// export const SFieldEmailLogIn = styled.input`
-//     border: 1px solid rgba(25, 26, 21, 0.1);
-//     border-radius: 12px;
-//     padding: 16px 379px 16px 18px;
-//     width: 438px;
-//     height: 52px;
-
-//     /* font-family: var(--font-family);
-//     font-weight: 400;
-//     font-size: 16px;
-//     line-height: 125%;
-//     color: #191a15; */
-// `
-
-
 export const SBtnLogIn = styled.button`
     padding: 5px 15px 5px 15px;
     width: 100%;
     margin-top: 9px;
     border-radius: 30px;
     border: none;
-    /* padding: 16px 196px; */
     width: 438px;
     height: 52px;
     background: #54be96;
