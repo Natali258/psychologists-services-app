@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 // import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { SBoxRegister, SBtnRegister, SFormRegister, STextRegister, STitleRegister } from './RegisterForm.styled';
+import { SBoxRegister, SBtnRegister, SFormRegister, SRegisterSpan, STextRegister, STitleRegister } from './RegisterForm.styled';
 // import { registerThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -29,7 +29,7 @@ const SFieldRegister = styled(TextField)({
     display: 'block',
     padding: '64px',
     width: '565px',
-    height: '579px',
+    height: 'auto',
     position: "absolute",
     top: "50%",
     left: "50%",
@@ -83,10 +83,10 @@ export const RegisterForm = ({open, onClose}) => {
                     </STextRegister>
                     <SFormRegister onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
                         <SFieldRegister {...register('name', { required: true, maxLength: 5 })} label="Name"/>
-                         {errors.name && errors.name.type === "required" && <p><span>This is required</span></p>}
-                        {errors.name && errors.name.type === "maxLength" && <p><span>Max length exceeded</span></p> }
+                         {errors.name && errors.name.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
+                        {errors.name && errors.name.type === "maxLength" && <SRegisterSpan>Max length exceeded!</SRegisterSpan> }
                         <SFieldRegister {...register('email', { required: true})} label="Email" />
-                        {errors.email && errors.email.type === "required" && <p><span>This is required</span></p>}
+                        {errors.email && errors.email.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
                         <SFieldRegister {...register('password', { required: true, maxLength: 10 })} label="Password" 
                             InputProps={{
                                 endAdornment: (
@@ -98,8 +98,8 @@ export const RegisterForm = ({open, onClose}) => {
                                 ),
                             }}
                         />
-                        {errors.password && errors.password.type === "required" && <p><span>This is required</span></p>}
-                        {errors.password && errors.password.type === "maxLength" && <p><span>Max length exceeded</span></p> }
+                        {errors.password && errors.password.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
+                        {errors.password && errors.password.type === "maxLength" && <SRegisterSpan>Max length exceeded!</SRegisterSpan> }
                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
                     </SFormRegister>
                     

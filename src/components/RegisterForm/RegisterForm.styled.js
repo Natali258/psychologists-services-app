@@ -4,8 +4,8 @@ export const SBoxRegister = styled.div`
 display: block;
 padding: 64px;
 border-radius: 30px;
-width: 565px;
-height: 579px;
+width: 100%;
+height: 100%;
 background: #fbfbfb;
 `
 
@@ -53,4 +53,15 @@ font-size: 16px;
 line-height: 125%;
 letter-spacing: -0.01em;
 color: #fbfbfb;
+`
+
+export const SRegisterSpan = styled.span`
+margin-top: -19px;
+
+font-family: "Inter", sans-serif;
+font-weight: 500;
+font-size: 12px;
+line-height: 125%;
+letter-spacing: -0.01em;
+color:rgb(206, 34, 34);
 `
