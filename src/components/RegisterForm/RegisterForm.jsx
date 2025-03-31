@@ -83,7 +83,7 @@ export const RegisterForm = ({open, onClose}) => {
                     </STextRegister>
                     <SFormRegister onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
                         <SFieldRegister {...register('name', { required: true, maxLength: 5 })} label="Name"/>
-                         {errors.name && errors.name.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
+                        {errors.name && errors.name.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
                         {errors.name && errors.name.type === "maxLength" && <SRegisterSpan>Max length exceeded!</SRegisterSpan> }
                         <SFieldRegister {...register('email', { required: true})} label="Email" />
                         {errors.email && errors.email.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}

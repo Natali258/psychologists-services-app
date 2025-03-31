@@ -69,7 +69,7 @@ export const LoginForm = ({open, onClose}) => {
                 </STextLogIn>
                 <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
                     <SFieldEmailLogIn {...register('email')} label="Email" variant="outlined" />
-                    <SFieldEmailLogIn {...register('password')} label="Password" 
+                    <SFieldEmailLogIn {...register('password', { required: true, maxLength: 10 })} label="Password" 
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
