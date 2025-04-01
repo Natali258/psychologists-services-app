@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
-// // import TextField from '@mui/material/TextField'; 
-// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 import { useForm } from 'react-hook-form';
@@ -9,6 +7,7 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
+import { useNavigate } from 'react-router-dom';
 
 
 const SFieldEmailLogIn = styled(TextField)({
@@ -47,6 +46,13 @@ export const LoginForm = ({open, onClose}) => {
     //     setEmail('')
     //     setPassword('')
     // }
+    const navigate = useNavigate();
+  const [showPass, setShowPass] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const passVisibility = () => {
+    setShowPass((prevState) => !prevState);
+    
+  };
     const { register, reset, handleSubmit } = useForm();
     
     const submit = data => {
@@ -69,12 +75,12 @@ export const LoginForm = ({open, onClose}) => {
                 </STextLogIn>
                 <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
                     <SFieldEmailLogIn {...register('email')} label="Email" variant="outlined" />
-                    <SFieldEmailLogIn {...register('password', { required: true, maxLength: 10 })} label="Password" 
+                    <SFieldEmailLogIn type={showPass ? 'text' : 'password'} {...register('password', { required: true, maxLength: 10 })} label="Password" 
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton edge="end" onClick={() => alert("Показати пароль")}>
-                                        <IconSvg id='close-eye' size={20} />
+                                    <IconButton edge="end" onClick={passVisibility}>
+                                        {showPass ?(<IconSvg id='close-eye' size={20} />) : (<IconSvg id="open-eye" size={20} />)}
                                     </IconButton>
                                 </InputAdornment>
                             ),

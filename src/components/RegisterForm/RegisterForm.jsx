@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 import Modal from '@mui/material/Modal';
@@ -11,6 +11,7 @@ import { database } from '../../services/FirebaseApp';
 import { ref, set } from 'firebase/database';
 import { IconButton, InputAdornment, styled } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
+import { useNavigate } from 'react-router-dom';
 
 const SFieldRegister = styled(TextField)({
     "& .MuiOutlinedInput-root": {
@@ -39,7 +40,17 @@ const SFieldRegister = styled(TextField)({
 
 
 export const RegisterForm = ({open, onClose}) => {
+    const navigate = useNavigate();
+    const [showPass, setShowPass] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const passVisibility = () => {
+        setShowPass((prevState) => !prevState);
+    }
     
+  
+
+
+
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const submit = async (data) => {
@@ -86,12 +97,12 @@ export const RegisterForm = ({open, onClose}) => {
                         {errors.name && errors.name.type === "maxLength" && <SRegisterSpan>Max length exceeded!</SRegisterSpan> }
                         <SFieldRegister {...register('email', { required: true})} label="Email" />
                         {errors.email && errors.email.type === "required" && <SRegisterSpan>This is required!</SRegisterSpan>}
-                        <SFieldRegister {...register('password', { required: true, maxLength: 10 })} label="Password" 
+                        <SFieldRegister type={showPass ? 'text' : 'password'} {...register('password', { required: true, maxLength: 10 })} label="Password" 
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">
-                                        <IconButton edge="end" onClick={() => alert("Показати пароль")}>
-                                            <IconSvg id='close-eye' size={20} />
+                                        <IconButton edge="end" onClick={passVisibility}>
+                                            {showPass ?(<IconSvg id='close-eye' size={20} />) : (<IconSvg id="open-eye" size={20} />)}
                                         </IconButton>
                                     </InputAdornment>
                                 ),
