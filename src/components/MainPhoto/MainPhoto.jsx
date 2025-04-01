@@ -2,15 +2,13 @@ import React from 'react'
 import { Image } from "../../components";
 import { Icon } from "../../components/Icon/Icon";
 import { SAnaliticContainer, SCheakContainer, SContainer, SImageContainer, SNumber, SQuestionContainer, SText, STextContainer, SUserContainer } from './MainPhoto.styled';
-
+import { IconSvg } from '../Icon/IconSvg';
 
 
 export const MainPhoto = () => {
   return (
     <SContainer>
     <SImageContainer><Image.WomanHero/></SImageContainer>
-    {/* <div><Icon name='eye-offf' size='40' /></div> */}
-    <div><Icon id='icon-eye-off-3' size={20} /></div>
     <SUserContainer>
       <Icon name='people-icon' size='20' fill='white'/>
     </SUserContainer>

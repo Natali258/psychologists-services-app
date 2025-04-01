@@ -11,7 +11,7 @@ import { registerUser } from '../../api/api';
 import { database } from '../../services/FirebaseApp';
 import { ref, set } from 'firebase/database';
 import { IconButton, InputAdornment, styled } from '@mui/material';
-import { Icon } from '../Icon/Icon';
+import { IconSvg } from '../Icon/IconSvg';
 
 const SFieldRegister = styled(TextField)({
     "& .MuiOutlinedInput-root": {
@@ -92,7 +92,7 @@ export const RegisterForm = ({open, onClose}) => {
                                 endAdornment: (
                                     <InputAdornment position="end">
                                         <IconButton edge="end" onClick={() => alert("Показати пароль")}>
-                                            <Icon name='eye-off' size='20'/>
+                                            <IconSvg id='close-eye' size={20} />
                                         </IconButton>
                                     </InputAdornment>
                                 ),

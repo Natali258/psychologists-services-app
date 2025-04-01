@@ -5,10 +5,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
 import { useForm } from 'react-hook-form';
-import { Icon } from '../Icon/Icon';
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from '@mui/material';
+import { IconSvg } from '../Icon/IconSvg';
 
 
 const SFieldEmailLogIn = styled(TextField)({
@@ -74,7 +74,7 @@ export const LoginForm = ({open, onClose}) => {
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <IconButton edge="end" onClick={() => alert("Показати пароль")}>
-                                        <Icon name='eye-off' size='20'/>
+                                        <IconSvg id='close-eye' size={20} />
                                     </IconButton>
                                 </InputAdornment>
                             ),
