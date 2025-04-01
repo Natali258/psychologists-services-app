@@ -2,7 +2,6 @@ import React from 'react'
 import { Image } from "../../components";
 import { Icon } from "../../components/Icon/Icon";
 import { SAnaliticContainer, SCheakContainer, SContainer, SImageContainer, SNumber, SQuestionContainer, SText, STextContainer, SUserContainer } from './MainPhoto.styled';
-import { IconSvg } from '../Icon/IconSvg';
 
 
 export const MainPhoto = () => {

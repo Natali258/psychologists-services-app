@@ -1,9 +1,8 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
-// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { SBoxRegister, SBtnRegister, SFormRegister, SRegisterSpan, STextRegister, STitleRegister } from './RegisterForm.styled';
+import { SBtnRegister, SFormRegister, SRegisterSpan, STextRegister, STitleRegister } from './RegisterForm.styled';
 // import { registerThunk } from '../../redux/Auth/operations';
 // import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -111,47 +110,3 @@ export const RegisterForm = ({open, onClose}) => {
     
       )
 }
-
-
-
-
-// export const RegisterForm = ({open, onClose}) => {
-//     const { register, reset, handleSubmit } = useForm();
-//     const dispatch = useDispatch();
-
-//     const submit = data => {
-//         dispatch(registerThunk(data));
-//     reset()
-// };
-//     return (
-//         <div>
-            
-//             <Modal
-//             open={open}
-//             onClose={onClose}
-//             >
-//                <Box sx={style}>
-//                     <Typography variant="h6" component="h2">
-//                     Registration
-//                     </Typography>
-//                     <Typography sx={{ mt: 2 }}>
-//                     Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.
-//                     </Typography>
-//                     <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off" >
-//                         <TextField {...register('name')} label="Name"  />
-//                         <TextField {...register('email')} label="Email"  />
-//                         <TextField {...register('password')} label="Password"  />
-//                         <SBtnRegister type='submit' >Sign Up</SBtnRegister>
-//                     </Box>
-                    
-//                 </Box> 
-//             </Modal>
-             
-            
-//         </div>
-    
-//       )
-// }
-
-
-
