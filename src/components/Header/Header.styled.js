@@ -67,8 +67,8 @@ background-color: rgba(84, 190, 150, 1); */
     height: 9px;
     border-radius: 50%;
     background-color: rgba(84, 190, 150, 1);
-  top: 40px;
-  left: 0;
+  top: 50px;
+  left: 15px;
   transition: all 1s;
 }
 `
