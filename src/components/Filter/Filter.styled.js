@@ -11,7 +11,7 @@ line-height: 129%;
 color: #8a8a89;
 margin-bottom: 8px;
 `
-export const FilterBtn = styled.button`
+export const SFilterSelect = styled.button`
 position: relative;
 border-radius: 14px;
 border: none;
