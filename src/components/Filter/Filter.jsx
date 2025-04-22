@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {FilterContainer, FilterTitle} from './Filter.styled'
-import { MenuItem, Select} from '@mui/material'
+import { colors, MenuItem, OutlinedInput, outlinedInputClasses, Select, selectClasses} from '@mui/material'
 import { styled } from '@mui/material/styles';
-import { Padding } from '@mui/icons-material';
+import { BorderColor, Padding } from '@mui/icons-material';
 
 export const Filter = ({setFilter}) => {
     const [filter, setFilterLocal] = useState('atoz')
@@ -19,7 +19,10 @@ export const Filter = ({setFilter}) => {
         borderRadius: '14px',
         border: 'none',
         '& .MuiOutlinedInput-input': {padding: '14px 0 14px 18px', width: '162px'},
-        '& .MuiInputBase-input': {border: 'none'},
+        '& .MuiOutlinedInput-notchedOutline': {border: 'none'},
+        
+        // "&.Mui-focused fieldset": { borderColor: "red" },
+        // '& .MuiInputBase-input': {outline: 'none'},
         // padding: '16px 162px 16px 18px',
         // border: 'none',
         // '& .MuiSelect-icon': {
