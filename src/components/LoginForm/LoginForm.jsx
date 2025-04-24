@@ -46,7 +46,7 @@ export const LoginForm = ({open, onClose}) => {
     //     setEmail('')
     //     setPassword('')
     // }
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const passVisibility = () => {

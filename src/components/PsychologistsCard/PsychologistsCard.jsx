@@ -1,5 +1,6 @@
 import React from 'react'
-import { CardContainer, CardUl, ImgContainer, ImgStyle } from './PsychologistsCard.styled';
+import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnHeart, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SLiStroke, SSpan, SSpanPrice, SSpanRating } from './PsychologistsCard.styled';
+import { IconSvg } from '../Icon/IconSvg';
 
 
 export const PsychologistsCard = ({psychologist}) => {
@@ -12,11 +13,20 @@ export const PsychologistsCard = ({psychologist}) => {
                 
             </ImgContainer>
             <li>
-                <div>Psychologist</div>
-                <ul>
-                    <li>Rating: {psychologist.rating}</li>
-                    <li>Price / 1 hour: {psychologist.price_per_hour}$</li>
-                </ul>
+                <SContainerTitle>
+                    <SSpan>Psychologist</SSpan>
+                    <SContainerPrice>
+                        <SLiStar>
+                            <IconSvg id='star' size={20} />
+                            <SSpanRating>Rating: {psychologist.rating}</SSpanRating>
+                        </SLiStar>
+                        <SLiStroke></SLiStroke>
+                        <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
+                    </SContainerPrice>
+                    <SBtnHeart>
+                        <IconSvg id='heart' size={23} />
+                    </SBtnHeart>
+                </SContainerTitle>
                 <h2>{psychologist.name}</h2>
                 <ul>
                     <li>Experience: {psychologist.experience}</li>
