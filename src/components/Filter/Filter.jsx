@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import {FilterContainer, FilterTitle} from './Filter.styled'
-import { colors, Menu, MenuItem, OutlinedInput, outlinedInputClasses, Select, selectClasses} from '@mui/material'
+import {MenuItem, Select} from '@mui/material'
 import { styled } from '@mui/material/styles';
-import { BorderColor, Padding } from '@mui/icons-material';
-import shadows from '@mui/material/styles/shadows';
+
 
 export const Filter = ({setFilter}) => {
     const [filter, setFilterLocal] = useState('atoz')
