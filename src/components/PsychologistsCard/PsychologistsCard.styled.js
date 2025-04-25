@@ -48,6 +48,11 @@ color: #191a15;
 export const SSpan = styled.span`
 display: inline-block;
 margin-right: auto;
+
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #8a8a89;
 `
 
 export const SContainerPrice = styled.ul`
@@ -73,4 +78,55 @@ color: #38cd3e;
 `
 export const SBtnHeart = styled.button`
 margin-left: 28px;
+`
+export const SPsName = styled.h2`
+display: block;
+margin-top: 8px;
+
+font-weight: 500;
+font-size: 24px;
+line-height: 100%;
+color: #191a15;
+`
+export const SListInfo = styled.ul`
+display: flex;
+width: 810px;
+margin-top: 24px;
+flex-direction: row;
+flex-wrap: wrap;
+gap: 4px;
+`
+export const SListInfoLi = styled.li`
+border-radius: 24px;
+padding: 8px 16px;
+background: #f3f3f3;
+
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #8a8a89;
+`
+export const SListInfoLiSpan = styled.span`
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+color: #191a15;
+`
+export const STextAbout = styled.p`
+display: block;
+margin: 24px 0 14px 0;
+font-weight: 400;
+font-size: 17px;
+line-height: 125%;
+color: rgba(25, 26, 21, 0.5);
+`
+export const SBtnRead = styled.button`
+font-weight: 500;
+font-size: 16px;
+line-height: 150%;
+text-decoration: underline;
+text-decoration-skip-ink: none;
+color: #191a15;
+border: none;
+background: #fbfbfb;
 `
