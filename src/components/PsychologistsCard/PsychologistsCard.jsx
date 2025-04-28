@@ -1,11 +1,15 @@
 import React from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
 import { IconSvg } from '../Icon/IconSvg';
+import { Reviewss } from '../Reviewss/Reviewss';
+
+
 
 
 
 export const PsychologistsCard = ({psychologist}) => {
-    console.log(psychologist.reviews);
+    const { reviews} = psychologist;
+    
     
     
   return (
@@ -41,17 +45,7 @@ export const PsychologistsCard = ({psychologist}) => {
                 <SBtnRead>Read more</SBtnRead>
                 <div>
                     <ul>
-                        <li>
-                            <div>
-                                <div>img</div>
-                                <div>
-                                    <div>reviewer</div>
-                                    <div>rating</div>
-                                </div>
-                            </div>
-                            <p>comment</p>
-                        </li>
-                        
+                        {reviews.map(item=>(<Reviewss key={item.reviewer} review={item}/>))}
                     </ul>
                     <button>Make an appointment</button>
                 </div>
@@ -60,3 +54,4 @@ export const PsychologistsCard = ({psychologist}) => {
     </CardContainer>
   )
 }
+

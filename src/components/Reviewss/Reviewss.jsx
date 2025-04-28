@@ -1,6 +1,8 @@
 import React from 'react'
 
-export const Reviews = () => {
+export const Reviewss = ({review}) => {
+    console.log(review);
+    
   return (
     <div>
         <ul>
@@ -8,15 +10,15 @@ export const Reviews = () => {
                 <div>
                     <div>img</div>
                     <div>
-                        <div>reviewer</div>
-                        <div>rating</div>
+                        <div>{review.reviewer}</div>
+                        <div>{review.rating}</div>
                     </div>
                 </div>
-                <p>comment</p>
+                <p>{review.comment}</p>
             </li>
-            
         </ul>
-         <button>Make an appointment</button>
     </div>
   )
 }
+
+
