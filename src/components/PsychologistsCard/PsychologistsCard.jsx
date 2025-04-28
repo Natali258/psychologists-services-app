@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
 import { IconSvg } from '../Icon/IconSvg';
 import { Reviewss } from '../Reviewss/Reviewss';
@@ -9,8 +9,13 @@ import { Reviewss } from '../Reviewss/Reviewss';
 
 export const PsychologistsCard = ({psychologist}) => {
     const { reviews} = psychologist;
+    const [openReviews, setOpenReviews] = useState(false)
+    const [hiddenBtn, setHiddenBtn] = useState(true)
     
-    
+    const handlerReadMore = ()=>{
+        setOpenReviews(true)
+        setHiddenBtn(false)
+    }
     
   return (
     <CardContainer>
@@ -42,13 +47,13 @@ export const PsychologistsCard = ({psychologist}) => {
                     <SListInfoLi>Initial_consultation: <SListInfoLiSpan>{psychologist.initial_consultation}</SListInfoLiSpan></SListInfoLi>
                 </SListInfo>
                 <STextAbout>{psychologist.about}</STextAbout>
-                <SBtnRead>Read more</SBtnRead>
-                <div>
+                {hiddenBtn ? <SBtnRead onClick={handlerReadMore}>Read more</SBtnRead> : <div></div>}
+                {openReviews ? <div>
                     <ul>
                         {reviews.map(item=>(<Reviewss key={item.reviewer} review={item}/>))}
                     </ul>
                     <button>Make an appointment</button>
-                </div>
+                </div> : <div></div>}
             </li>
         </CardUl>
     </CardContainer>

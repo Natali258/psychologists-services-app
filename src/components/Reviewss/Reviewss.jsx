@@ -1,14 +1,15 @@
 import React from 'react'
+import { ReviewerAvatar } from '../ReviewerAvatar/ReviewerAvatar'
 
 export const Reviewss = ({review}) => {
-    console.log(review);
-    
   return (
     <div>
         <ul>
             <li>
                 <div>
-                    <div>img</div>
+                    <div>
+                        <ReviewerAvatar name={review.reviewer} avatarUrl={review.avatarUrl}/>
+                    </div>
                     <div>
                         <div>{review.reviewer}</div>
                         <div>{review.rating}</div>
