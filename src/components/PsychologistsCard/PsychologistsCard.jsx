@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
+import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
 import { IconSvg } from '../Icon/IconSvg';
 import { Reviewss } from '../Reviewss/Reviewss';
 
@@ -52,7 +52,7 @@ export const PsychologistsCard = ({psychologist}) => {
                     <ul>
                         {reviews.map(item=>(<Reviewss key={item.reviewer} review={item}/>))}
                     </ul>
-                    <button>Make an appointment</button>
+                    <SBtnAppointment>Make an appointment</SBtnAppointment>
                 </div> : <div></div>}
             </li>
         </CardUl>
