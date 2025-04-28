@@ -3,7 +3,10 @@ import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnHeart, SBtnRead, SCo
 import { IconSvg } from '../Icon/IconSvg';
 
 
+
 export const PsychologistsCard = ({psychologist}) => {
+    console.log(psychologist.reviews);
+    
     
   return (
     <CardContainer>
@@ -36,6 +39,22 @@ export const PsychologistsCard = ({psychologist}) => {
                 </SListInfo>
                 <STextAbout>{psychologist.about}</STextAbout>
                 <SBtnRead>Read more</SBtnRead>
+                <div>
+                    <ul>
+                        <li>
+                            <div>
+                                <div>img</div>
+                                <div>
+                                    <div>reviewer</div>
+                                    <div>rating</div>
+                                </div>
+                            </div>
+                            <p>comment</p>
+                        </li>
+                        
+                    </ul>
+                    <button>Make an appointment</button>
+                </div>
             </li>
         </CardUl>
     </CardContainer>
