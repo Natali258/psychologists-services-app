@@ -1,21 +1,26 @@
 import React from 'react'
 import { ReviewerAvatar } from '../ReviewerAvatar/ReviewerAvatar'
+import { SReviewer, SReviewsContainer, SReviewsRating, SReviewText } from './Reviewss.styled'
+import { IconSvg } from '../Icon/IconSvg'
 
 export const Reviewss = ({review}) => {
   return (
     <div>
         <ul>
             <li>
-                <div>
+                <SReviewsContainer>
                     <div>
                         <ReviewerAvatar name={review.reviewer} avatarUrl={review.avatarUrl}/>
                     </div>
-                    <div>
+                    <SReviewer>
                         <div>{review.reviewer}</div>
-                        <div>{review.rating}</div>
-                    </div>
-                </div>
-                <p>{review.comment}</p>
+                        <SReviewsRating>
+                            <IconSvg id='star' size={20} />
+                            {review.rating}
+                        </SReviewsRating>
+                    </SReviewer>
+                </SReviewsContainer>
+                <SReviewText>{review.comment}</SReviewText>
             </li>
         </ul>
     </div>
