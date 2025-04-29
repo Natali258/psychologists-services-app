@@ -1,8 +1,7 @@
 import { Svg } from "./Svg";
 
-export const Icon = ({id, name, className, size, fill }) => {
+export const Icon = ({ id, name, className, size, fill }) => {
   switch (name) {
-
     // 1) Total income icon (add style: fill="color")
     case "check":
       return (
@@ -134,6 +133,15 @@ export const Icon = ({id, name, className, size, fill }) => {
       return (
         <Svg className={className} size={size} fill={fill}>
           <path d="M11.248 1.685l-10.625 10.625c-0.384 0.385-0.622 0.916-0.622 1.502s0.238 1.118 0.622 1.502v0c0.385 0.384 0.916 0.622 1.502 0.622s1.118-0.238 1.502-0.622l9.123-9.123 9.123 9.123c0.385 0.384 0.916 0.622 1.502 0.622s1.118-0.238 1.502-0.622v0c0.384-0.385 0.622-0.916 0.622-1.502s-0.238-1.118-0.622-1.502l-10.625-10.625c-0.385-0.384-0.916-0.622-1.502-0.622s-1.118 0.238-1.502 0.622v0z"></path>
+        </Svg>
+      );
+
+    // 12) Time input icon (add styles: stroke="color", fill="none")
+    case "icon-x":
+      return (
+        <Svg className={className} size={size} fill={fill}>
+           <path d="M24 8L8 24" stroke="#191A15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M8 8L24 24" stroke="#191A15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
         </Svg>
       );
 
