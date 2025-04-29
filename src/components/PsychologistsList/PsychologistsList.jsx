@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectPsychologists} from '../../redux/Psychologists/PsychologistsSlice';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
-import { ListContainer, ListUl } from './PsychologistsList.styled';
+import { ListContainer, ListUl, ListBtn } from './PsychologistsList.styled';
 // import { changeFilter, selectFilter } from '../../redux/Filter/FilterSlice';
 // import { psychologistThunk } from '../../redux/Psychologists/operations';
 import { getPsychologists } from '../../api/api';
@@ -57,7 +57,7 @@ export const PsychologistsList = ({ setLoading, filter }) => {
               ( <PsychologistsCard key={item.name} psychologist={item} />)
             )}
             </ListUl>
-            <button onClick={loadMore}>Завантажити ще</button>
+            <ListBtn onClick={loadMore}>Load more</ListBtn>
         </ListContainer>
       )
     }
