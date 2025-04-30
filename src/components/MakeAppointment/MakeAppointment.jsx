@@ -29,7 +29,7 @@ export const MakeAppointment = ({open, onClose}) => {
                     <SModalFormInput type="text" placeholder="Name"/>
                     <SModalBoxPhoneNum>
                         <SModalFormInputPhone type="tel" placeholder="+380"/>
-                        <SModalFormInputPhone type="time"/>
+                        <SModalFormInputPhone type="time" placeholder="00:00"/>
                     </SModalBoxPhoneNum>
                     <SModalFormInput type="text" placeholder="Email"/>
                     <SModalFormInputComment type="text" placeholder="Comment"/>

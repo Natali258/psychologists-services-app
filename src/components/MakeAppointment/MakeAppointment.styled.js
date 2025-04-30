@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
 export const SBackdropModal = styled.div`
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
     position: fixed;
     top: 0;
     left: 0;
@@ -84,26 +81,36 @@ margin-bottom: 40px;
 export const SModalFormInput = styled.input`
 border: 1px solid rgba(25, 26, 21, 0.1);
 border-radius: 12px;
-padding: 16px 409px 16px 18px;
+padding: 16px 100px 16px 18px;
 /* width: 472px; */
 height: 52px;
+outline: none;
 
 font-weight: 400;
 font-size: 16px;
 line-height: 125%;
 color: #191a15;
+
+&:hover, &:focus {
+    border: 1px solid #36a379;
+}
 `
 export const SModalFormInputComment = styled.input`
 border: 1px solid rgba(25, 26, 21, 0.1);
 border-radius: 12px;
-padding: 16px 380px 80px 18px;
+padding: 16px 18px 80px 18px;
 width: 472px;
 height: 116px;
+outline: none;
 
 font-weight: 400;
 font-size: 16px;
 line-height: 125%;
 color: #191a15;
+
+&:hover, &:focus {
+    border: 1px solid #36a379;
+}
 `
 export const SModalBoxPhoneNum = styled.div`
 display: flex;
@@ -113,8 +120,9 @@ gap: 8px;
 export const SModalFormInputPhone = styled.input`
 border: 1px solid rgba(25, 26, 21, 0.1);
 border-radius: 12px;
-padding: 16px 0 16px 18px;
+padding: 16px 18px 16px 18px;
 flex: 1;
+outline: none;
 /* width: 232px;
 height: 52px; */
 
@@ -122,6 +130,10 @@ font-weight: 400;
 font-size: 16px;
 line-height: 125%;
 color: #191a15;
+
+&:hover, &:focus {
+    border: 1px solid #36a379;
+}
 `
 export const SModalBtn = styled.button`
 border-radius: 30px;
