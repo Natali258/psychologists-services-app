@@ -81,6 +81,11 @@ flex-direction: row;
 gap: 14px;
 margin: 40px 0 40px 0;
 `
+export const SModalAvatar = styled.img`
+border-radius: 15px;
+width: 44px;
+height: 44px;
+`
 export const SModalContainerPsName = styled.div`
 display: flex;
 flex-direction: column;
@@ -163,7 +168,7 @@ color: #191a15;
 `
 export const SModalBtn = styled.button`
 border-radius: 30px;
-padding: 16px 217px;
+padding: 16px 198px;
 background: #54be96;
 border: none;
 transition: 200ms cubic-bezier(0.075, 0.82, 0.165, 1);

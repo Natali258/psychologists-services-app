@@ -1,16 +1,18 @@
 
 import React from "react";
-import { SBackdropModal, SModal, SModalBox, SModalBoxPhoneNum, SModalBtn, SModalBtnClose, SModalContainerForm, SModalContainerInfo, SModalContainerPsName, SModalFormInput, SModalFormInputComment, SModalFormInputPhone, SModalInfo, SModalPsName, SModalScrol, SModalText, SModalTitle } from "./MakeAppointment.styled";
+import { SBackdropModal, SModal, SModalAvatar, SModalBox, SModalBoxPhoneNum, SModalBtn, SModalBtnClose, SModalContainerForm, SModalContainerInfo, SModalContainerPsName, SModalFormInput, SModalFormInputComment, SModalFormInputPhone, SModalInfo, SModalPsName, SModalScrol, SModalText, SModalTitle } from "./MakeAppointment.styled";
 import { IconSvg } from "../Icon/IconSvg";
 import { Icon } from "../Icon/Icon";
 
-export const MakeAppointment = ({open, onClose}) => {
+export const MakeAppointment = ({open, onClose, psychologist}) => {
+  console.log(psychologist);
+  
   return (
     <SBackdropModal>
         
         <SModal open={open} onClose={onClose}>
             <SModalScrol>
-              <SModalBtnClose><Icon name ='icon-x' size={20} /></SModalBtnClose>
+              <SModalBtnClose><Icon name ='icon-x' size={32} /></SModalBtnClose>
               <SModalBox>
               <div>
                       <SModalTitle>Make an appointment with a psychologists</SModalTitle>
@@ -22,10 +24,10 @@ export const MakeAppointment = ({open, onClose}) => {
                       </SModalText>
               </div>
               <SModalContainerInfo>
-                      <div>Avatar</div>
+                      <SModalAvatar src={psychologist.avatar_url} alt="people" />
                       <SModalContainerPsName>
                           <SModalInfo>Your psychologists</SModalInfo>
-                          <SModalPsName>Name</SModalPsName>
+                          <SModalPsName>{psychologist.name}</SModalPsName>
                       </SModalContainerPsName>
               </SModalContainerInfo>
               <SModalContainerForm action="">

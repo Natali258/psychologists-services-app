@@ -63,7 +63,7 @@ export const PsychologistsCard = ({psychologist}) => {
                 </div> : <div></div>}
             </li>
         </CardUl>
-        {openAppointment ? <MakeAppointment/> : <div></div>}
+        {openAppointment ? <MakeAppointment psychologist={psychologist}/> : <div></div>}
         {/* <MakeAppointment open={openAppointment} onClose={handlerCloseAppointment}/> */}
     </CardContainer>
   )
