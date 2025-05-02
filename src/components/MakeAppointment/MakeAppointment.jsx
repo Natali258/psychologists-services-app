@@ -1,11 +1,12 @@
 
-import React from "react";
-import { SBackdropModal, SModal, SModalAvatar, SModalBox, SModalBoxPhoneNum, SModalBtn, SModalBtnClose, SModalContainerForm, SModalContainerInfo, SModalContainerPsName, SModalFormInput, SModalFormInputComment, SModalFormInputPhone, SModalInfo, SModalPsName, SModalScrol, SModalText, SModalTitle } from "./MakeAppointment.styled";
+import React, { useState } from "react";
+import { SBackdropModal, SModal, SModalAvatar, SModalBox, SModalBoxPhoneNum, SModalBtn, SModalBtnClose, SModalContainerForm, SModalContainerInfo, SModalContainerPsName, SModalFormInput, SModalFormInputComment, SModalFormInputPhone, SModalFormInputTime, SModalInfo, SModalPsName, SModalScrol, SModalText, SModalTitle } from "./MakeAppointment.styled";
 import { IconSvg } from "../Icon/IconSvg";
 import { Icon } from "../Icon/Icon";
+import TimePicker from 'react-time-picker';
 
 export const MakeAppointment = ({open, onClose, psychologist}) => {
-  console.log(psychologist);
+  const [value, setValue] = useState('00:00');
   
   return (
     <SBackdropModal>
@@ -34,7 +35,8 @@ export const MakeAppointment = ({open, onClose, psychologist}) => {
                       <SModalFormInput type="text" placeholder="Name"/>
                       <SModalBoxPhoneNum>
                           <SModalFormInputPhone type="tel" placeholder="+380"/>
-                          <SModalFormInputPhone type="time" placeholder="00:00"/>
+                          <SModalFormInputTime><TimePicker onChange={setValue} value={value} /></SModalFormInputTime>
+                          {/* <SModalFormInputPhone type="time" placeholder="00:00"/> */}
                       </SModalBoxPhoneNum>
                       <SModalFormInput type="text" placeholder="Email"/>
                       <SModalFormInputComment type="text" placeholder="Comment"/>

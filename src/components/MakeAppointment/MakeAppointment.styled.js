@@ -166,6 +166,24 @@ color: #191a15;
     border: 1px solid #36a379;
 }
 `
+export const SModalFormInputTime = styled.div`
+border: 1px solid rgba(25, 26, 21, 0.1);
+border-radius: 12px;
+padding: 16px 18px 16px 18px;
+flex: 1;
+outline: none;
+/* width: 232px;
+height: 52px; */
+
+font-weight: 400;
+font-size: 16px;
+line-height: 125%;
+color: #191a15;
+
+&:hover, &:focus {
+    border: 1px solid #36a379;
+}
+`
 export const SModalBtn = styled.button`
 border-radius: 30px;
 padding: 16px 198px;
