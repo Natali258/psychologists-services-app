@@ -18,14 +18,40 @@ export const SModal = styled.div`
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    padding: 64px;
+    /* padding: 64px; */
     border-radius: 30px;
     width: 599px;
     height: 859px;
     background: #fbfbfb;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%) 
+    transform: translateX(-50%) translateY(-50%);
+
+  
+`
+export const SModalScrol = styled.div`
+    overflow-y: auto;
+    padding: 1rem;
+    max-height: 100%;
+    
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+    background: rgba(84, 190, 150, 0.2);
+    border-radius: 8px;}
+
+    &::-webkit-scrollbar-thumb {
+    background-color: rgba(84, 190, 150, 1);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: content-box;}
+
+    &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(84, 190, 150, 1);
+  }
 `
 export const SModalBtnClose = styled.button`
 display: block;
@@ -99,7 +125,7 @@ export const SModalFormInputComment = styled.input`
 border: 1px solid rgba(25, 26, 21, 0.1);
 border-radius: 12px;
 padding: 16px 18px 80px 18px;
-width: 472px;
+/* width: 472px; */
 height: 116px;
 outline: none;
 
@@ -153,4 +179,11 @@ color: #fbfbfb;
 &:hover {
     background: #36a379;
 }
+`
+
+
+
+
+export const SModalBox = styled.div`
+padding: 64px
 `
