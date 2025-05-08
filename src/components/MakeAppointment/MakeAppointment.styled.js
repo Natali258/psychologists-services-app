@@ -170,7 +170,7 @@ color: #191a15;
 export const SModalFormInputTime = styled.div`
 border: 1px solid rgba(25, 26, 21, 0.1);
 border-radius: 12px;
-padding: 16px 18px 16px 18px;
+/* padding: 16px 18px 16px 18px; */
 flex: 1;
 outline: none;
 font-weight: 400;
@@ -183,17 +183,18 @@ color: #191a15;
 }
 .react-datepicker__input-container input {
     width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #ddd;
+    padding: 16px 18px;
+    border: 1px solid rgba(25, 26, 21, 0.1);
     border-radius: 12px;
     font-size: 16px;
+    outline: none;
   }
 
   .react-datepicker {
     border-radius: 12px;
     font-size: 16px;
     border: none;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
   }
 
   .react-datepicker__time-list {
@@ -203,7 +204,7 @@ color: #191a15;
   .react-datepicker__time-list-item {
     border-radius: 8px;
     padding: 8px 12px;
-    transition: background 0.2s;
+    transition: 0.2s;
   }
 
   .react-datepicker__time-list-item:hover {
