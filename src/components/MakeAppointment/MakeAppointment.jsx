@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { SBackdropModal, SModal, SModalAvatar, SModalBox, SModalBoxPhoneNum, SModalBtn, SModalBtnClose, SModalContainerForm, SModalContainerInfo, SModalContainerPsName, SModalFormInput, SModalFormInputComment, SModalFormInputPhone, SModalFormInputTime, SModalInfo, SModalPsName, SModalScrol, SModalText, SModalTitle } from "./MakeAppointment.styled";
 import { IconSvg } from "../Icon/IconSvg";
 import { Icon } from "../Icon/Icon";
-import TimePicker from 'react-time-picker';
+import DatePicker from 'react-datepicker';
 
 export const MakeAppointment = ({open, onClose, psychologist}) => {
-  const [value, setValue] = useState('00:00');
+  const [time, setTime] = useState(null);
   
   return (
     <SBackdropModal>
@@ -35,7 +35,16 @@ export const MakeAppointment = ({open, onClose, psychologist}) => {
                       <SModalFormInput type="text" placeholder="Name"/>
                       <SModalBoxPhoneNum>
                           <SModalFormInputPhone type="tel" placeholder="+380"/>
-                          <SModalFormInputTime><TimePicker onChange={setValue} value={value} /></SModalFormInputTime>
+                          <SModalFormInputTime><DatePicker
+                            selected={time}
+                            onChange={(time) => setTime(time)}
+                            showTimeSelect
+                            showTimeSelectOnly
+                            timeIntervals={30}
+                            timeCaption="Meeting time"
+                            dateFormat="HH:mm"
+                            placeholderText="00:00"
+                          /></SModalFormInputTime>
                           {/* <SModalFormInputPhone type="time" placeholder="00:00"/> */}
                       </SModalBoxPhoneNum>
                       <SModalFormInput type="text" placeholder="Email"/>
