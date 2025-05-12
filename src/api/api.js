@@ -110,6 +110,14 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     }
   }
 
+  export const postAppointment = async (appointment) => {
+    try {
+      await push(ref(database, '/appointments'), { appointment });
+    } catch {
+      toast.error(`Something went wrong. Please try again.`);
+    }
+  };
+
 //   Ще не використовувала!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   // export const getUserData = async (uid) => {
   //   try {
@@ -124,13 +132,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   //   }
   // };
   
-  // export const postAppointment = async (appointment) => {
-  //   try {
-  //     await push(ref(database, '/appointments'), { appointment });
-  //   } catch {
-  //     toast.error(`Something went wrong. Please try again.`);
-  //   }
-  // };
+ 
   
   // export const addToFavorites = async (uid, nanny) => {
   //   try {

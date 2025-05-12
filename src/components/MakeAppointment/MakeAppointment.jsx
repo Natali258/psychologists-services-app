@@ -25,13 +25,27 @@ import { Icon } from "../Icon/Icon";
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import "react-datepicker/dist/react-datepicker.css";
+import { postAppointment } from "../../api/api";
+import { toast } from "react-toastify";
 
 export const MakeAppointment = ({ open, onClose, psychologist }) => {
 
   const { control, register, reset, handleSubmit } = useForm();
 
-  const submit = (data) => {
-    console.log(data);
+  const submit = async(appointment) => {
+    console.log(appointment);
+    
+    try {
+      await postAppointment(appointment)
+      toast.success(
+        'Appointment was made sucessfull. Please wait a call from our manager.'
+      );
+    } catch (error) {
+      console.log(error.message);
+      toast.error(
+        "Password is incorrect or user doesn't exist. Please, try again."
+      );
+    }
 
     reset();
   };
@@ -78,14 +92,18 @@ export const MakeAppointment = ({ open, onClose, psychologist }) => {
                 <Controller
                   name="time"
                   control={control}
-              
                   render={({ field }) => (
                     <SDatePickerTime
                       {...field}
                       value={field.value}
-                      selected={field.value}
-                      onChange={(value) => {
-                        field.onChange(value);
+                      selected={field.value ? new Date(`1970-01-01T${field.value}`) : null}
+                      onChange={(data) => {
+                        const timeString = data.toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          hour12: false,
+                        });
+                        field.onChange(timeString)
                       }}
                       showTimeSelect
                       showTimeSelectOnly
