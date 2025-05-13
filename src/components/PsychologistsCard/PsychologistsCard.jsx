@@ -21,7 +21,7 @@ export const PsychologistsCard = ({psychologist}) => {
     }
 
     const handlerOpenAppointment = () => setOpenAppointment(true);
-    // const handlerCloseAppointment = () => setOpenAppointment(false)
+    const handlerCloseAppointment = () => setOpenAppointment(false)
     
     
   return (
@@ -63,8 +63,7 @@ export const PsychologistsCard = ({psychologist}) => {
                 </div> : <div></div>}
             </li>
         </CardUl>
-        {openAppointment ? <MakeAppointment psychologist={psychologist}/> : <div></div>}
-        {/* <MakeAppointment open={openAppointment} onClose={handlerCloseAppointment}/> */}
+        <MakeAppointment open={openAppointment} onClose={handlerCloseAppointment} psychologist={psychologist}/>
     </CardContainer>
   )
 }

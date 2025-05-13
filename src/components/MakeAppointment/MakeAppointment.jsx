@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   GlobalDatePickerStyles,
   SBackdropModal,
@@ -29,9 +29,29 @@ import { postAppointment } from "../../api/api";
 import { toast } from "react-toastify";
 
 export const MakeAppointment = ({ open, onClose, psychologist }) => {
-
   const { control, register, reset, handleSubmit } = useForm();
+   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
 
+    if (open) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+
+
+
+  
   const submit = async(appointment) => {
     console.log(appointment);
     
@@ -52,9 +72,9 @@ export const MakeAppointment = ({ open, onClose, psychologist }) => {
 
   return (
     <SBackdropModal>
-      <SModal open={open} onClose={onClose}>
+      <SModal open={open}>
         <SModalScrol>
-          <SModalBtnClose>
+          <SModalBtnClose onClick={onClose}>
             <Icon name="icon-x" size={32} />
           </SModalBtnClose>
           <SModalBox>
