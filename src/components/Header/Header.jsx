@@ -23,8 +23,14 @@ export const Header = () => {
                 <SHeaderLinkNav to="/">Home</SHeaderLinkNav>
             </li>
             <li><SHeaderLinkNav to="/psychologists">Psychologists</SHeaderLinkNav></li>
+            <li><SHeaderLinkNav to='/favorites'>Favorites</SHeaderLinkNav></li>
             <SCircleContainer></SCircleContainer>
         </SHeaderUl>
+        <div>
+            <div>Avatar</div>
+            <div>Name</div>
+            <button>Log out</button>
+        </div>
         <SHeaderUlBtn>
             <li>
                 <SHeaderBtn onClick={handleOpenLog}>Log In</SHeaderBtn>
