@@ -8,6 +8,9 @@ import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
 import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../services/FirebaseApp';
+import { toast } from 'react-toastify';
 
 
 const SFieldEmailLogIn = styled(TextField)({
@@ -46,20 +49,41 @@ export const LoginForm = ({open, onClose}) => {
     //     setEmail('')
     //     setPassword('')
     // }
-  const navigate = useNavigate();
+  
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const passVisibility = () => {
     setShowPass((prevState) => !prevState);
     
   };
     const { register, reset, handleSubmit } = useForm();
+
+      const onSubmit = async (data) => {
+        try {
+          setIsLoading(true);
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            data.email,
+            data.password
+          );
+          console.log(userCredential.user);
+          if (userCredential.user) {navigate('/psychologists')};
+          toast.success('LogIn is successfully.');
+          reset()
+        } catch {
+            toast.error(
+              "Password is incorrect or user doesn't exist. Please, try again."
+            );
+          }
+        setIsLoading(false);
+      };
     
-    const submit = data => {
-        console.log(data);
+    // const submit = data => {
+    //     console.log(data);
         
-        reset()
-    }
+    //     reset()
+    // }
   return (
     <div>
         <Modal
@@ -73,7 +97,7 @@ export const LoginForm = ({open, onClose}) => {
                 <STextLogIn sx={{ mt: 2 }}>
                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
                 </STextLogIn>
-                <SFormLogIn onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
+                <SFormLogIn onSubmit={handleSubmit(onSubmit)} component="form" noValidate autoComplete="off">
                     <SFieldEmailLogIn {...register('email')} label="Email" variant="outlined" />
                     <SFieldEmailLogIn type={showPass ? 'text' : 'password'} {...register('password', { required: true, maxLength: 10 })} label="Password" 
                         InputProps={{
