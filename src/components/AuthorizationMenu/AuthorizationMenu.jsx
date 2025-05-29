@@ -5,21 +5,21 @@ import { SHeaderBtn, SHeaderBtnRegistration, SHeaderUlBtn } from './Authorizatio
 import { useModal } from '../hooks/useModal';
 
 export const AuthorizationMenu = () => {
-  const [isOpenModal, toggleModal] = useModal();
-
+  const [isOpenModalLog, toggleModalLog] = useModal();
+  const [isOpenModalReg, toggleModalReg] = useModal()
 
   return (
     <div>
         <SHeaderUlBtn>
                     <li>
-                        <SHeaderBtn onClick={toggleModal}>Log In</SHeaderBtn>
+                        <SHeaderBtn onClick={toggleModalLog}>Log In</SHeaderBtn>
                     </li>
-                    <li><SHeaderBtnRegistration onClick={toggleModal}>Registration</SHeaderBtnRegistration></li>
+                    <li><SHeaderBtnRegistration onClick={toggleModalReg}>Registration</SHeaderBtnRegistration></li>
         </SHeaderUlBtn>
-                <LoginForm open={isOpenModal}
-                onClose={toggleModal}/>
-                <RegisterForm open={isOpenModal}
-                onClose={toggleModal}/>
+                <LoginForm open={isOpenModalLog}
+                onClose={toggleModalLog}/>
+                <RegisterForm open={isOpenModalReg}
+                onClose={toggleModalReg}/>
     </div>
   )
 }
