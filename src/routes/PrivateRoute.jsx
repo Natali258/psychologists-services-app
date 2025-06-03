@@ -1,29 +1,36 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
+import { Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { auth } from '../services/FirebaseApp';
+import { Loader } from '../components/Loader/Loader';
 
-const PrivateRoute = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
-
+export const PrivateRoute = ({ children }) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(true)
+    
     useEffect(()=>{
-        const auth = getAuth();
-        const loginValue = onAuthStateChanged(auth, (user) => {
+        const unsubscribe  = onAuthStateChanged(auth, (user) => {  
+            setLoading(false)  
             if (user) {
                 setIsLoggedIn(true)
-                const uid = user.uid;
-                
             } else {
                 setIsLoggedIn(false);
                 toast.info('Please log in to your account to visit this page.');
             }
         });
-        console.log(loginValue);
         
-        return ()=> loginValue()
-    },[])
-  return (
-    <div>PrivateRoute</div>
-  )
+        return ()=> unsubscribe ()
+    },[]);
+
+    if(loading) {
+        return <Loader />;
+    }
+    
+   if (!isLoggedIn) {
+        return <Navigate to="/" />;
+    }
+
+    return children;
 }
 
-export default PrivateRoute

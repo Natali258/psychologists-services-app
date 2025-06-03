@@ -67,7 +67,7 @@ export const LoginForm = ({open, onClose}) => {
             data.email,
             data.password
           );
-          console.log(userCredential.user);
+    
           if (userCredential.user) {navigate('/psychologists')};
           toast.success('LogIn is successfully.');
           reset()

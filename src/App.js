@@ -5,6 +5,8 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PsychologistsPage } from './pages/Psychologists/PsychologistsPage';
 import { FavoritesPage } from './pages/Favorites/FavoritesPage';
 import { Loyout } from './components/Loyout';
+import {PrivateRoute} from './routes/PrivateRoute';
+import { PublicRoute } from './routes/PublicRoute';
 
 
 function App() {
@@ -14,9 +16,9 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Loyout/>}>
-          <Route index element={<HomePage/>}/>
-          <Route path='psychologists' element={<PsychologistsPage/>}/>
-          <Route path='favorites' element={<FavoritesPage/>}/>
+          <Route index element={<PublicRoute><HomePage/></PublicRoute>}/>
+          <Route path='psychologists' element={<PublicRoute><PsychologistsPage/></PublicRoute>}/>
+          <Route path='favorites' element={<PrivateRoute><FavoritesPage/></PrivateRoute>}/>
         </Route>
       </Routes>
     </>
