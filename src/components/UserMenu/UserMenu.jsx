@@ -1,13 +1,14 @@
 import React from 'react'
+import { SUserContainer } from './UserMenu.styled'
 
 export const UserMenu = () => {
   return (
-    <div>
+    <SUserContainer>
         <div>
             <div>Avatar</div>
             <div>Name</div>
             <button>Log out</button>
         </div>
-    </div>
+    </SUserContainer>
   )
 }

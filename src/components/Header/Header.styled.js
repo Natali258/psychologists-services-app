@@ -34,36 +34,36 @@ font-weight: 600;
 color: #191a15;
 `
 
-export const SHeaderUl = styled.ul`
-display: flex;
-position: relative;
-margin-left: 130px;
-justify-content: center;
-align-items: center;
-gap: 40px;
-flex-direction: row;
-`
+// export const SHeaderUl = styled.ul`
+// display: flex;
+// position: relative;
+// margin-left: 130px;
+// justify-content: center;
+// align-items: center;
+// gap: 40px;
+// flex-direction: row;
+// `
 
-export const SHeaderLinkNav = styled(NavLink)`
-font-weight: 400;
-font-size: 16px;
-line-height: 125%;
-letter-spacing: -0.01em;
-color: #191a15;
-text-decoration: none;
-`
+// export const SHeaderLinkNav = styled(NavLink)`
+// font-weight: 400;
+// font-size: 16px;
+// line-height: 125%;
+// letter-spacing: -0.01em;
+// color: #191a15;
+// text-decoration: none;
+// `
 
-export const SCircleContainer = styled.li`
-&:before {
-  content: "";
-  position: absolute;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background-color: rgba(84, 190, 150, 1);
-  top: 50px;
-  left: 15px;
-  transition: all 1s;
-}
-`
+// export const SCircleContainer = styled.li`
+// &:before {
+//   content: "";
+//   position: absolute;
+//     width: 9px;
+//     height: 9px;
+//     border-radius: 50%;
+//     background-color: rgba(84, 190, 150, 1);
+//   top: 50px;
+//   left: 15px;
+//   transition: all 1s;
+// }
+// `
 

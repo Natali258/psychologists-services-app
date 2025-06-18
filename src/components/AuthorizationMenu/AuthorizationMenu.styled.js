@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
+export const SAuthContainer = styled.div`
+display: flex;
+margin-left: auto;
+justify-content: center;
+`
+
 export const SHeaderUlBtn = styled.ul`
 display: flex;
 margin-left: auto;

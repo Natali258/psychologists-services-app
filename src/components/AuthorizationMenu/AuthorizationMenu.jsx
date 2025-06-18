@@ -1,7 +1,7 @@
 import React from 'react'
 import { LoginForm } from '../LoginForm/LoginForm';
 import { RegisterForm } from '../RegisterForm/RegisterForm';
-import { SHeaderBtn, SHeaderBtnRegistration, SHeaderUlBtn } from './AuthorizationMenu.styled';
+import { SAuthContainer, SHeaderBtn, SHeaderBtnRegistration, SHeaderUlBtn } from './AuthorizationMenu.styled';
 import { useModal } from '../hooks/useModal';
 
 export const AuthorizationMenu = () => {
@@ -9,7 +9,7 @@ export const AuthorizationMenu = () => {
   const [isOpenModalReg, toggleModalReg] = useModal()
 
   return (
-    <div>
+    <SAuthContainer>
         <SHeaderUlBtn>
                     <li>
                         <SHeaderBtn onClick={toggleModalLog}>Log In</SHeaderBtn>
@@ -20,6 +20,6 @@ export const AuthorizationMenu = () => {
                 onClose={toggleModalLog}/>
                 <RegisterForm open={isOpenModalReg}
                 onClose={toggleModalReg}/>
-    </div>
+    </SAuthContainer>
   )
 }
