@@ -34,8 +34,7 @@ export const Header = () => {
      <SHeaderContainer>
         <SHeaderBoxLink><SHeaderLink to="/">psychologists.<SHeaderLinkSpan>services</SHeaderLinkSpan></SHeaderLink></SHeaderBoxLink>
         <NavBar/>
-        {loggedIn ? <UserMenu/> : <AuthorizationMenu/>}
-        
+        {loggedIn ? <UserMenu/> : <AuthorizationMenu/> }
     </SHeaderContainer>
    </SHeader>
   )
