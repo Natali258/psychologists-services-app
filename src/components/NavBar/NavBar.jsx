@@ -12,19 +12,19 @@ export const NavBar = () => {
     height: 0,});
   const navRef = useRef(null);
   const location = useLocation();
-      // useEffect(()=>{
-      //         const unsubscribe  = onAuthStateChanged(auth, (user) => {  
-      //             setLoading(false)  
-      //             if (user) {
-      //                 setLoggedIn(true)
-      //             } else {
-      //                 setLoggedIn(false);
+      useEffect(()=>{
+              const unsubscribe  = onAuthStateChanged(auth, (user) => {  
+                  setLoading(false)  
+                  if (user) {
+                      setLoggedIn(true)
+                  } else {
+                      setLoggedIn(false);
                       
-      //             }
-      //         });
+                  }
+              });
               
-      //         return ()=> unsubscribe ()
-      //     },[]);
+              return ()=> unsubscribe ()
+          },[]);
       useEffect(() => {
         const activeLink = navRef.current.querySelector('.active');
         if (activeLink) {
