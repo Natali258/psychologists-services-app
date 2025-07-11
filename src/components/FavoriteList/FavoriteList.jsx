@@ -1,31 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useFavorites } from '../hooks/useFavorite'
+import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
+import { getPsychologists } from '../../api/api';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../services/FirebaseApp';
 
-export const FavoriteList = () => {
-    const [favorites, setFavorites] = useState([]);
+export const FavoriteList = ({psychologists}) => {
+    // const {favorites} = useFavorites()
 
-    // useEffect(() => {
-    //     const favoritesFromLocalStorage = JSON.parse(localStorage.getItem("favorites")) || [];
-    //     setFavorites(favoritesFromLocalStorage);
-    // }, []);
+    // console.log(psychologists);
+    // const favoritePsychologists = psychologists.filter((p) =>favorites.includes(p.id));
 
-    // useEffect(() => {
-    //     localStorage.setItem("favorites", JSON.stringify(favorites));
-    // }, [favorites]);
-
+    // console.log(favoritePsychologists);
+    
   return (
-    <div>
-      <h1>Улюблені</h1>
-      {favorites.length > 0 ? (
+    <div> 12345
+      {/* {favoritePsychologists.length > 0 ? (
         <div>
-          {favorites.map((psychologist) => (
-            <div key={psychologist.id}>
-              <h3>{psychologist.name}</h3>
-            </div>
+          {favoritePsychologists.map((psychologist) => (
+            <PsychologistsCard key={psychologist.id} psychologist={psychologist} />
           ))}
         </div>
       ) : (
         <p>Немає улюблених психологів</p>
-      )}
+      )} */}
     </div>
   )
 }
