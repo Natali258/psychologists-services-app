@@ -1,6 +1,6 @@
 import { Svg } from "./Svg";
 
-export const Icon = ({ id, name, className, size, fill }) => {
+export const Icon = ({ id, name, className, size, fill, style }) => {
   switch (name) {
     // 1) Total income icon (add style: fill="color")
     case "check":
@@ -55,7 +55,7 @@ export const Icon = ({ id, name, className, size, fill }) => {
     // 4) Arrow-down in header UserBarBtn(add styles: stroke="color", fill="none")
     case "heart":
       return (
-        <Svg className={className} size={size}>
+        <Svg className={className} size={size} fill={fill} >
           <path
             stroke-linejoin="round"
             stroke-linecap="round"
@@ -63,6 +63,16 @@ export const Icon = ({ id, name, className, size, fill }) => {
             stroke-width="2.4615"
             d="M27.787 6.147c-0.681-0.681-1.49-1.222-2.379-1.591s-1.844-0.559-2.807-0.559-1.917 0.19-2.807 0.559c-0.89 0.369-1.699 0.909-2.38 1.591l-1.413 1.413-1.413-1.413c-1.376-1.376-3.241-2.148-5.187-2.148s-3.811 0.773-5.187 2.148c-1.376 1.376-2.148 3.241-2.148 5.187s0.773 3.811 2.148 5.187l11.787 11.787 11.787-11.787c0.681-0.681 1.222-1.49 1.591-2.38s0.559-1.844 0.559-2.807-0.19-1.917-0.559-2.807c-0.369-0.89-0.909-1.699-1.591-2.38z"
           ></path>
+        </Svg>
+      );
+
+      // 4) Arrow-down in header UserBarBtn(add styles: stroke="color", fill="none")
+    case "heart-green":
+      return (
+        <Svg className={className} size={size} fill={fill} >
+          <symbol id="icon-heart-green" viewBox="0 0 27 23">
+            <path fill="#54be96" stroke="#54be96" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.0909" d="M23.603 3.13c-0.578-0.579-1.265-1.038-2.021-1.351s-1.566-0.474-2.384-0.474-1.629 0.161-2.384 0.474c-0.756 0.313-1.443 0.772-2.021 1.351l-1.2 1.201-1.201-1.201c-1.168-1.168-2.753-1.825-4.406-1.825s-3.237 0.656-4.406 1.825c-1.168 1.168-1.825 2.753-1.825 4.406s0.656 3.237 1.825 4.406l10.012 10.012 10.012-10.012c0.579-0.578 1.038-1.265 1.351-2.021s0.474-1.566 0.474-2.384-0.161-1.629-0.474-2.384c-0.313-0.756-0.772-1.443-1.351-2.021z"></path>
+          </symbol>
         </Svg>
       );
 
@@ -140,8 +150,20 @@ export const Icon = ({ id, name, className, size, fill }) => {
     case "icon-x":
       return (
         <Svg className={className} size={size} fill={fill}>
-           <path d="M24 8L8 24" stroke="#191A15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M8 8L24 24" stroke="#191A15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path
+            d="M24 8L8 24"
+            stroke="#191A15"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8 8L24 24"
+            stroke="#191A15"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </Svg>
       );
 

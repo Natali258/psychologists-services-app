@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
-import { IconSvg } from '../Icon/IconSvg';
 import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
+import { IconSvg } from '../Icon/IconSvg';
+
+
 
 
 
@@ -13,6 +15,8 @@ export const PsychologistsCard = ({psychologist}) => {
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
+    const [favorites, setFavorites] = useState([]);
+    
     
     
     const handlerReadMore = ()=>{
@@ -22,7 +26,47 @@ export const PsychologistsCard = ({psychologist}) => {
 
     const handlerOpenAppointment = () => setOpenAppointment(true);
     const handlerCloseAppointment = () => setOpenAppointment(false)
+
+  //    // 🚀 Завантаження з localStorage при першому запуску
+  useEffect(() => {
+    const saved = localStorage.getItem('favorites');
+    if (saved) {
+      setFavorites(JSON.parse(saved));
+    }
+  }, []);
+
+  // 💾 Збереження у localStorage при зміні favorites
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  // const toggleFavorite = (card) => {
+  //   const exists = favorites.find((fav) => fav.id === card.id);
+  //   if (exists) {
+  //     setFavorites(favorites.filter((fav) => fav.id !== card.id));
+  //   } else {
+  //     setFavorites([...favorites, card]);
+  //   }
+  // };
     
+  const toggleFavorite = (psychologist) => {
+    console.log(psychologist);
+    
+    const exists = favorites.find((fav) => fav.id === psychologist.id);
+    
+    if (exists) {
+      setFavorites(favorites.filter((fav) => fav.id !== psychologist.id));
+    } else {
+      setFavorites([...favorites, psychologist]);
+    }
+  };
+
+  const isFavorite = (psychologistId) => {
+
+    console.log(psychologistId);
+    
+    return favorites.some((fav) => fav.id === psychologistId);
+  };
     
   return (
     <CardContainer>
@@ -36,14 +80,15 @@ export const PsychologistsCard = ({psychologist}) => {
                     <SSpan>Psychologist</SSpan>
                     <SContainerPrice>
                         <SLiStar>
-                            <IconSvg id='star' size={20} />
+                            <IconSvg id='star-yellow' size={20} />
                             <SSpanRating>Rating: {psychologist.rating}</SSpanRating>
                         </SLiStar>
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart>
-                        <IconSvg id='heart' size={23} />
+                    <SBtnHeart onClick={() => toggleFavorite(psychologist)} >
+                        <IconSvg id='heart' size={23} style={{ backgroundColor: isFavorite(psychologist.id) ? 'red' : 'grey'}}/>
+                        {/* <Icon name='heart-green' size={23}/> */}
                     </SBtnHeart>
                 </SContainerTitle>
                 <SPsName>{psychologist.name}</SPsName>

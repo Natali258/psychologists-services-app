@@ -78,6 +78,8 @@ color: #38cd3e;
 `
 export const SBtnHeart = styled.button`
 margin-left: 28px;
+border: none;
+background-color: rgba(255, 255, 255, 1)
 `
 export const SPsName = styled.h2`
 display: block;
