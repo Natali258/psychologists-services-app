@@ -104,7 +104,7 @@ export const LoginForm = ({open, onClose}) => {
                             endAdornment: (
                                 <InputAdornment position="end">
                                     <IconButton edge="end" onClick={passVisibility}>
-                                        {showPass ?(<IconSvg id='open-eye' size={20} />) : (<IconSvg id="close-eye" size={20} />)}
+                                        {showPass ?(<IconSvg id='eye-open' size={20} />) : (<IconSvg id="eye-off" size={20} />)}
                                     </IconButton>
                                 </InputAdornment>
                             ),
