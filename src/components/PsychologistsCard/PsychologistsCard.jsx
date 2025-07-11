@@ -87,8 +87,7 @@ export const PsychologistsCard = ({psychologist}) => {
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
                     <SBtnHeart onClick={() => toggleFavorite(psychologist)} >
-                        <IconSvg id='heart' size={23} style={{ backgroundColor: isFavorite(psychologist.id) ? 'red' : 'grey'}}/>
-                        {/* <Icon name='heart-green' size={23}/> */}
+                        {isFavorite(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>}
                     </SBtnHeart>
                 </SContainerTitle>
                 <SPsName>{psychologist.name}</SPsName>
