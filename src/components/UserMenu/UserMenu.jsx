@@ -1,14 +1,17 @@
 import React from 'react'
-import { SUserContainer } from './UserMenu.styled'
+import { IconSvg } from '../Icon/IconSvg';
+import { SUserBox, SUserBoxAvatar, SUserBoxName, SUserBtn, SUserContainer } from './UserMenu.styled'
 
 export const UserMenu = () => {
   return (
     <SUserContainer>
-        <div>
-            <div>Avatar</div>
-            <div>Name</div>
-            <button>Log out</button>
-        </div>
+        <SUserBox>
+          <SUserBoxAvatar>
+            <IconSvg id='user' size={24} />
+          </SUserBoxAvatar>
+          <SUserBoxName>Name</SUserBoxName>
+        </SUserBox>
+        <SUserBtn>Log out</SUserBtn>
     </SUserContainer>
   )
 }
