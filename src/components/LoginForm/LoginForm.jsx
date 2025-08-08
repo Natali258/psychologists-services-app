@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../services/FirebaseApp';
 import { toast } from 'react-toastify';
 
@@ -62,6 +62,7 @@ export const LoginForm = ({open, onClose}) => {
       const onSubmit = async (data) => {
         try {
           setIsLoading(true);
+          // await setPersistence(auth, browserSessionPersistence);
           const userCredential = await signInWithEmailAndPassword(
             auth,
             data.email,
@@ -78,6 +79,10 @@ export const LoginForm = ({open, onClose}) => {
           }
         setIsLoading(false);
       };
+
+//       useEffect(() => {
+//   auth.signOut(); // тільки один раз для тесту!
+// }, []);
     
     // const submit = data => {
     //     console.log(data);

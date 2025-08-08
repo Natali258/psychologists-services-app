@@ -94,7 +94,6 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
   export const registerUser = async(credentials) => {
     console.log(credentials);
-    
     try {
       const nameUser = credentials.name;
       const emailUser = credentials.email;
@@ -118,19 +117,18 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     }
   };
 
-//   Ще не використовувала!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // export const getUserData = async (uid) => {
-  //   try {
-  //     const snapshot = await get(ref(database, `users/${uid}`));
-  //     if (snapshot.exists()) {
-  //       return snapshot.val();
-  //     } else {
-  //       return;
-  //     }
-  //   } catch {
-  //     toast.error(`Something went wrong.`);
-  //   }
-  // };
+  export const getUserData = async (uid) => {
+    try {
+      const snapshot = await get(ref(database, `users/${uid}`));  
+      if (snapshot.exists()) {
+        return snapshot.val();
+      } else {
+        return;
+      }
+    } catch {
+      toast.error(`Something went wrong.`);
+    }
+  };
   
  
   

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from "firebase/firestore";
+// import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -15,12 +15,8 @@ const firebaseConfig = {
   measurementId: "G-B59THEZ924"
 };
 
-// Initialize Firebase
-// export const conectAPI = initializeApp(firebaseConfig);
-// export const database = getDatabase();
-
 const conectAPI = initializeApp(firebaseConfig);
 export const auth = getAuth(conectAPI);
-export const database = getDatabase();
+export const database = getDatabase(conectAPI);
 
-export const db = getFirestore(conectAPI);
+// export const db = getFirestore(conectAPI);
