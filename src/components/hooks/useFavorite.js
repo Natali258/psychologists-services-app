@@ -22,4 +22,7 @@ export const useFavorites = () => {
 
   const isFavorite = (id) => favorites.includes(id);
 
+  console.log(favorites);
+  
+
   return { favorites, toggleFavorite, isFavorite }}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { SBtnLogIn, SFormLogIn, STextLogIn, STittleLogIn } from './LoginForm.styled';
@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import { IconButton, InputAdornment } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
 import { useNavigate } from 'react-router-dom';
-import { browserSessionPersistence, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../services/FirebaseApp';
 import { toast } from 'react-toastify';
 
@@ -39,17 +39,6 @@ const SFieldEmailLogIn = styled(TextField)({
   }));
 
 export const LoginForm = ({open, onClose}) => {
-    // const [email, setEmail] = useState('')
-    // const [password, setPassword] = useState('')
-
-    // const handleSubmit = e => {
-    //     e.preventDefault()
-    //     console.log(email, password);
-        
-    //     setEmail('')
-    //     setPassword('')
-    // }
-  
   const [showPass, setShowPass] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -62,7 +51,6 @@ export const LoginForm = ({open, onClose}) => {
       const onSubmit = async (data) => {
         try {
           setIsLoading(true);
-          // await setPersistence(auth, browserSessionPersistence);
           const userCredential = await signInWithEmailAndPassword(
             auth,
             data.email,
@@ -80,15 +68,6 @@ export const LoginForm = ({open, onClose}) => {
         setIsLoading(false);
       };
 
-//       useEffect(() => {
-//   auth.signOut(); // тільки один раз для тесту!
-// }, []);
-    
-    // const submit = data => {
-    //     console.log(data);
-        
-    //     reset()
-    // }
   return (
     <div>
         <Modal
@@ -126,43 +105,3 @@ export const LoginForm = ({open, onClose}) => {
 
   )
 }
-
-
-
-
-
-// export const LoginForm = ({open, onClose}) => {
-//     const { register, reset, handleSubmit } = useForm();
-//     const dispatch = useDispatch();
-//     const submit = data => {
-//         dispatch(loginThunk(data));
-//     reset()
-// };
-    
-//   return (
-//     <div>
-//         <Modal
-//         open={open}
-//         onClose={onClose}
-//         >
-//             <Box sx={style}>
-//                 <Typography variant="h6" component="h2">
-//                     Log In
-//                 </Typography>
-//                 <Typography sx={{ mt: 2 }}>
-//                     Welcome back! Please enter your credentials to access your account and continue your search for a psychologist.
-//                 </Typography>
-//                 <Box onSubmit={handleSubmit(submit)} component="form" noValidate autoComplete="off">
-//                     <TextField {...register('email')} label="Email"  />
-//                     <TextField {...register('password')} label="Password" />
-//                     <SBtnLogIn type='submit'>Log In</SBtnLogIn>
-//                 </Box>
-                
-//             </Box>
-//         </Modal>
-         
-        
-//     </div>
-
-//   )
-// }

@@ -4,10 +4,6 @@ import { SUserBox, SUserBoxAvatar, SUserBoxName, SUserBtn, SUserContainer } from
 
 
 export const UserMenu = ({userName}) => {
-  
-//  const {name, email} = userData;
-//   console.log(name);
-
   return (
     <SUserContainer>
         <SUserBox>

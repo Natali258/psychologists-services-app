@@ -16,6 +16,7 @@ import {
   import { auth, database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+
   
   export const getPsychologists = async (limit, filter) => {
     
@@ -130,23 +131,21 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     }
   };
   
- 
-  
-  // export const addToFavorites = async (uid, nanny) => {
-  //   try {
-  //     await push(ref(database, `users/${uid}/favorites`), nanny);
-  //   } catch {
-  //     toast.error(`Something went wrong. Please try again.`);
-  //   }
-  // };
+  export const addToFavorites = async (uid, psychologist) => {
+    try {
+      await push(ref(database, `users/${uid}/favorites`), psychologist);
+    } catch {
+      toast.error(`Something went wrong. Please try again.`);
+    }
+  };
 
-  // export const removeFromFavorites = async (uid, pushId) => {
-  //   try {
-  //     await remove(ref(database, `users/${uid}/favorites/${pushId}`));
-  //   } catch {
-  //     toast.error(`Something went wrong. Please try again.`);
-  //   }
-  // };
+  export const removeFromFavorites = async (uid, pushId) => {
+    try {
+      await remove(ref(database, `users/${uid}/favorites/${pushId}`));
+    } catch {
+      toast.error(`Something went wrong. Please try again.`);
+    }
+  };
   
   // export const getUserFavorites = async (uid) => {
   //   try {
