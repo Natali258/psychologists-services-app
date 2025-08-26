@@ -12,6 +12,8 @@ import {
     orderByKey,
     orderByValue,
     onValue,
+    child,
+    equalTo,
   } from 'firebase/database';
   import { auth, database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';
@@ -243,3 +245,37 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   //     toast.error(`Something went wrong.`);
   //   }
   // };
+
+
+  export const getItemByFieldId = async (searchId) => {
+  const dbRef = ref(database, "psychologist");
+  const q = query(dbRef, orderByChild("id"), equalTo(searchId));
+  console.log(q);
+  
+  const snapshot = await get(q);
+  if (snapshot.exists()) {
+    const data = snapshot.val();
+    return Object.values(data)[0]; // перший результат
+  } else {
+    console.log("Not found");
+    return null;
+  }
+};
+
+
+
+
+//   export const getFavoritesById = async (id) => {
+//   const dbRef = ref(database);
+//   try {
+//     const snapshot = await get(child(dbRef, `psychologist/${id}`));
+//     if (snapshot.exists()) {
+//       return snapshot.val();
+//     } else {
+//       console.log("No data found");
+//       return null;
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

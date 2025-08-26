@@ -7,3 +7,18 @@ service cloud.firestore {
     }
   }
 }
+
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        "favorites": {
+          "$psychologistId": {
+            ".read": "$uid === auth.uid",
+            ".write": "$uid === auth.uid"
+          }
+        }
+      }
+    }
+  }
+}

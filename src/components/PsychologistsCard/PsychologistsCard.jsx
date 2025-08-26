@@ -6,11 +6,6 @@ import { IconSvg } from '../Icon/IconSvg';
 import { useFavorites } from '../hooks/useFavorite';
 
 
-
-
-
-
-
 export const PsychologistsCard = ({psychologist}) => {
     const { reviews} = psychologist;
     const [openReviews, setOpenReviews] = useState(false)
