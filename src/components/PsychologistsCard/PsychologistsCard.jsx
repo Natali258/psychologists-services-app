@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
 import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
 import { IconSvg } from '../Icon/IconSvg';
 import { useFavorites } from '../hooks/useFavorite';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../services/FirebaseApp';
+import { addToFavorites } from '../../api/api';
 
 
 export const PsychologistsCard = ({psychologist}) => {
@@ -11,17 +14,42 @@ export const PsychologistsCard = ({psychologist}) => {
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
+    const [user, setUser] = useState(null);
+    const [favorites, setFavorites] = useState(null);
+    // console.log(psychologist);
+    // console.log(user);
+
+  useEffect(() => {
     
-    const { toggleFavorite, isFavorite } = useFavorites();
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      console.log(firebaseUser);
+      setUser(firebaseUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const toggleFav = () => {
+    if (!user) {
+      alert("Увійдіть у систему, щоб додати до обраного.");
+      return;
+    }
+
+    addToFavorites(user.uid, psychologist.id);
+  }
+//   const isFav = (id) => favorites.includes(id);
     
-    
+
+
+
+    const { toggleFavorite, isFavorite } = useFavorites(psychologist);
     const handlerReadMore = ()=>{
         setOpenReviews(true)
         setHiddenBtn(false)
     }
-
     const handlerOpenAppointment = () => setOpenAppointment(true);
     const handlerCloseAppointment = () => setOpenAppointment(false)
+
 
   return (
     <CardContainer>
@@ -41,7 +69,7 @@ export const PsychologistsCard = ({psychologist}) => {
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart onClick={() => toggleFavorite(psychologist.id)} >
+                    <SBtnHeart onClick={() => toggleFav(psychologist.id)} >
                         {isFavorite(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>}
                     </SBtnHeart>
                 </SContainerTitle>
