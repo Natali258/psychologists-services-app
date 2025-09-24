@@ -6,7 +6,7 @@ import { IconSvg } from '../Icon/IconSvg';
 import { useFavorites } from '../hooks/useFavorite';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../services/FirebaseApp';
-import { addToFavorites } from '../../api/api';
+import { addToFavorites, getUserFavorites, isPsychologistInFavorites } from '../../api/api';
 
 
 export const PsychologistsCard = ({psychologist}) => {
@@ -16,33 +16,28 @@ export const PsychologistsCard = ({psychologist}) => {
     const [openAppointment, setOpenAppointment]=React.useState(false);
     const [user, setUser] = useState(null);
     const [favorites, setFavorites] = useState(null);
-    // console.log(psychologist);
-    // console.log(user);
+    
+    console.log(user);
 
   useEffect(() => {
     
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      console.log(firebaseUser);
       setUser(firebaseUser);
     });
 
     return () => unsubscribe();
   }, []);
 
-  const toggleFav = () => {
+  const toggleFav = async() => {
     if (!user) {
       alert("Увійдіть у систему, щоб додати до обраного.");
       return;
     }
 
-    addToFavorites(user.uid, psychologist.id);
+    await addToFavorites(user.uid, psychologist.id);
   }
-//   const isFav = (id) => favorites.includes(id);
-    
 
-
-
-    const { toggleFavorite, isFavorite } = useFavorites(psychologist);
+    // const { toggleFavorite, isFavorite } = useFavorites({psychologist});
     const handlerReadMore = ()=>{
         setOpenReviews(true)
         setHiddenBtn(false)
@@ -69,8 +64,8 @@ export const PsychologistsCard = ({psychologist}) => {
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart onClick={() => toggleFav(psychologist.id)} >
-                        {isFavorite(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>}
+                    <SBtnHeart onClick={() => toggleFav(psychologist.id)} > <IconSvg id='heart' size={26}/>
+                        {/* {isFav(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>} */}
                     </SBtnHeart>
                 </SContainerTitle>
                 <SPsName>{psychologist.name}</SPsName>

@@ -149,18 +149,37 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     }
   };
   
-  // export const getUserFavorites = async (uid) => {
-  //   try {
-  //     const snapshot = await get(ref(database, `users/${uid}/favorites`));
-  //     if (snapshot.exists()) {
-  //       return snapshot.val();
-  //     } else {
-  //       return null;
-  //     }
-  //   } catch {
-  //     toast.error(`Something went wrong. Please try again.`);
-  //   }
-  // };
+  export const getUserFavorites = async (uid) => {
+    try {
+      const snapshot = await get(ref(database, `users/${uid}/favorites`));
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        
+        return snapshot.val();
+      } else {
+        return null;
+      }
+    } catch {
+      toast.error(`Something went wrong. Please try again.`);
+    }
+  };
+
+//   export const isPsychologistInFavorites = async (uid, psychologistId) => {
+//   try {
+//     console.log(uid);
+//     console.log(psychologistId);
+//     const snapshot = await get(ref(database, `users/${uid}/favorites`));
+//     const data = snapshot.val();
+//     console.log(data);
+//     if (!data) return false;
+
+//     // Перетворюємо об'єкт на масив і перевіряємо наявність id
+//     return Object.values(data).map((psych) => psych === psychologistId);
+//   } catch (error) {
+//     console.error('Помилка при перевірці улюблених:', error);
+//     return false;
+//   }
+// };
   
   // export const getUserFavoritesLimited = async (uid, limit, filter) => {
   //   try {

@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { auth } from '../../services/FirebaseApp';
-import { addToFavorites } from '../../api/api';
+import { addToFavorites, getUserFavorites, isPsychologistInFavorites } from '../../api/api';
 
 export const useFavorites = ({psychologist}) => {
   const [favorites, setFavorites] = useState([]);
@@ -29,25 +29,31 @@ export const useFavorites = ({psychologist}) => {
 
 
 
-  console.log(psychologist);
+
+  // 2//////
+  // getUserFavorites()
+
+  // console.log(psychologist);
   
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+  //     setUser(firebaseUser);
+  //   });
 
-    return () => unsubscribe();
-  }, []);
+  //   return () => unsubscribe();
+  // }, []);
 
-  const toggleFavorite = () => {
-    if (!user) {
-      alert("Увійдіть у систему, щоб додати до обраного.");
-      return;
-    }
+  // const toggleFavorite = () => {
+  //   if (!user) {
+  //     alert("Увійдіть у систему, щоб додати до обраного.");
+  //     return;
+  //   }
 
-    addToFavorites(user.uid, psychologist.id);
-  }
-  return { user, toggleFavorite}
+  //   addToFavorites(user.uid, psychologist.id);
+  // }
+
+  // const inFavorites = isPsychologistInFavorites(user.uid, psychologist.id);
+  // return { user, toggleFavorite}
 }
