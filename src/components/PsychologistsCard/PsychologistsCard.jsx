@@ -1,43 +1,28 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHeart, SBtnRead, SContainerPrice, SContainerTitle, SLiPrice, SLiStar, SListInfo, SListInfoLi, SListInfoLiSpan, SLiStroke, SPsName, SSpan, SSpanPrice, SSpanRating, STextAbout } from './PsychologistsCard.styled';
 import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
 import { IconSvg } from '../Icon/IconSvg';
-import { useFavorites } from '../hooks/useFavorite';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../services/FirebaseApp';
-import { addToFavorites, getUserFavorites, isPsychologistInFavorites } from '../../api/api';
+import { addToFavorites} from '../../api/api';
+
+
 
 
 export const PsychologistsCard = ({psychologist}) => {
-    const { reviews} = psychologist;
+    const {reviews} = psychologist;
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
     const [user, setUser] = useState(null);
-    const [favorites, setFavorites] = useState(null);
-    
-    console.log(user);
 
-  useEffect(() => {
-    
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  const toggleFav = async() => {
-    if (!user) {
-      alert("Увійдіть у систему, щоб додати до обраного.");
-      return;
-    }
-
-    await addToFavorites(user.uid, psychologist.id);
-  }
-
-    // const { toggleFavorite, isFavorite } = useFavorites({psychologist});
+     const toggleFav = async() => {
+        if (!user) {
+          alert("Увійдіть у систему, щоб додати до обраного.");
+          return;
+        }
+        await addToFavorites(user.uid, psychologist.id);
+      }
+  
     const handlerReadMore = ()=>{
         setOpenReviews(true)
         setHiddenBtn(false)

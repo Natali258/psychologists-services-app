@@ -1,37 +1,56 @@
 import React, { useEffect, useState } from 'react'
-import { useFavorites } from '../hooks/useFavorite'
-import { getItemByFieldId, getPsychologists } from '../../api/api'
+import { getUserFavorites } from '../../api/api'
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../services/FirebaseApp';
 import { toast } from 'react-toastify';
-// import { useFavorites } from '../hooks/useFavorite'
-// import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
-// import { getPsychologists } from '../../api/api';
-// import { collection, getDocs } from 'firebase/firestore';
-// import { db } from '../../services/FirebaseApp';
 
-export const FavoriteList = () => {
-  const [favPsychologists, setFavPsychologists] = useState([]);
-  const [limit, setLimit] = useState(3);
-  const [moreFavPsychologists, setMoreFavPsychologists] = useState(true);
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
-  const {favorites, isFavorite} = useFavorites()
-  console.log(favorites);
+export const FavoriteList = ({ setLoading, filter }) => {
+      const [user, setUser] = useState(null);
+      const [IsFavorites, setIsFavorites] = useState([]);
+      
+      console.log(user);
+      console.log(IsFavorites);
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+          setUser(firebaseUser);
+        });
+        return () => unsubscribe();
+      }, []);
+      
+      useEffect(() => {
+        const fetchUserFavorites = async () => {
+        //   if (!user) {
+        //   alert("Увійдіть у систему, щоб додати до обраного.");
+        //   return;
+        // }  
+          try {
+            const userFavorites = await getUserFavorites(user.uid);
+            const ids = Object.keys(userFavorites);
+            setIsFavorites(ids)
+            
+            
   
-
-    // useEffect(() => {
-    //   getItemByFieldId(favorites).then(data => {
-    //     if (data) {
-    //       console.log("Item:", data);
-    //     }
-    //   });
-    // }, [favorites]);
+           
+          } catch {
+            toast.error('Something went wrong. Please try again.');
+          }
+        };
+        fetchUserFavorites()
+    }, [user]);
+  
+   
+   
+   
+      
+   
   
 
   
   
     
   return (
-    <div> 12345</div>
+    <div> 12345 </div>
   )
 }
 
