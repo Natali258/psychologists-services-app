@@ -1,56 +1,79 @@
-import React, { useEffect, useState } from 'react'
-import { getUserFavorites } from '../../api/api'
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../services/FirebaseApp';
+import { useEffect, useState } from 'react'
+import { GetUser } from '../GetUser/GetUser';
+import { getUserFavoritesLimited, getUserFavoritesTotal } from '../../api/api';
 import { toast } from 'react-toastify';
+import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
 
 
 export const FavoriteList = ({ setLoading, filter }) => {
-      const [user, setUser] = useState(null);
-      const [IsFavorites, setIsFavorites] = useState([]);
-      
-      console.log(user);
-      console.log(IsFavorites);
-      useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-          setUser(firebaseUser);
-        });
-        return () => unsubscribe();
-      }, []);
-      
-      useEffect(() => {
-        const fetchUserFavorites = async () => {
-        //   if (!user) {
-        //   alert("Увійдіть у систему, щоб додати до обраного.");
-        //   return;
-        // }  
-          try {
-            const userFavorites = await getUserFavorites(user.uid);
-            const ids = Object.keys(userFavorites);
-            setIsFavorites(ids)
-            
-            
-  
-           
-          } catch {
-            toast.error('Something went wrong. Please try again.');
-          }
-        };
-        fetchUserFavorites()
-    }, [user]);
-  
-   
-   
-   
-      
-   
-  
+      const [psychologistFavorites, setPsychologistFavorites] = useState([]);
+      const [limit, setLimit] = useState(3);
+      const [morePsychologist, setMorePsychologist] = useState(false);
+      const [totalPsychologist, setTotalPsychologist] = useState(0);
+      const [isInitialLoading, setIsInitialLoading] = useState(true);
+      const userId = GetUser();
 
-  
-  
-    
+      
+      
+      useEffect(() => {
+        const fetchFavorites = async () => {
+          setMorePsychologist(true);
+      try {
+        setLoading(true);
+        setIsInitialLoading(true);
+        const totalPsychologistObject = await getUserFavoritesTotal(userId);
+        console.log(totalPsychologistObject);
+        if (totalPsychologistObject) {
+          const totalPsychologistArray = Object.values(totalPsychologistObject);
+          setTotalPsychologist(totalPsychologistArray.length);
+          setIsInitialLoading(false);
+
+          if (
+            totalPsychologistArray.length === 0 ||
+            totalPsychologistArray.length === 3 ||
+            totalPsychologistArray.length < limit
+          ) {
+            setMorePsychologist(false);
+            setIsInitialLoading(false);
+            toast.info(`You have reached the end of nannies' list.`);
+          }
+        }
+
+        const psychologistFavoritesObject = await getUserFavoritesLimited(
+          userId,
+          limit,
+          filter
+        );
+          setLoading(false);
+        if (psychologistFavoritesObject) {
+          const psychologistFavoritesArray = Object.values(psychologistFavoritesObject);
+
+          if (filter === 'Z to A' || filter === 'Popular') {
+            setPsychologistFavorites(psychologistFavoritesArray.reverse());
+          } else {
+            setPsychologistFavorites(psychologistFavoritesArray);
+          }
+        } else {
+          return;
+        }
+      } catch {
+        toast.error(`Something went wrong.`);
+      }
+    };
+    fetchFavorites();
+        
+  }, [limit, userId, totalPsychologist, setLoading, filter]);
+
+
   return (
-    <div> 12345 </div>
+    <>
+      <ul>
+        {psychologistFavorites?.map(item =>
+          ( <PsychologistsCard key={item.name} psychologist={item} {...item}/>)
+        )}
+      </ul>
+        {/* <button onClick={loadMore}>Load more</button> */}
+    </>
   )
 }
 

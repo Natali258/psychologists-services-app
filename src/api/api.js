@@ -166,6 +166,8 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     try {
       const snapshot = await get(query(ref(database, `users/${uid}/favorites`)));
       if (snapshot.exists()) {
+        console.log(snapshot.val);
+        
         return snapshot.val();
       } else {
         return null;
@@ -194,76 +196,76 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 //   }
 // };
   
-  // export const getUserFavoritesLimited = async (uid, limit, filter) => {
-  //   try {
-  //     const nanniesRef = ref(database, `users/${uid}/favorites`);
-  //     let sortedQuery;
-  //     switch (filter) {
-  //       case 'A to Z':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('name'),
-  //           limitToFirst(limit)
-  //         );
-  //         break;
-  //       case 'Z to A':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('name'),
-  //           limitToLast(limit)
-  //         );
-  //         break;
-  //       case 'Popular':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('rating'),
-  //           limitToLast(limit)
-  //         );
-  //         break;
-  //       case 'Not popular':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('rating'),
-  //           limitToFirst(limit)
-  //         );
-  //         break;
-  //       case 'Greater than 10$':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('price_per_hour'),
-  //           startAt(10),
-  //           limitToFirst(limit)
-  //         );
-  //         break;
-  //       case 'Less than 10$':
-  //         sortedQuery = query(
-  //           nanniesRef,
-  //           orderByChild('price_per_hour'),
-  //           startAt(0),
-  //           endAt(10),
-  //           limitToFirst(limit)
-  //         );
-  //         break;
-  //       case 'Show all':
-  //         sortedQuery = query(nanniesRef, limitToFirst(limit));
-  //         break;
-  //       default:
-  //         sortedQuery = query(nanniesRef, limitToFirst(limit));
-  //     }
-  //     const snapshot = await get(sortedQuery);
-  //     if (snapshot.exists()) {
-  //       const nannies = [];
-  //       snapshot.forEach((childSnapshot) => {
-  //         nannies.push(childSnapshot.val());
-  //       });
-  //       return nannies;
-  //     } else {
-  //       return null;
-  //     }
-  //   } catch {
-  //     toast.error('Something went wrong.');
-  //   }
-  // };
+  export const getUserFavoritesLimited = async (uid, limit, filter) => {
+    try {
+      const psychologistRef = ref(database, `users/${uid}/favorites`);
+      let sortedQuery;
+      switch (filter) {
+        case 'A to Z':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('name'),
+            limitToFirst(limit)
+          );
+          break;
+        case 'Z to A':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('name'),
+            limitToLast(limit)
+          );
+          break;
+        case 'Popular':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('rating'),
+            limitToLast(limit)
+          );
+          break;
+        case 'Not popular':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('rating'),
+            limitToFirst(limit)
+          );
+          break;
+        case 'Greater than 10$':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('price_per_hour'),
+            startAt(10),
+            limitToFirst(limit)
+          );
+          break;
+        case 'Less than 10$':
+          sortedQuery = query(
+            psychologistRef,
+            orderByChild('price_per_hour'),
+            startAt(0),
+            endAt(10),
+            limitToFirst(limit)
+          );
+          break;
+        case 'Show all':
+          sortedQuery = query(psychologistRef, limitToFirst(limit));
+          break;
+        default:
+          sortedQuery = query(psychologistRef, limitToFirst(limit));
+      }
+      const snapshot = await get(sortedQuery);
+      if (snapshot.exists()) {
+        const psychologist = [];
+        snapshot.forEach((childSnapshot) => {
+          psychologist.push(childSnapshot.val());
+        });
+        return psychologist;
+      } else {
+        return null;
+      }
+    } catch {
+      toast.error('Something went wrong.');
+    }
+  };
   
 
 

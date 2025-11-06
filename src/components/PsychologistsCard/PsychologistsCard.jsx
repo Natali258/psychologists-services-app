@@ -4,6 +4,7 @@ import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
 import { IconSvg } from '../Icon/IconSvg';
 import { addToFavorites} from '../../api/api';
+import { GetUser } from '../GetUser/GetUser';
 
 
 
@@ -13,14 +14,14 @@ export const PsychologistsCard = ({psychologist}) => {
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
-    const [user, setUser] = useState(null);
-
+    const userId = GetUser();
+    
      const toggleFav = async() => {
-        if (!user) {
+        if (!userId) {
           alert("Увійдіть у систему, щоб додати до обраного.");
           return;
         }
-        await addToFavorites(user.uid, psychologist.id);
+        await addToFavorites(userId, psychologist.id);
       }
   
     const handlerReadMore = ()=>{
