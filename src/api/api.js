@@ -166,8 +166,6 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     try {
       const snapshot = await get(query(ref(database, `users/${uid}/favorites`)));
       if (snapshot.exists()) {
-        console.log(snapshot.val);
-        
         return snapshot.val();
       } else {
         return null;
@@ -199,6 +197,8 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
   export const getUserFavoritesLimited = async (uid, limit, filter) => {
     try {
       const psychologistRef = ref(database, `users/${uid}/favorites`);
+      console.log(psychologistRef);
+      
       let sortedQuery;
       switch (filter) {
         case 'A to Z':
@@ -253,11 +253,14 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
           sortedQuery = query(psychologistRef, limitToFirst(limit));
       }
       const snapshot = await get(sortedQuery);
+      console.log(snapshot);
+      
       if (snapshot.exists()) {
         const psychologist = [];
         snapshot.forEach((childSnapshot) => {
           psychologist.push(childSnapshot.val());
         });
+        console.log(psychologist);
         return psychologist;
       } else {
         return null;

@@ -14,7 +14,6 @@ export const FavoriteList = ({ setLoading, filter }) => {
       const userId = GetUser();
 
       
-      
       useEffect(() => {
         const fetchFavorites = async () => {
           setMorePsychologist(true);
@@ -22,11 +21,13 @@ export const FavoriteList = ({ setLoading, filter }) => {
         setLoading(true);
         setIsInitialLoading(true);
         const totalPsychologistObject = await getUserFavoritesTotal(userId);
-        console.log(totalPsychologistObject);
+        // console.log(totalPsychologistObject);
         if (totalPsychologistObject) {
           const totalPsychologistArray = Object.values(totalPsychologistObject);
+          // console.log(totalPsychologistArray);
           setTotalPsychologist(totalPsychologistArray.length);
           setIsInitialLoading(false);
+          // console.log(totalPsychologist);
 
           if (
             totalPsychologistArray.length === 0 ||
@@ -44,10 +45,12 @@ export const FavoriteList = ({ setLoading, filter }) => {
           limit,
           filter
         );
+
+        console.log(psychologistFavoritesObject);
           setLoading(false);
         if (psychologistFavoritesObject) {
           const psychologistFavoritesArray = Object.values(psychologistFavoritesObject);
-
+            console.log(psychologistFavoritesArray);
           if (filter === 'Z to A' || filter === 'Popular') {
             setPsychologistFavorites(psychologistFavoritesArray.reverse());
           } else {
@@ -63,13 +66,13 @@ export const FavoriteList = ({ setLoading, filter }) => {
     fetchFavorites();
         
   }, [limit, userId, totalPsychologist, setLoading, filter]);
-
+  console.log(psychologistFavorites);
 
   return (
     <>
       <ul>
-        {psychologistFavorites?.map(item =>
-          ( <PsychologistsCard key={item.name} psychologist={item} {...item}/>)
+        {psychologistFavorites?.map(item => 
+          (<PsychologistsCard key={item.name} psychologist={item} {...item}/>)
         )}
       </ul>
         {/* <button onClick={loadMore}>Load more</button> */}
