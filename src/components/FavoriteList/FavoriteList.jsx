@@ -21,13 +21,12 @@ export const FavoriteList = ({ setLoading, filter }) => {
         setLoading(true);
         setIsInitialLoading(true);
         const totalPsychologistObject = await getUserFavoritesTotal(userId);
-        // console.log(totalPsychologistObject);
+        console.log(totalPsychologistObject);
+        
         if (totalPsychologistObject) {
           const totalPsychologistArray = Object.values(totalPsychologistObject);
-          // console.log(totalPsychologistArray);
           setTotalPsychologist(totalPsychologistArray.length);
           setIsInitialLoading(false);
-          // console.log(totalPsychologist);
 
           if (
             totalPsychologistArray.length === 0 ||
@@ -40,6 +39,10 @@ export const FavoriteList = ({ setLoading, filter }) => {
           }
         }
 
+
+        console.log(userId);
+        console.log(limit);
+        console.log(filter);
         const psychologistFavoritesObject = await getUserFavoritesLimited(
           userId,
           limit,
@@ -51,7 +54,7 @@ export const FavoriteList = ({ setLoading, filter }) => {
         if (psychologistFavoritesObject) {
           const psychologistFavoritesArray = Object.values(psychologistFavoritesObject);
             console.log(psychologistFavoritesArray);
-          if (filter === 'Z to A' || filter === 'Popular') {
+          if (filter === 'ztoa' || filter === 'popular') {
             setPsychologistFavorites(psychologistFavoritesArray.reverse());
           } else {
             setPsychologistFavorites(psychologistFavoritesArray);
@@ -66,7 +69,7 @@ export const FavoriteList = ({ setLoading, filter }) => {
     fetchFavorites();
         
   }, [limit, userId, totalPsychologist, setLoading, filter]);
-  console.log(psychologistFavorites);
+  
 
   return (
     <>

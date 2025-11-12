@@ -201,35 +201,36 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
       
       let sortedQuery;
       switch (filter) {
-        case 'A to Z':
+        case 'atoz':
           sortedQuery = query(
             psychologistRef,
             orderByChild('name'),
             limitToFirst(limit)
           );
+          sortedQuery = query(psychologistRef, limitToFirst(limit));
           break;
-        case 'Z to A':
+        case 'ztoa':
           sortedQuery = query(
             psychologistRef,
             orderByChild('name'),
             limitToLast(limit)
           );
           break;
-        case 'Popular':
+        case 'popular':
           sortedQuery = query(
             psychologistRef,
             orderByChild('rating'),
             limitToLast(limit)
           );
           break;
-        case 'Not popular':
+        case 'notpopular':
           sortedQuery = query(
             psychologistRef,
             orderByChild('rating'),
             limitToFirst(limit)
           );
           break;
-        case 'Greater than 10$':
+        case 'greater10':
           sortedQuery = query(
             psychologistRef,
             orderByChild('price_per_hour'),
@@ -237,7 +238,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
             limitToFirst(limit)
           );
           break;
-        case 'Less than 10$':
+        case 'less10':
           sortedQuery = query(
             psychologistRef,
             orderByChild('price_per_hour'),
@@ -246,7 +247,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
             limitToFirst(limit)
           );
           break;
-        case 'Show all':
+        case 'showAll':
           sortedQuery = query(psychologistRef, limitToFirst(limit));
           break;
         default:

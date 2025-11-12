@@ -5,7 +5,7 @@ import { Filter } from "../../components/Filter/Filter";
 
 export const FavoritesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [filter, setFilter] = useState('A to Z');
+  const [filter, setFilter] = useState('atoz');
   
 
   return (<>

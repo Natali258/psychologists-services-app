@@ -21,7 +21,7 @@ export const PsychologistsCard = ({psychologist}) => {
           alert("Увійдіть у систему, щоб додати до обраного.");
           return;
         }
-        await addToFavorites(userId, psychologist.id);
+        await addToFavorites(userId, psychologist);
       }
   
     const handlerReadMore = ()=>{
