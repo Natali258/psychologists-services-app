@@ -71,6 +71,10 @@ export const FavoriteList = ({ setLoading, filter }) => {
         
   }, [limit, userId, totalPsychologist, setLoading, filter]);
   
+  const loadMore = (e) => {
+    setLimit((prevLimit) => prevLimit + 3);
+    e.target.blur();
+  };
 
   return (
     <SFavListContainer>
@@ -79,7 +83,7 @@ export const FavoriteList = ({ setLoading, filter }) => {
           (<PsychologistsCard key={item.name} psychologist={item} {...item}/>)
         )}
       </SFavListUl>
-        <SFavListBtn>Load more</SFavListBtn>
+        <SFavListBtn onClick={loadMore}>Load more</SFavListBtn>
     </SFavListContainer>
   )
 }
