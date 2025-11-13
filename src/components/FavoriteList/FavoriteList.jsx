@@ -3,6 +3,7 @@ import { GetUser } from '../GetUser/GetUser';
 import { getUserFavoritesLimited, getUserFavoritesTotal } from '../../api/api';
 import { toast } from 'react-toastify';
 import { PsychologistsCard } from '../PsychologistsCard/PsychologistsCard';
+import { SFavListBtn, SFavListContainer, SFavListUl } from './FavoriteList.styled';
 
 
 export const FavoriteList = ({ setLoading, filter }) => {
@@ -72,14 +73,14 @@ export const FavoriteList = ({ setLoading, filter }) => {
   
 
   return (
-    <>
-      <ul>
+    <SFavListContainer>
+      <SFavListUl>
         {psychologistFavorites?.map(item => 
           (<PsychologistsCard key={item.name} psychologist={item} {...item}/>)
         )}
-      </ul>
-        {/* <button onClick={loadMore}>Load more</button> */}
-    </>
+      </SFavListUl>
+        <SFavListBtn>Load more</SFavListBtn>
+    </SFavListContainer>
   )
 }
 

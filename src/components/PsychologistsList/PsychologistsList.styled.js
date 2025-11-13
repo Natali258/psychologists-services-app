@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ListContainer = styled.div`
-margin: 32px 0 64px 0;
+margin-top: 32px;
 `
 
 export const ListUl = styled.ul`
