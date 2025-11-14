@@ -3,26 +3,64 @@ import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHea
 import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
 import { IconSvg } from '../Icon/IconSvg';
-import { addToFavorites} from '../../api/api';
+import { addToFavorites, getUserFavorites, removeFromFavorites} from '../../api/api';
 import { GetUser } from '../GetUser/GetUser';
+import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 
 
 
 
-export const PsychologistsCard = ({psychologist}) => {
+export const PsychologistsCard = ({psychologist, onRemoveFromFavorites}) => {
     const {reviews} = psychologist;
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
+    const [IsFavorites, setIsFavorites] = useState([])
+    const locationPath = useLocation();
     const userId = GetUser();
     
-     const toggleFav = async() => {
-        if (!userId) {
-          alert("Увійдіть у систему, щоб додати до обраного.");
-          return;
+    //  const toggleFav = async() => {
+    //     if (!userId) {
+    //       alert("Увійдіть у систему, щоб додати до обраного.");
+    //       return;
+    //     }
+    //     const favoriteIteam = await addToFavorites(userId, psychologist);
+    //     console.log(favoriteIteam);
+        
+    //   }
+
+    const handleFavoriteToggle = async () => {
+    if (!userId) {
+      toast.info('Please log in to your account to add nanny to favorites.');
+    } else {
+      try {
+        const userFavorites = await getUserFavorites(userId);
+        if (userFavorites) {
+          const favoriteKeys = Object.keys(userFavorites);
+          const favoritePsychologist = favoriteKeys.find(
+            (key) => userFavorites[key].name === psychologist.name
+          );
+          if (favoritePsychologist) {
+            await removeFromFavorites(userId, favoritePsychologist);
+            setIsFavorites(false);
+            if (locationPath.pathname === '/favorites') {
+              onRemoveFromFavorites(psychologist.name);
+            }
+          } else {
+            await addToFavorites(userId, psychologist);
+            setIsFavorites(true);
+          }
+        } else {
+          await addToFavorites(userId, psychologist);
+          setIsFavorites(true);
         }
-        await addToFavorites(userId, psychologist);
+      } catch (error) {
+        console.log(error.message);
+        toast.error('Something went wrong. Please try again.');
       }
+    }
+  };
   
     const handlerReadMore = ()=>{
         setOpenReviews(true)
@@ -50,7 +88,7 @@ export const PsychologistsCard = ({psychologist}) => {
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart onClick={() => toggleFav(psychologist.id)} > <IconSvg id='heart' size={26}/>
+                    <SBtnHeart onClick={handleFavoriteToggle} > <IconSvg id='heart' size={26}/>
                         {/* {isFav(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>} */}
                     </SBtnHeart>
                 </SContainerTitle>

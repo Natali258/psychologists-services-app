@@ -22,13 +22,10 @@ export const FavoriteList = ({ setLoading, filter }) => {
         setLoading(true);
         setIsInitialLoading(true);
         const totalPsychologistObject = await getUserFavoritesTotal(userId);
-        console.log(totalPsychologistObject);
-        
         if (totalPsychologistObject) {
           const totalPsychologistArray = Object.values(totalPsychologistObject);
           setTotalPsychologist(totalPsychologistArray.length);
           setIsInitialLoading(false);
-
           if (
             totalPsychologistArray.length === 0 ||
             totalPsychologistArray.length === 3 ||
@@ -39,22 +36,14 @@ export const FavoriteList = ({ setLoading, filter }) => {
             toast.info(`You have reached the end of nannies' list.`);
           }
         }
-
-
-        console.log(userId);
-        console.log(limit);
-        console.log(filter);
         const psychologistFavoritesObject = await getUserFavoritesLimited(
           userId,
           limit,
           filter
         );
-
-        console.log(psychologistFavoritesObject);
           setLoading(false);
         if (psychologistFavoritesObject) {
           const psychologistFavoritesArray = Object.values(psychologistFavoritesObject);
-            console.log(psychologistFavoritesArray);
           if (filter === 'ztoa' || filter === 'popular') {
             setPsychologistFavorites(psychologistFavoritesArray.reverse());
           } else {

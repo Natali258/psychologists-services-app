@@ -175,29 +175,9 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
     }
   };
 
-
-
-//   export const isPsychologistInFavorites = async (uid, psychologistId) => {
-//   try {
-//     console.log(uid);
-//     console.log(psychologistId);
-//     const snapshot = await get(ref(database, `users/${uid}/favorites`));
-//     const data = snapshot.val();
-//     console.log(data);
-//     if (!data) return false;
-
-//     // Перетворюємо об'єкт на масив і перевіряємо наявність id
-//     return Object.values(data).map((psych) => psych === psychologistId);
-//   } catch (error) {
-//     console.error('Помилка при перевірці улюблених:', error);
-//     return false;
-//   }
-// };
-  
   export const getUserFavoritesLimited = async (uid, limit, filter) => {
     try {
       const psychologistRef = ref(database, `users/${uid}/favorites`);
-      console.log(psychologistRef);
       
       let sortedQuery;
       switch (filter) {
@@ -254,14 +234,12 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
           sortedQuery = query(psychologistRef, limitToFirst(limit));
       }
       const snapshot = await get(sortedQuery);
-      console.log(snapshot);
       
       if (snapshot.exists()) {
         const psychologist = [];
         snapshot.forEach((childSnapshot) => {
           psychologist.push(childSnapshot.val());
         });
-        console.log(psychologist);
         return psychologist;
       } else {
         return null;
