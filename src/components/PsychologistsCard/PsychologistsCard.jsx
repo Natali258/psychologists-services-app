@@ -16,7 +16,7 @@ export const PsychologistsCard = ({psychologist, onRemoveFromFavorites}) => {
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
-    const [IsFavorites, setIsFavorites] = useState([])
+    const [IsFavorites, setIsFavorites] = useState(false)
     const locationPath = useLocation();
     const userId = GetUser();
     
@@ -88,8 +88,8 @@ export const PsychologistsCard = ({psychologist, onRemoveFromFavorites}) => {
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart onClick={handleFavoriteToggle} > <IconSvg id='heart' size={26}/>
-                        {/* {isFav(psychologist.id) ? <IconSvg id='heart-green' size={26}/> : <IconSvg id='heart' size={26}/>} */}
+                    <SBtnHeart onClick={handleFavoriteToggle} > 
+                        {IsFavorites ? (<IconSvg id='heart-green' size={26}/>) : (<IconSvg id='heart' size={26}/>)}
                     </SBtnHeart>
                 </SContainerTitle>
                 <SPsName>{psychologist.name}</SPsName>
