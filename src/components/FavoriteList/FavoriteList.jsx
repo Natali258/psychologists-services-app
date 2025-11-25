@@ -65,11 +65,17 @@ export const FavoriteList = ({ setLoading, filter }) => {
     e.target.blur();
   };
 
+  const handleRemoveFromFavorites = (name) => {
+    setPsychologistFavorites((prevPsychologist) =>
+      prevPsychologist.filter((psychologist) => psychologist.name !== name)
+    );
+  };
+
   return (
     <SFavListContainer>
       <SFavListUl>
         {psychologistFavorites?.map(item => 
-          (<PsychologistsCard key={item.name} psychologist={item} {...item}/>)
+          (<PsychologistsCard key={item.name} psychologist={item} {...item} onRemoveFromFavorites={handleRemoveFromFavorites}/>)
         )}
       </SFavListUl>
         <SFavListBtn onClick={loadMore}>Load more</SFavListBtn>

@@ -3,11 +3,8 @@ import { CardContainer, CardUl, ImgContainer, ImgStyle, SBtnAppointment, SBtnHea
 import { Reviewss } from '../Reviewss/Reviewss';
 import { MakeAppointment } from '../MakeAppointment/MakeAppointment';
 import { IconSvg } from '../Icon/IconSvg';
-import { addToFavorites, getUserFavorites, removeFromFavorites} from '../../api/api';
 import { GetUser } from '../GetUser/GetUser';
-import { toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
-
+import { useFavorite } from '../hooks/index';
 
 
 
@@ -16,52 +13,9 @@ export const PsychologistsCard = ({psychologist, onRemoveFromFavorites}) => {
     const [openReviews, setOpenReviews] = useState(false)
     const [hiddenBtn, setHiddenBtn] = useState(true)
     const [openAppointment, setOpenAppointment]=React.useState(false);
-    const [IsFavorites, setIsFavorites] = useState(false)
-    const locationPath = useLocation();
     const userId = GetUser();
-    
-    //  const toggleFav = async() => {
-    //     if (!userId) {
-    //       alert("Увійдіть у систему, щоб додати до обраного.");
-    //       return;
-    //     }
-    //     const favoriteIteam = await addToFavorites(userId, psychologist);
-    //     console.log(favoriteIteam);
-        
-    //   }
+    const { isFavorites, toggleFavorite } = useFavorite(userId, psychologist, onRemoveFromFavorites);
 
-    const handleFavoriteToggle = async () => {
-    if (!userId) {
-      toast.info('Please log in to your account to add nanny to favorites.');
-    } else {
-      try {
-        const userFavorites = await getUserFavorites(userId);
-        if (userFavorites) {
-          const favoriteKeys = Object.keys(userFavorites);
-          const favoritePsychologist = favoriteKeys.find(
-            (key) => userFavorites[key].name === psychologist.name
-          );
-          if (favoritePsychologist) {
-            await removeFromFavorites(userId, favoritePsychologist);
-            setIsFavorites(false);
-            if (locationPath.pathname === '/favorites') {
-              onRemoveFromFavorites(psychologist.name);
-            }
-          } else {
-            await addToFavorites(userId, psychologist);
-            setIsFavorites(true);
-          }
-        } else {
-          await addToFavorites(userId, psychologist);
-          setIsFavorites(true);
-        }
-      } catch (error) {
-        console.log(error.message);
-        toast.error('Something went wrong. Please try again.');
-      }
-    }
-  };
-  
     const handlerReadMore = ()=>{
         setOpenReviews(true)
         setHiddenBtn(false)
@@ -88,8 +42,8 @@ export const PsychologistsCard = ({psychologist, onRemoveFromFavorites}) => {
                         <SLiStroke></SLiStroke>
                         <SLiPrice>Price / 1 hour: <SSpanPrice>{psychologist.price_per_hour}$</SSpanPrice></SLiPrice>
                     </SContainerPrice>
-                    <SBtnHeart onClick={handleFavoriteToggle} > 
-                        {IsFavorites ? (<IconSvg id='heart-green' size={26}/>) : (<IconSvg id='heart' size={26}/>)}
+                    <SBtnHeart onClick={toggleFavorite} > 
+                        {isFavorites ? (<IconSvg id='heart-green' size={26}/>) : (<IconSvg id='heart' size={26}/>)}
                     </SBtnHeart>
                 </SContainerTitle>
                 <SPsName>{psychologist.name}</SPsName>

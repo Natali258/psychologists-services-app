@@ -1,59 +1,66 @@
-import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { auth } from '../../services/FirebaseApp';
-import { addToFavorites, getUserFavorites, isPsychologistInFavorites } from '../../api/api';
 
-export const useFavorites = ({psychologist}) => {
-  const [favorites, setFavorites] = useState([]);
+import { toast } from 'react-toastify';
+import { addToFavorites, getUserFavorites, removeFromFavorites } from '../../api/api';
+import { useLocation } from 'react-router-dom';
 
-  // useEffect(() => {
-  //   const stored = localStorage.getItem('favorites');
-  //   if (stored) {
-  //     setFavorites(JSON.parse(stored));
-  //   }
-  // }, []);
+export const useFavorite = (userId, psychologist, onRemoveFromFavorites) => {
+  const [isFavorites, setIsFavorites] = useState(false);
+  const locationPath = useLocation();
 
-  // useEffect(() => {
-  //   localStorage.setItem('favorites', JSON.stringify(favorites));
-  // }, [favorites]);
+  // Перевірка при завантаженні компонента
+  useEffect(() => {
+    const checkFavorite = async () => {
+      if (!userId || !psychologist) return;
 
-  // const toggleFavorite = (id) => {
-  //   setFavorites((prev) =>
-  //     prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id]
-  //   );
-  // };
+      try {
+        const favorites = await getUserFavorites(userId);
 
-  // const isFavorite = (id) => favorites.includes(id);
+        if (favorites) {
+          const isFav = Object.values(favorites).some(
+            (fav) => fav.name === psychologist.name
+          );
+          setIsFavorites(isFav);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
-  // return { favorites, toggleFavorite, isFavorite }
+    checkFavorite();
+  }, [userId, psychologist]);
 
+  const toggleFavorite = async () => {
+    if (!userId) {
+      toast.info('Please log in to your account to add nanny to favorites.');
+    } else {
+      try {
+        const userFavorites = await getUserFavorites(userId);
+        if (userFavorites) {
+          const favoriteKeys = Object.keys(userFavorites);
+          const favoritePsychologist = favoriteKeys.find(
+            (key) => userFavorites[key].name === psychologist.name
+          ); 
+          if (favoritePsychologist) {
+            await removeFromFavorites(userId, favoritePsychologist);
+            setIsFavorites(false);
+            if (locationPath.pathname === '/favorites') {
+              onRemoveFromFavorites(psychologist.name);
+            }
+          } else {
+            await addToFavorites(userId, psychologist);
+            setIsFavorites(true);
+          }
+        } else {
+          await addToFavorites(userId, psychologist);
+          setIsFavorites(true);
+        }
+      } catch (error) {
+        console.log(error.message);
+        toast.error('Something went wrong. Please try again.');
+      }
+    }
+  };
 
-
-
-  // 2//////
-  // getUserFavorites()
-
-  // console.log(psychologist);
-  
-  // const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-  //     setUser(firebaseUser);
-  //   });
-
-  //   return () => unsubscribe();
-  // }, []);
-
-  // const toggleFavorite = () => {
-  //   if (!user) {
-  //     alert("Увійдіть у систему, щоб додати до обраного.");
-  //     return;
-  //   }
-
-  //   addToFavorites(user.uid, psychologist.id);
-  // }
-
-  // const inFavorites = isPsychologistInFavorites(user.uid, psychologist.id);
-  // return { user, toggleFavorite}
-}
+  return { isFavorites, toggleFavorite };
+};
