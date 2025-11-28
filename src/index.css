@@ -48,7 +48,21 @@ button {
   }
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
+/* Успішне повідомлення */
+.Toastify__toast--success {
+  background-color: #4caf50 !important; /* зелений */
+  color: white !important;
+}
+/* 
+/* Помилка */
+.Toastify__toast--error {
+  background-color: #f48a83 !important;
+  color: white !important;
+}
+
+/* Інформація */
+.Toastify__toast--info {
+  background-color: #36A379 !important;
+  color: white !important;
+}
+

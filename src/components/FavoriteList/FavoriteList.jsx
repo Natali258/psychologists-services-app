@@ -33,7 +33,7 @@ export const FavoriteList = ({ setLoading, filter }) => {
           ) {
             setMorePsychologist(false);
             setIsInitialLoading(false);
-            toast.info(`You have reached the end of nannies' list.`);
+            toast.info(`You have reached the end of psychologists' list.`);
           }
         }
         const psychologistFavoritesObject = await getUserFavoritesLimited(

@@ -32,7 +32,7 @@ export const useFavorite = (userId, psychologist, onRemoveFromFavorites) => {
 
   const toggleFavorite = async () => {
     if (!userId) {
-      toast.info('Please log in to your account to add nanny to favorites.');
+      toast.info('Please log in to your account to add psychologist to favorites.');
     } else {
       try {
         const userFavorites = await getUserFavorites(userId);

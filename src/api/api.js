@@ -8,12 +8,7 @@ import {
     orderByChild,
     limitToLast,
     startAt,
-    endAt,
-    orderByKey,
-    orderByValue,
-    onValue,
-    child,
-    equalTo,
+    endAt
   } from 'firebase/database';
   import { auth, database } from '../services/FirebaseApp.js';
   import { toast } from 'react-toastify';

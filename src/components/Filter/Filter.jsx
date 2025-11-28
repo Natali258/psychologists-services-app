@@ -29,14 +29,7 @@ export const Filter = ({setFilter}) => {
         '&.Mui-selected': {backgroundColor: '#54be96', сolor: '#191a15'}
       });
 
-      
-      // const handleResetFilter = (e) => {
-      //   setFilterLocal('A to Z');
-      //   setFilter('A to Z');
-      //   e.target.blur();
-      // };
-   
-
+    
   return (
     <FilterContainer>
       <FilterTitle>Filters</FilterTitle>
