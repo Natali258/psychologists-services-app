@@ -3,8 +3,6 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'; 
 import Modal from '@mui/material/Modal';
 import { SBtnRegister, SFormRegister, SRegisterSpan, STextRegister, STitleRegister } from './RegisterForm.styled';
-// import { registerThunk } from '../../redux/Auth/operations';
-// import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { registerUser } from '../../api/api';
 import { database } from '../../services/FirebaseApp';
@@ -57,8 +55,6 @@ export const RegisterForm = ({open, onClose}) => {
         console.log(data);
         
         try {
-            // const {name, email, password} = data;
-            // const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const userCredential = await registerUser(data)
             console.log(userCredential);
             
