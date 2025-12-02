@@ -33,7 +33,7 @@ export const FavoriteList = ({ setLoading, filter }) => {
           ) {
             setMorePsychologist(false);
             setIsInitialLoading(false);
-            toast.info(`You have reached the end of psychologists' list.`);
+            toast.info(`You have reached the end of psychologist's list.`);
           }
         }
         const psychologistFavoritesObject = await getUserFavoritesLimited(
@@ -92,25 +92,3 @@ export const FavoriteList = ({ setLoading, filter }) => {
 
 
 
-// export const FavoriteList = ({psychologists}) => {
-//     const {favorites} = useFavorites()
-
-//     console.log(psychologists);
-//     const favoritePsychologists = psychologists.filter((p) =>favorites.includes(p.id));
-
-//     console.log(favoritePsychologists);
-    
-//   return (
-//     <div> 12345
-//       {favoritePsychologists.length > 0 ? (
-//         <div>
-//           {favoritePsychologists.map((psychologist) => (
-//             <PsychologistsCard key={psychologist.id} psychologist={psychologist} />
-//           ))}
-//         </div>
-//       ) : (
-//         <p>Немає улюблених психологів</p>
-//       )}
-//     </div>
-//   )
-// }
