@@ -135,16 +135,7 @@ export const MakeAppointment = ({ open, onClose, psychologist }) => {
                     />
                   )}
                 />
-                {/* <SModalFormInputTime type='time' ><DatePicker
-                            selected={time}
-                            onChange={(time) => setTime(time)}
-                            showTimeSelect
-                            showTimeSelectOnly
-                            timeIntervals={30}
-                            timeCaption="Meeting time"
-                            dateFormat="HH:mm"
-                            placeholderText="00:00"
-                          /></SModalFormInputTime> */}
+               
               </SModalBoxPhoneNum>
               <SModalFormInput
                 {...register("email")}
