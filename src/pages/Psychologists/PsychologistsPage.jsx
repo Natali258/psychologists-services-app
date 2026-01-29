@@ -5,7 +5,7 @@ import { Filter } from "../../components/Filter/Filter";
 export const PsychologistsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState('atoz');
-  console.log();
+  console.log(isLoading);
   
   return ( 
     <>
