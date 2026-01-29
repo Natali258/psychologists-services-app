@@ -14,7 +14,6 @@ import {
   import { toast } from 'react-toastify';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
-  
   export const getPsychologists = async (limit, filter) => {
     
     try {
