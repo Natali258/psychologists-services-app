@@ -12,6 +12,8 @@ export const Header = () => {
   const[loading, setLoading] = useState(true)
   const [loggedIn, setLoggedIn] = useState(null)
   const [userName, setuserName] = useState(null);
+  console.log(loading);
+  
   
     useEffect(()=>{
             const unsubscribe  = onAuthStateChanged(auth, async (user) => {  

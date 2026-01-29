@@ -14,6 +14,9 @@ export const FavoriteList = ({ setLoading, filter }) => {
       const [isInitialLoading, setIsInitialLoading] = useState(true);
       const userId = GetUser();
 
+      console.log(morePsychologist);
+      console.log(isInitialLoading);
+      
       
       useEffect(() => {
         const fetchFavorites = async () => {

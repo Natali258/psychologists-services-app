@@ -6,6 +6,7 @@ import { Filter } from "../../components/Filter/Filter";
 export const FavoritesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [filter, setFilter] = useState('atoz');
+  console.log(isLoading);
   
 
   return (<>

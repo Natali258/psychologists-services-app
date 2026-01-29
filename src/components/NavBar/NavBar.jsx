@@ -12,6 +12,8 @@ export const NavBar = () => {
     height: 0,});
   const navRef = useRef(null);
   const location = useLocation();
+  console.log(loading);
+  
       useEffect(()=>{
               const unsubscribe  = onAuthStateChanged(auth, (user) => {  
                   setLoading(false)  

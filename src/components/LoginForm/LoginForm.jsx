@@ -44,8 +44,10 @@ export const LoginForm = ({open, onClose}) => {
   const navigate = useNavigate();
   const passVisibility = () => {
     setShowPass((prevState) => !prevState);
-    
   };
+
+  console.log(isLoading);
+  
     const { register, reset, handleSubmit } = useForm();
 
       const onSubmit = async (data) => {

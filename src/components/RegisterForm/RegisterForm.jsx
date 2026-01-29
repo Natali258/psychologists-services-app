@@ -9,7 +9,7 @@ import { database } from '../../services/FirebaseApp';
 import { ref, set } from 'firebase/database';
 import { IconButton, InputAdornment, styled } from '@mui/material';
 import { IconSvg } from '../Icon/IconSvg';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const SFieldRegister = styled(TextField)({
     "& .MuiOutlinedInput-root": {
@@ -38,17 +38,13 @@ const SFieldRegister = styled(TextField)({
 
 
 export const RegisterForm = ({open, onClose}) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const passVisibility = () => {
         setShowPass((prevState) => !prevState);
     }
     
-  
-
-
-
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
     const submit = async (data) => {

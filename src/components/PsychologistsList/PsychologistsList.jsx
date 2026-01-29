@@ -12,6 +12,9 @@ export const PsychologistsList = ({ setLoading, filter }) => {
   const [morePsychologists, setMorePsychologists] = useState(true);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
 
+  console.log(morePsychologists);
+  console.log(isInitialLoading);
+  
   useEffect(() => {
     const fetchData = async () => {
       setMorePsychologists(true);
